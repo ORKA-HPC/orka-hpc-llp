@@ -1,0 +1,186 @@
+// (C) 2001-2021 Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions and other 
+// software and tools, and its AMPP partner logic functions, and any output 
+// files from any of the foregoing (including device programming or simulation 
+// files), and any associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License Subscription 
+// Agreement, Intel FPGA IP License Agreement, or other applicable 
+// license agreement, including, without limitation, that your use is for the 
+// sole purpose of programming logic devices manufactured by Intel and sold by 
+// Intel or its authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+
+    // ------------------------------------------------------------
+    // Local Parameters
+    // ------------------------------------------------------------
+    localparam IN_NUMSYMBOLS        = IN_PKT_BYTEEN_H - IN_PKT_BYTEEN_L + 1;
+    localparam IN_DATA_W            = IN_PKT_DATA_H   - IN_PKT_DATA_L   + 1;
+    localparam IN_BYTEEN_W          = IN_NUMSYMBOLS;
+
+    localparam OUT_NUMSYMBOLS       = OUT_PKT_BYTEEN_H - OUT_PKT_BYTEEN_L + 1;
+    localparam OUT_DATA_W           = OUT_PKT_DATA_H   - OUT_PKT_DATA_L   + 1;
+    localparam OUT_BYTEEN_W         = OUT_NUMSYMBOLS;
+
+    localparam BURST_TYPE_W         = IN_PKT_BURST_TYPE_H - IN_PKT_BURST_TYPE_L + 1;
+    localparam BURST_SIZE_W         = IN_PKT_BURST_SIZE_H - IN_PKT_BURST_SIZE_L + 1;    
+    localparam RESPONSE_STATUS_W    = IN_PKT_RESPONSE_STATUS_H - IN_PKT_RESPONSE_STATUS_L + 1;
+    localparam SYMBOL_W             = IN_DATA_W / IN_NUMSYMBOLS;
+    localparam ADDRESS_W            = IN_PKT_ADDR_H     - IN_PKT_ADDR_L     + 1;
+    localparam BYTE_CNT_W           = IN_PKT_BYTE_CNT_H - IN_PKT_BYTE_CNT_L + 1;
+    localparam OUT_BYTE_CNT_W       = OUT_PKT_BYTE_CNT_H - OUT_PKT_BYTE_CNT_L + 1;
+    localparam BWRAP_W              = IN_PKT_BURSTWRAP_H - IN_PKT_BURSTWRAP_L + 1;
+    localparam SIZE_W               = 2 ** BURST_SIZE_W;
+
+    localparam RATIO                = (IN_NUMSYMBOLS > OUT_NUMSYMBOLS ? 
+                                         IN_NUMSYMBOLS / OUT_NUMSYMBOLS : 
+                                         OUT_NUMSYMBOLS / IN_NUMSYMBOLS );
+    localparam WIDE_NUMSYMBOLS      = (IN_NUMSYMBOLS > OUT_NUMSYMBOLS ? 
+                                         IN_NUMSYMBOLS : OUT_NUMSYMBOLS );
+    localparam WIDE_DATA            = (IN_NUMSYMBOLS > OUT_NUMSYMBOLS ? 
+                                         IN_DATA_W - (OUT_NUMSYMBOLS*SYMBOL_W) : 
+                                         OUT_DATA_W - (IN_NUMSYMBOLS*SYMBOL_W));
+    localparam OUT_SEGMENT_W        = OUT_NUMSYMBOLS * SYMBOL_W;
+
+    localparam NW_BITFORSELECT_R    = clogb2(IN_NUMSYMBOLS);
+    localparam NW_BITFORSELECT_L    = clogb2(OUT_NUMSYMBOLS) - 1;
+    localparam ALIGNED_BITS_L       = clogb2(OUT_NUMSYMBOLS) - 1;
+    localparam WN_ADDR_LSBS         = clogb2(RATIO);
+    localparam WN_ADDR_SELECT       = clogb2(IN_NUMSYMBOLS);
+    localparam LOG_IN_NUMSYMBOLS    = clogb2(IN_NUMSYMBOLS);
+    localparam LOG_OUT_NUMSYMBOLS   = clogb2(OUT_NUMSYMBOLS);
+    //localparam LOG_RATIO            = clogb2(RATIO) ;
+    localparam LOG_IN_DATA_W        = clogb2(IN_DATA_W) ;
+    localparam LOG_OUT_DATA_W       = clogb2(OUT_DATA_W) ;
+
+    // ------------------------------------------------------------
+    // Utility Functions
+    // ------------------------------------------------------------
+
+    function integer clogb2;
+        input [63:0] value;
+        begin
+            clogb2 = 0;
+            while (value>0) begin
+                value = value >> 1;
+                clogb2 = clogb2 + 1;
+            end
+            clogb2 = clogb2 - 1;
+        end
+    endfunction // clogb2    
+
+    function integer min;
+        input [31:0] a;
+        input [31:0] b;
+        begin
+            return (a < b) ? a : b;
+        end
+    endfunction
+
+    function integer max;
+        input [31:0] a;
+        input [31:0] b;
+        begin
+            return (a > b) ? a : b;
+        end
+    endfunction
+
+    function reg [clogb2(RATIO)-1:0] mask_to_select_correct_segments_for_size;
+        input [clogb2(RATIO)-1:0] select_output_segment;
+        input [9:0]     size_ratio;
+        input int       msb_select_bit;
+
+        integer         i;
+        mask_to_select_correct_segments_for_size    = '1;
+        for (i=0; i < msb_select_bit; i = i +1'b1 ) begin
+            if (clogb2(size_ratio) > i)
+                mask_to_select_correct_segments_for_size[i]   = select_output_segment[i];
+        end
+    endfunction 
+  
+    function reg [ADDRESS_W-1:0] choose_packed_address_base_on_size;
+        input [9:0]     size_ratio;
+        input int       msb_select_bit;
+        
+        integer         i;
+        choose_packed_address_base_on_size = '1;
+        for (i=0; i < msb_select_bit; i = i +1'b1 ) begin
+            if (clogb2(size_ratio) > i)
+                choose_packed_address_base_on_size[i + NW_BITFORSELECT_R]    = 1'b0;
+        end
+    endfunction
+
+    // ------------------------------------------------------------
+    // Computes how many bytes are in this transfer, based on the size
+    // encoding.
+    // ------------------------------------------------------------
+    function reg[9:0] bytes_in_transfer;
+        input [BURST_SIZE_W-1:0] axsize;
+    
+        case (axsize)
+            4'b0000: bytes_in_transfer = 10'b0000000001;
+            4'b0001: bytes_in_transfer = 10'b0000000010;
+            4'b0010: bytes_in_transfer = 10'b0000000100;
+            4'b0011: bytes_in_transfer = 10'b0000001000;
+            4'b0100: bytes_in_transfer = 10'b0000010000;
+            4'b0101: bytes_in_transfer = 10'b0000100000;
+            4'b0110: bytes_in_transfer = 10'b0001000000;
+            4'b0111: bytes_in_transfer = 10'b0010000000;
+            4'b1000: bytes_in_transfer = 10'b0100000000;
+            4'b1001: bytes_in_transfer = 10'b1000000000;
+            default: bytes_in_transfer = 10'b0000000001;
+        endcase
+
+    endfunction
+    
+    // ------------------------------------------------------------
+    // Pseudo-field Parameters
+    //
+    // The width adapter widens the data and byteenable fields in the 
+    // output packet, thus changing the output packet format. By using 
+    // pseudo-fields, we can avoid remapping each individual field to 
+    // the output, which is a non-scalable solution. 
+    //
+    // How? Assume the packet format is { FIRST, byteen, MID, data, LAST },
+    // where byteen and data positions are interchangeable. FIRST, MID and
+    // LAST are pseudo-fields that represent the collection of fields in
+    // those positions.
+    // 
+    // Not all the pseudo-fields may exist for a given packet format. A
+    // non-existent field has reversed indices, so we have to be careful 
+    // when using them.
+    // ------------------------------------------------------------
+
+    localparam IN_FIRST_L = 0,
+               IN_FIRST_H = min(IN_PKT_BYTEEN_L, IN_PKT_DATA_L) - 1,
+               IN_MID_L   = min(IN_PKT_DATA_H, IN_PKT_BYTEEN_H) + 1,
+               IN_MID_H   = max(IN_PKT_DATA_L, IN_PKT_BYTEEN_L) - 1,
+               IN_LAST_L  = max(IN_PKT_BYTEEN_H, IN_PKT_DATA_H) + 1,
+               IN_LAST_H  = IN_ST_DATA_W - 1,
+ 
+               FIRST_EXISTS = (IN_FIRST_H >= IN_FIRST_L),
+               MID_EXISTS   = (IN_MID_H   >= IN_MID_L),
+               LAST_EXISTS  = (IN_LAST_H  >= IN_LAST_L),
+
+               FIRST_W      = IN_FIRST_H - IN_FIRST_L + 1,
+               MID_W        = IN_MID_H   - IN_MID_L   + 1,
+               LAST_W       = IN_LAST_H  - IN_LAST_L  + 1,
+
+               // -------------------------------------------------
+               // We cannot split the output map into generate blocks as we
+               // do for the inputs because address and size are mapped over
+               // the pseudo-fields. We ensure that the indices are always
+               // legal, even if the field is unused later on.
+
+               OUT_FIRST_L = 0,
+               OUT_FIRST_H = FIRST_EXISTS ? 
+                                min(OUT_PKT_BYTEEN_L, OUT_PKT_DATA_L) - 1 :
+                                OUT_FIRST_L,
+               OUT_MID_L   = min(OUT_PKT_DATA_H, OUT_PKT_BYTEEN_H) + 1,
+               OUT_MID_H   = MID_EXISTS ? 
+                                max(OUT_PKT_DATA_L, OUT_PKT_BYTEEN_L) - 1 : 
+                                OUT_MID_L,
+               OUT_LAST_L  = max(OUT_PKT_BYTEEN_H, OUT_PKT_DATA_H) + 1,
+               OUT_LAST_H  = LAST_EXISTS ? 
+                                OUT_ST_DATA_W - 1 :
+                                OUT_LAST_L;

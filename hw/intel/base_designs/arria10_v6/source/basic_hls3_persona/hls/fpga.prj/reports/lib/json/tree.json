@@ -1,0 +1,52 @@
+{
+  "nodes":
+  [
+    {
+      "name":"slavereg_comp"
+      , "id":3041946232
+      , "type":"component"
+      , "children":
+      [
+        {
+          "name":"slavereg_comp.B1.start"
+          , "id":3041988288
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 0"
+              , "id":3044843104
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"slavereg_comp.B2"
+          , "id":3042041680
+          , "type":"bb"
+        }
+        , {
+          "name":"slavereg_comp.B0.runOnce"
+          , "id":3041985888
+          , "type":"bb"
+        }
+        , {
+          "name":"slavereg_comp.B3"
+          , "id":3042041760
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 1"
+              , "id":3046487664
+              , "type":"cluster"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  , "links":
+  [
+  ]
+}

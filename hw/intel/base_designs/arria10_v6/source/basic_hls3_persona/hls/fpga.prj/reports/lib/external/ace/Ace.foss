@@ -1,0 +1,12 @@
+[foss]
+name = Ace
+version = 1.4.12
+description = Ajax.org Cloud9 Editor
+case = 14012394359
+source = true
+binary = false
+modified = false
+usage = redistributed
+license_type = BSD
+license_url = https://github.com/ajaxorg/ace-builds/blob/master/LICENSE
+download_url = https://github.com/ajaxorg/ace-builds

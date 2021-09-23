@@ -1,0 +1,189 @@
+#!/bin/bash
+curr=$PWD
+root="`dirname \"$BASH_SOURCE\"`"
+hasRemoteFpga="1"
+root="`( cd \"$root\" && pwd )`"
+if [ -z "$root" ] ; then
+    exit 1
+fi
+cd "${root}"
+
+# path to xdma driver
+xdma_path="$HOME/arbeit/gitlab-erlangen/xDmaDriver"
+
+# copies bitstream using ssh
+# Note(0) that you need to have your public key in
+#   the ~/.ssh/authorized_keys of remoteHost
+# Note(1) that `remoteFpgaInfraDir` must contain the path where
+#   this repository should be checked out!
+# Note(2) You do not have to check it out yourself
+# Note(3) You must start this script using ./run ($PWD/run) will
+#   probably fail, because the absolute paths might not be the
+#   same on the remote machine... Hacky I know, but meh.
+# Note(4) You need to give your user sudo rights _without_ password
+#   Yes, this is slightly risky. However, you will be alright, if you
+#   configured away ssh's password authentication.
+#
+# Tip: Use ssh-copy-id for this taks!
+# Tip: For the ssh setting add `<username> ALL=(ALL:ALL) ALL`
+#   as separate line to your /etc/sudoers
+
+function configureRemote() {
+    local remoteHost=vcubox
+    # don't use ~ as it might get expanded on the local machine. yeah, bash ...
+    local remoteHome="$(ssh $remoteHost pwd)"
+    local remoteFpgaInfraDir="$remoteHome"
+    local remoteFpgaInfra="$remoteFpgaInfraDir/fpgaInfrastructure"
+    local bitstreamFile="$1"
+    local remoteBitstreamFileName=$(basename "$bitstreamFile")
+    local fpgaInfraRepo="git@faui22m.cs.fau.de:orka/Vivado/fpgaInfrastructure.git"
+
+    # check that git exists:
+    echo checking whether git exists on $remoteHost
+    if ! ssh $remoteHost which git; then
+        echo git must exist on $remoteHost
+        exit
+    fi
+
+    echo fetching fpgaInfrstructure on $remoteHost if necessary
+    ssh $remoteHost <<EOF
+      if [ ! -d "$remoteFpgaInfra" ]; then
+        cd "$remoteFpgaInfraDir"
+        echo git clone "$fpgaInfraRepo"
+        git clone "$fpgaInfraRepo"
+      fi
+EOF
+    if [ "$?" != "0" ]; then
+        echo Error probably you need to checkout the repo fpgaInfrastructure
+        echo manually, because SSH has not yet connected to our gitlab server
+        exit
+    fi
+
+    local remoteXdmaDir="$remoteHome"/xdmadriver
+    local remoteXdmaUri="git@faui22m.cs.fau.de:orka/Vivado/xdmadriver"
+    ssh $remoteHost <<EOF
+      if [ ! -d "$remoteXdmaDir" ]; then
+          echo will remotely clone "$remoteXdmaUri"
+          git clone "$remoteXdmaUri"
+      fi
+EOF
+
+    # copy bistream
+    echo scp "$bitstreamFile" $remoteHost:$remoteFpgaInfra/bitstreams
+    scp "$bitstreamFile" $remoteHost:$remoteFpgaInfra/bitstreams/$file
+
+    # generate
+    ssh $remoteHost <<EOF
+        cd "$remoteFpgaInfra"
+
+        echo remote: configure the fpga
+        source hw/configure_fpga $remoteFpgaInfra/bitstreams/$file
+
+        echo remote: do pci_rescan
+        source hw/pci_rescan
+
+        cd "${remoteXdmaDir}/driver/"
+        make clean && make || {
+          echo remote: make driver failed
+        }
+        cd "${remoteXdmaDir}/tests/"
+        make || {
+             echo remote: make xDmaDriver failed
+        }
+        sudo ./load_driver.sh || {
+             echo remote: could not load driver
+        }
+EOF
+
+
+}
+
+if [ "$1" = "debug" ] ; then
+    echo "running in debug mode: reusing existing bitstream"
+    LAST_UUID='c63c4ea6-c862-4e96-905c-0fa763b019af'
+else
+
+    # generate hls ip (export path is hardcoded in the script)
+    source ./hls/scripts/r
+    # unzip ip
+    unzip "$HOME/work/ORKAPCIe/2018.2/repo/vcu118/ORKAProcessHW/SystemberatungSchwarzer_ORKAProcessingLib32_MatrixMul_0_1000-3ns.zip" -d "$HOME/work/ORKAPCIe/2018.2/repo/vcu118/ORKAProcessHW/SystemberatungSchwarzer_ORKAProcessingLib32_MatrixMul_0_1000-3ns"
+
+    if [ "$1" = "hlsonly" ] ; then
+        return
+    else
+
+        # Configure the infrastructure (provide path to custom IP if desired).
+        # This can be done interactively or with here-document (don't use tabs).
+        cd "${root}/../hw/src/configurator"
+        make all
+        cd ${root}
+        ${root}/../hw/src/configurator/creator ${root}/../hw/generated_files<<EOF
+add $HOME/work/ORKAPCIe/2018.2/repo/vcu118/ORKAProcessHW/SystemberatungSchwarzer_ORKAProcessingLib32_MatrixMul_0_1000-3ns 100
+set design_dir $HOME/work/ORKAPCIe/\$vivado_version
+write
+quit
+EOF
+
+        # Run vivado and generate the bitstream.
+        # LAST_UUID will be exported to be able to find the files.
+        source ../hw/generate_bitstream "${root}/../bitstreams/" "${root}/../hw/generated_files/"
+
+        if [ "$1" = "generateonly" ] ; then
+            echo "Generated: ${LAST_UUID}. Exiting."
+            exit 0
+        fi
+
+        if [ "$hasRemoteFpga" = 1 ]; then
+           # TODO: delete
+           LAST_UUID='0dec0545-e2f4-443e-9bb5-11f2122fa13b'
+
+            configureRemote "${root}/../bitstreams/${LAST_UUID}.bit"
+        else
+            # configure fpga with bitstream via jtag
+            source ../hw/configure_fpga "${root}/../bitstreams/${LAST_UUID}.bit"
+            # remove pci device and perform pci rescan
+            # (cold-restart necessary if pcie-block in infrastucture has changed)
+            # needs root privileges
+            source ../hw/pci_rescan
+
+            # load xdma driver
+            # needs root privileges
+            cd "${xdma_path}/tests/"
+            make
+            sudo ./load_driver.sh
+            cd "${root}"
+            #---------------------------------------------------------------------
+        fi
+    fi
+fi
+
+if [ "$hasRemoteFpga" = 1 ]; then
+    echo The next stepts are currently not implemented
+    echo to be run remotely "(but have to be. Bit TODO...)"
+    exit
+fi
+
+# compile example host program
+cd "${root}/../sw/OrkaGenericDriver/src"
+make
+# run host program
+exit
+LD_LIBRARY_PATH="$PWD" ./test.out -c ${LAST_UUID}.json -p "${root}/../bitstreams/"
+
+# Expected result: The host program will copy 0 to ddr memory and lauch
+# the HLS IP which in turn will read and increment the value. Finally
+# the memory is read back by host and printed to console.
+# As we write from host side zeroes into the memory, our little IP
+# increments the zero into 0x00000001.
+
+LD_LIBRARY_PATH="$PWD" ./test.out -c ${LAST_UUID}.json -p "${root}/../bitstreams/" -n
+
+# Expected result: By using parameter '-n' we omit the upload of memory
+# from the host. Therefore the memory contents are still the same from
+# the first call.
+# Our little IP increments now the 0x00000001 into 0x00000002.
+# Voilá.
+
+# done
+cd "${curr}"
+exit 0

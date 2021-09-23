@@ -1,0 +1,12 @@
+[foss]
+name = DataTables
+version = 1.10.23
+description = DataTables - Javascript library for front-end web development
+case = 16012547443
+source = true
+binary = false
+modified = false
+usage = redistributed
+license_type = MIT
+license_url = https://datatables.net/license/mit
+download_url = https://datatables.net/download/

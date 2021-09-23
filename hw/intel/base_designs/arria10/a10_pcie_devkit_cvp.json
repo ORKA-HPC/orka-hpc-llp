@@ -1,0 +1,129 @@
+{
+    "BlockDesignName": "a10_pcie_devkit_cvp",
+    "BoardName": "ARRIA10",
+    "Comment": "Kein Kommentar",
+    "Drivers": [
+        {
+            "DriverName": "intel_pcie",
+            "Instance": 0,
+            "Port": 0,
+            "Speed": 0
+        }
+    ],
+    "pciebars": [
+        {
+            "type": "MMIO",
+            "size": "512B"
+        },
+        {
+            "type": "MMIO",
+            "size": "8KB"
+        },
+        {
+            "type": "MMIO",
+            "size": "2MB"
+        }
+    ],
+    "FPGAs": [
+        {
+            "Bitstream": "a10_pcie_devkit_cvp.sof",
+            "MemoryRegions" : [
+                {
+                    "Comment" : "simple version",
+                    "memcpyOffset"  : "0x04000000"
+                }
+            ],
+            "Components": [
+                {
+                    "name": "DDR4",
+                    "offset": "0x00000000",
+                    "range": "0x04000000"
+                },
+                {
+                    "name": "PR",
+                    "offset": "0x00000000",
+                    "range": "0xFFFFFFFF",
+            	    "registers": [
+                        {
+                            "addr": "0x00000000",
+                            "name": "PR_PERSONA_ID"
+                        },
+            	        {
+            	            "addr": "0x00020010",
+            	            "name": "PR_STATIC_ID"
+            	        },
+            	        {
+            	            "addr": "0x20",
+            	            "name": "PR_HOST_REGISTER_0"
+            	        },
+            	        {
+            	            "addr": "0x30",
+            	            "name": "PR_HOST_REGISTER_1"
+            	        },
+            	        {
+            	            "addr": "0x40",
+            	            "name": "PR_HOST_REGISTER_2"
+            	        },
+            	        {
+            	            "addr": "0x50",
+            	            "name": "PR_HOST_REGISTER_3"
+            	        },
+            	        {
+            	            "addr": "0x60",
+            	            "name": "PR_HOST_REGISTER_4"
+            	        },
+            	        {
+            	            "addr": "0x70",
+            	            "name": "PR_HOST_REGISTER_5"
+            	        },
+            	        {
+            	            "addr": "0x80",
+            	            "name": "PR_HOST_REGISTER_6"
+            	        },
+            	        {
+            	            "addr": "0x90",
+            	            "name": "PR_HOST_REGISTER_7"
+            	        },
+            	        {
+            	            "addr": "0xa0",
+            	            "name": "HOST_PR_REGISTER_0"
+            	        },
+            	        {
+            	            "addr": "0xb0",
+            	            "name": "HOST_PR_REGISTER_1"
+            	        },
+            	        {
+            	            "addr": "0xc0",
+            	            "name": "HOST_PR_REGISTER_2"
+            	        },
+            	        {
+            	            "addr": "0xd0",
+            	            "name": "HOST_PR_REGISTER_3"
+            	        },
+            	        {
+            	            "addr": "0xe0",
+            	            "name": "HOST_PR_REGISTER_4"
+            	        },
+            	        {
+            	            "addr": "0xf0",
+            	            "name": "HOST_PR_REGISTER_5"
+            	        },
+            	        {
+            	            "addr": "0x100",
+            	            "name": "HOST_PR_REGISTER_6"
+            	        },
+            	        {
+            	            "addr": "0x110",
+            	            "name": "HOST_PR_REGISTER_7"
+            	        }
+                    ]
+                }
+            ],
+            "Driver": 0,
+            "FullNameQualifier": "10AX115S2F45I1SG",
+            "Manufacturer": "Intel"
+        }
+    ],
+    "FileType": "boardsupportpackage",
+    "ManufacturerBoard": "Intel"
+}

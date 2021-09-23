@@ -1,0 +1,1 @@
+/opt/Xilinx/Vivado/2018.2/bin/hw_server -d -L/tmp/hw_server.log -lprotocol

@@ -1,0 +1,10 @@
+	component top_iopll is
+		port (
+			rst      : in  std_logic := 'X'; -- reset
+			refclk   : in  std_logic := 'X'; -- clk
+			locked   : out std_logic;        -- export
+			outclk_0 : out std_logic;        -- clk
+			outclk_1 : out std_logic         -- clk
+		);
+	end component top_iopll;
+

@@ -1,0 +1,15 @@
+# init HLS Compiler
+source /opt/intelFPGA_pro/19.3/hls/init_hls.sh 
+
+compile for functional test
+i++ -march=x86-64 hls1.cpp -o test
+
+./test
+
+compile for modelsim simulation
+i++ -march=ARRIA10 hls1.cpp -ghdl -o test
+
+./test
+vsim test.prj/verification/vsim.wlf
+firefox test.prj/reports/report.html
+

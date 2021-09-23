@@ -1,0 +1,9 @@
+	component bsp_top_iopll_0 is
+		port (
+			rst      : in  std_logic := 'X'; -- reset
+			refclk   : in  std_logic := 'X'; -- clk
+			locked   : out std_logic;        -- export
+			outclk_0 : out std_logic         -- clk
+		);
+	end component bsp_top_iopll_0;
+

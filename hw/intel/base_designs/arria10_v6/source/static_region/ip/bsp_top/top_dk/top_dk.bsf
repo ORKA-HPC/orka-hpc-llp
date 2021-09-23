@@ -1,0 +1,143 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 368 328)
+	(text "top_dk" (rect 165 -1 192 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 312 20 324)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk" (rect 0 0 10 12)(font "Arial" (font_size 8)))
+		(text "clk" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 128 72)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "devkit_status[255..0]" (rect 0 0 82 12)(font "Arial" (font_size 8)))
+		(text "devkit_status[255..0]" (rect 4 117 130 128)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 128 128)(line_width 3))
+	)
+	(port
+		(pt 0 216)
+		(input)
+		(text "free_clk" (rect 0 0 33 12)(font "Arial" (font_size 8)))
+		(text "free_clk" (rect 4 205 52 216)(font "Arial" (font_size 8)))
+		(line (pt 0 216)(pt 128 216)(line_width 1))
+	)
+	(port
+		(pt 0 280)
+		(input)
+		(text "req_compliance_pb" (rect 0 0 77 12)(font "Arial" (font_size 8)))
+		(text "req_compliance_pb" (rect 4 269 106 280)(font "Arial" (font_size 8)))
+		(line (pt 0 280)(pt 128 280)(line_width 1))
+	)
+	(port
+		(pt 0 296)
+		(input)
+		(text "set_compliance_mode" (rect 0 0 89 12)(font "Arial" (font_size 8)))
+		(text "set_compliance_mode" (rect 4 285 118 296)(font "Arial" (font_size 8)))
+		(line (pt 0 296)(pt 128 296)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(output)
+		(text "devkit_ctrl[255..0]" (rect 0 0 70 12)(font "Arial" (font_size 8)))
+		(text "devkit_ctrl[255..0]" (rect 4 101 118 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 128 112)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(output)
+		(text "L0_led" (rect 0 0 27 12)(font "Arial" (font_size 8)))
+		(text "L0_led" (rect 4 157 40 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 128 168)(line_width 1))
+	)
+	(port
+		(pt 0 184)
+		(output)
+		(text "alive_led" (rect 0 0 34 12)(font "Arial" (font_size 8)))
+		(text "alive_led" (rect 4 173 58 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 128 184)(line_width 1))
+	)
+	(port
+		(pt 0 200)
+		(output)
+		(text "comp_led" (rect 0 0 38 12)(font "Arial" (font_size 8)))
+		(text "comp_led" (rect 4 189 52 200)(font "Arial" (font_size 8)))
+		(line (pt 0 200)(pt 128 200)(line_width 1))
+	)
+	(port
+		(pt 0 232)
+		(output)
+		(text "gen2_led" (rect 0 0 35 12)(font "Arial" (font_size 8)))
+		(text "gen2_led" (rect 4 221 52 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 128 232)(line_width 1))
+	)
+	(port
+		(pt 0 248)
+		(output)
+		(text "gen3_led" (rect 0 0 35 12)(font "Arial" (font_size 8)))
+		(text "gen3_led" (rect 4 237 52 248)(font "Arial" (font_size 8)))
+		(line (pt 0 248)(pt 128 248)(line_width 1))
+	)
+	(port
+		(pt 0 264)
+		(output)
+		(text "lane_active_led[3..0]" (rect 0 0 81 12)(font "Arial" (font_size 8)))
+		(text "lane_active_led[3..0]" (rect 4 253 130 264)(font "Arial" (font_size 8)))
+		(line (pt 0 264)(pt 128 264)(line_width 3))
+	)
+	(drawing
+		(text "clock" (rect 100 43 230 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 133 67 284 144)(font "Arial" (color 0 0 0)))
+		(text "dk_hip" (rect 90 83 216 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "devkit_ctrl" (rect 133 107 332 224)(font "Arial" (color 0 0 0)))
+		(text "devkit_status" (rect 133 123 344 256)(font "Arial" (color 0 0 0)))
+		(text "dk_board" (rect 74 139 196 291)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "L0_led" (rect 133 163 302 336)(font "Arial" (color 0 0 0)))
+		(text "alive_led" (rect 133 179 320 368)(font "Arial" (color 0 0 0)))
+		(text "comp_led" (rect 133 195 314 400)(font "Arial" (color 0 0 0)))
+		(text "free_clk" (rect 133 211 314 432)(font "Arial" (color 0 0 0)))
+		(text "gen2_led" (rect 133 227 314 464)(font "Arial" (color 0 0 0)))
+		(text "gen3_led" (rect 133 243 314 496)(font "Arial" (color 0 0 0)))
+		(text "lane_active_led" (rect 133 259 356 528)(font "Arial" (color 0 0 0)))
+		(text "req_compliance_pb" (rect 133 275 368 560)(font "Arial" (color 0 0 0)))
+		(text "set_compliance_mode" (rect 133 291 380 592)(font "Arial" (color 0 0 0)))
+		(text " top_dk " (rect 336 312 720 634)(font "Arial" ))
+		(line (pt 128 32)(pt 240 32)(line_width 1))
+		(line (pt 240 32)(pt 240 312)(line_width 1))
+		(line (pt 128 312)(pt 240 312)(line_width 1))
+		(line (pt 128 32)(pt 128 312)(line_width 1))
+		(line (pt 129 52)(pt 129 76)(line_width 1))
+		(line (pt 130 52)(pt 130 76)(line_width 1))
+		(line (pt 129 92)(pt 129 132)(line_width 1))
+		(line (pt 130 92)(pt 130 132)(line_width 1))
+		(line (pt 129 148)(pt 129 300)(line_width 1))
+		(line (pt 130 148)(pt 130 300)(line_width 1))
+		(line (pt 0 0)(pt 368 0)(line_width 1))
+		(line (pt 368 0)(pt 368 328)(line_width 1))
+		(line (pt 0 328)(pt 368 328)(line_width 1))
+		(line (pt 0 0)(pt 0 328)(line_width 1))
+	)
+)

@@ -1,0 +1,12 @@
+[foss]
+name = svg-pan-zoom
+version = 3.6.1
+description = Javascript library to add zoom buttons to SVGs in report
+case = 14012779305
+source = true
+binary = false
+modified = true
+usage = redistributed
+license_type = BSD
+license_url = https://github.com/ariutta/svg-pan-zoom/blob/master/LICENSE
+download_url = https://github.com/ariutta/svg-pan-zoom/releases/tag/3.6.1

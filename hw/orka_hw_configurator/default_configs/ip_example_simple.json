@@ -1,0 +1,15 @@
+{
+    "ips" :
+    [
+        {
+            "name" : "ip0",
+            "path" : "~/work/ORKAPCIe/2019.1/repo/vcu118/ORKAProcessHW/",
+            "clock" : "100.00"
+        },
+        {
+            "name" : "ip1",
+            "path" : "$HOME/work/ORKAPCIe/2019.1/repo/vcu118/ORKAProcessHW/",
+            "clock" : "100.00"
+        }
+    ]
+}

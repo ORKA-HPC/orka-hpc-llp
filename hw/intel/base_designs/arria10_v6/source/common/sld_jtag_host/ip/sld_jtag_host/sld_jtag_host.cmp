@@ -1,0 +1,11 @@
+	component sld_jtag_host is
+		port (
+			tck     : in  std_logic := 'X'; -- tck
+			tms     : in  std_logic := 'X'; -- tms
+			tdi     : in  std_logic := 'X'; -- tdi
+			vir_tdi : in  std_logic := 'X'; -- vir_tdi
+			ena     : in  std_logic := 'X'; -- ena
+			tdo     : out std_logic         -- tdo
+		);
+	end component sld_jtag_host;
+

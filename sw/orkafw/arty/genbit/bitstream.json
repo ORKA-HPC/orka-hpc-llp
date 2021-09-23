@@ -1,0 +1,392 @@
+{
+    "BlockDesignName": "axi_pcie_mig",
+    "BoardName": "arty-a7-100",
+    "Comment": "JSON of Test-Bitstream",
+    "Drivers": [
+        {
+            "Address": "192.168.0.220",
+            "DriverName": "ipv4",
+            "Port": 6789,
+            "Speed": 100000000
+        },
+        {
+            "DriverName": "usb_uart",
+            "Instance": 0,
+            "Port": 0,
+            "Speed": 230400
+        }
+    ],
+    "FPGAs": [
+        {
+            "Bitstream": "bitstream.bit",
+            "Components": [
+                {
+                    "name": "/microblaze_0/Data/SEG_dlmb_bram_if_cntlr_Mem",
+                    "offset": "0x00000000",
+                    "range": "0x00020000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_ilmb_bram_if_cntlr_Mem",
+                    "offset": "0x00000000",
+                    "range": "0x00020000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_mig_0_memaddr",
+                    "offset": "0x80000000",
+                    "range": "0x80000000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_mig_0_memaddr",
+                    "offset": "0x80000000",
+                    "range": "0x80000000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_intc_0_Reg",
+                    "offset": "0x00040000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_intc_0_Reg",
+                    "offset": "0x00040000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_timer_0_Reg",
+                    "offset": "0x00050000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_timer_0_Reg",
+                    "offset": "0x00050000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_uart_Reg",
+                    "offset": "0x00060000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_uart_Reg",
+                    "offset": "0x00060000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_ethernet_lite_Reg",
+                    "offset": "0x00100000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_ethernet_lite_Reg",
+                    "offset": "0x00100000",
+                    "range": "0x00010000"
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_gpio_0_Reg",
+                    "offset": "0x00200000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_gpio_0_Reg",
+                    "offset": "0x00200000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_gpio_1_Reg",
+                    "offset": "0x00210000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_gpio_1_Reg",
+                    "offset": "0x00210000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_axi_gpio_2_Reg",
+                    "offset": "0x00220000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_axi_gpio_2_Reg",
+                    "offset": "0x00220000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x0000",
+                            "name": "GPIO_DATA"
+                        },
+                        {
+                            "addr": "0x0004",
+                            "name": "GPIO_TRI"
+                        },
+                        {
+                            "addr": "0x0008",
+                            "name": "GPIO2_DATA"
+                        },
+                        {
+                            "addr": "0x000c",
+                            "name": "GPIO2_TRI"
+                        },
+                        {
+                            "addr": "0x0110",
+                            "bits": "32",
+                            "name": "GIER"
+                        },
+                        {
+                            "addr": "0x0120",
+                            "bits": "32",
+                            "name": "IP_ISR"
+                        },
+                        {
+                            "addr": "0x0128",
+                            "bits": "32",
+                            "name": "IP_IER"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Data/SEG_HlsKernel1000_0_Reg",
+                    "name_from_component_xml": "HlsKernel1000",
+                    "offset": "0x01000000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x00",
+                            "name": "AP_CTRL"
+                        },
+                        {
+                            "addr": "0x04",
+                            "name": "GIE"
+                        },
+                        {
+                            "addr": "0x08",
+                            "name": "IER"
+                        },
+                        {
+                            "addr": "0x0c",
+                            "name": "ISR"
+                        },
+                        {
+                            "addr": "0x10",
+                            "bits": "64",
+                            "name": "ORKAPARAM0"
+                        },
+                        {
+                            "addr": "0x1c",
+                            "bits": "64",
+                            "name": "ORKAPARAM1"
+                        }
+                    ]
+                },
+                {
+                    "name": "/microblaze_0/Instruction/SEG_HlsKernel1000_0_Reg",
+                    "name_from_component_xml": "HlsKernel1000",
+                    "offset": "0x01000000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x00",
+                            "name": "AP_CTRL"
+                        },
+                        {
+                            "addr": "0x04",
+                            "name": "GIE"
+                        },
+                        {
+                            "addr": "0x08",
+                            "name": "IER"
+                        },
+                        {
+                            "addr": "0x0c",
+                            "name": "ISR"
+                        },
+                        {
+                            "addr": "0x10",
+                            "bits": "64",
+                            "name": "ORKAPARAM0"
+                        },
+                        {
+                            "addr": "0x1c",
+                            "bits": "64",
+                            "name": "ORKAPARAM1"
+                        }
+                    ]
+                },
+                {
+                    "name": "/HlsKernel1000_0/Data_m_axi_gmem/SEG_mig_0_memaddr",
+                    "offset": "0x0000000080000000",
+                    "range": "0x0000000080000000"
+                }
+            ],
+            "Driver": 0,
+            "FullNameQualifier": "xc7a100tcsg324-1",
+            "Manufacturer": "Xilinx"
+        }
+    ],
+    "FileType": "boardsupportpackage",
+    "ManufacturerBoard": "Digilent"
+}

@@ -1,0 +1,394 @@
+{
+  "nodes":
+  [
+    {
+      "name":"0"
+      , "id":1
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Interleaving":"Yes"
+          , "Interleave Size":"4095 MBs"
+          , "Channels":"1 channel"
+          , "Maximum bandwidth the BSP can deliver":"0.00 MB/s<br><small><i> Note: Realistic maximum bandwidth is about 90% of the above due to loss from interconnect and memory controller.</i></small>"
+          , "Channel 0_Width (bits)":"64"
+        }
+      ]
+      , "type":"memsys"
+      , "children":
+      [
+        {
+          "name":"0"
+          , "id":3
+          , "type":"bb"
+        }
+      ]
+    }
+    , {
+      "name":"Memory Controller"
+      , "id":2
+      , "parent":"1"
+      , "bw":"0.00"
+      , "num_channels":"1"
+      , "interleave":"1"
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Maximum bandwidth the BSP can deliver":"0.00 MB/s<br><small><i> Note: Realistic maximum bandwidth is about 90% of the above due to loss from interconnect and memory controller.</i></small>"
+        }
+      ]
+      , "type":"bb"
+    }
+    , {
+      "name":"Global Memory Interconnect"
+      , "id":4
+      , "parent":"1"
+      , "type":"bb"
+      , "children":
+      [
+        {
+          "name":"SHARE"
+          , "id":5
+          , "type":"arb"
+        }
+      ]
+    }
+    , {
+      "name":"1"
+      , "id":6
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Interleaving":"No"
+          , "Channels":"1 channel"
+          , "Maximum bandwidth the BSP can deliver":"0.00 MB/s<br><small><i> Note: Realistic maximum bandwidth is about 90% of the above due to loss from interconnect and memory controller.</i></small>"
+          , "Channel 1_Width (bits)":"512"
+        }
+      ]
+      , "type":"memsys"
+      , "children":
+      [
+        {
+          "name":"1"
+          , "id":8
+          , "type":"bb"
+        }
+      ]
+    }
+    , {
+      "name":"Memory Controller"
+      , "id":7
+      , "parent":"6"
+      , "bw":"0.00"
+      , "num_channels":"1"
+      , "interleave":"0"
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Maximum bandwidth the BSP can deliver":"0.00 MB/s<br><small><i> Note: Realistic maximum bandwidth is about 90% of the above due to loss from interconnect and memory controller.</i></small>"
+        }
+      ]
+      , "type":"bb"
+    }
+    , {
+      "name":"Global Memory Interconnect"
+      , "id":9
+      , "parent":"6"
+      , "type":"bb"
+      , "children":
+      [
+        {
+          "name":"SHARE"
+          , "id":10
+          , "type":"arb"
+        }
+        , {
+          "name":"Write Interconnect"
+          , "id":13
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Name":"1"
+              , "Interconnect Style":"ring"
+              , "Writes":"2"
+              , "User specified force-single-store-ring flag":"False"
+              , "Store Rings":"1"
+            }
+          ]
+          , "type":"bb"
+        }
+        , {
+          "name":"Read Interconnect"
+          , "id":11
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Name":"1"
+              , "Interconnect Style":"ring"
+              , "Reads":"3"
+            }
+          ]
+          , "type":"bb"
+        }
+        , {
+          "name":"Read Interconnect Router"
+          , "id":12
+          , "details":
+          [
+            {
+              "type":"table"
+              , "User specified num-reorder flag":"1"
+            }
+          ]
+          , "type":"memsys"
+          , "children":
+          [
+            {
+              "name":"Bus 0"
+              , "id":21
+              , "type":"memsys"
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Global Memory Loads"
+      , "id":14
+      , "parent":"6"
+      , "type":"bb"
+      , "children":
+      [
+        {
+          "name":"LD"
+          , "id":15
+          , "kwidth":"32"
+          , "mwidth":"512"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Start Cycle":"2"
+              , "Latency":"1 cycle"
+              , "Width":"32 bits"
+              , "1_Width":"512 bits"
+              , "Uses Caching":"No"
+              , "LSU Style":"BURST-COALESCED"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":25
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+        , {
+          "name":"LD"
+          , "id":16
+          , "kwidth":"32"
+          , "mwidth":"512"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Start Cycle":"467"
+              , "Latency":"134 cycles"
+              , "Width":"32 bits"
+              , "1_Width":"512 bits"
+              , "Uses Caching":"No"
+              , "LSU Style":"BURST-COALESCED"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":34
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+        , {
+          "name":"LD"
+          , "id":19
+          , "kwidth":"32"
+          , "mwidth":"512"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Start Cycle":"695"
+              , "Latency":"134 cycles"
+              , "Width":"32 bits"
+              , "1_Width":"512 bits"
+              , "Uses Caching":"No"
+              , "LSU Style":"BURST-COALESCED"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":35
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+      ]
+    }
+    , {
+      "name":"Global Memory Stores"
+      , "id":17
+      , "parent":"6"
+      , "type":"bb"
+      , "children":
+      [
+        {
+          "name":"ST"
+          , "id":18
+          , "kwidth":"32"
+          , "mwidth":"512"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Start Cycle":"605"
+              , "Latency":"90 cycles"
+              , "Width":"32 bits"
+              , "1_Width":"512 bits"
+              , "Uses Write Ack":"Yes"
+              , "LSU Style":"BURST-COALESCED"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":34
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+        , {
+          "name":"ST"
+          , "id":20
+          , "kwidth":"32"
+          , "mwidth":"512"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Start Cycle":"842"
+              , "Latency":"90 cycles"
+              , "Width":"32 bits"
+              , "1_Width":"512 bits"
+              , "Uses Write Ack":"Yes"
+              , "LSU Style":"BURST-COALESCED"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":35
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+      ]
+    }
+  ]
+  , "links":
+  [
+    {
+      "from":3
+      , "to":2
+    }
+    , {
+      "from":2
+      , "to":3
+    }
+    , {
+      "from":5
+      , "to":2
+    }
+    , {
+      "from":8
+      , "to":7
+    }
+    , {
+      "from":7
+      , "to":8
+    }
+    , {
+      "from":11
+      , "to":10
+    }
+    , {
+      "from":13
+      , "to":10
+    }
+    , {
+      "from":10
+      , "to":7
+    }
+    , {
+      "from":15
+      , "to":11
+    }
+    , {
+      "from":16
+      , "to":11
+    }
+    , {
+      "from":18
+      , "to":13
+    }
+    , {
+      "from":19
+      , "to":11
+    }
+    , {
+      "from":20
+      , "to":13
+    }
+    , {
+      "from":7
+      , "to":21
+    }
+    , {
+      "from":21
+      , "to":15
+      , "reverse":1
+    }
+    , {
+      "from":21
+      , "to":16
+      , "reverse":1
+    }
+    , {
+      "from":21
+      , "to":19
+      , "reverse":1
+    }
+  ]
+}

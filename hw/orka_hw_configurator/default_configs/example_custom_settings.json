@@ -1,0 +1,5 @@
+{
+    "json_filename" :       "config.json",
+    "bitstream_filename" :  "bitstream.bit",
+    "design_dir" :          "/home/hellmann/work/ORKAPCIe/$vivado_version"
+}

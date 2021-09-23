@@ -1,0 +1,1 @@
+{"compileInfo":{"nodes":[{"command":"i++ -march=10AX115N2F40E2LG --simulator none --time fpga_time.log -v -ghdl src/main.cpp src/hls1.cpp -o fpga","family":"Arria10, 10AX115N2F40E2LG","id":1,"name":"./fpga","product":"HLS","quartus":"21.1.0 Build 169 Pro","time":"Fri Apr 16 11:59:04 2021","version":"21.1.0 Build 173.3"}]}}

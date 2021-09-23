@@ -1,0 +1,93 @@
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TOOL_VERSION "21.1"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TOP_LEVEL_COMPONENT_NAME "altera_pr_region_controller"
+set_global_assignment -library "bsp_top_pr_region_controller_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "bsp_top_pr_region_controller_0.sopcinfo"]
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name SLD_INFO "QSYS_NAME bsp_top_pr_region_controller_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "bsp_top_pr_region_controller_0" -name MISC_FILE [file join $::quartus(qip_path) "bsp_top_pr_region_controller_0.cmp"]
+set_global_assignment -library "bsp_top_pr_region_controller_0" -name SLD_FILE [file join $::quartus(qip_path) "bsp_top_pr_region_controller_0.regmap"]
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_TARGETED_DEVICE_FAMILY "Arria 10"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_GENERATED_DEVICE_FAMILY "{Arria 10}"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "bsp_top_pr_region_controller_0" -name MISC_FILE [file join $::quartus(qip_path) "../bsp_top_pr_region_controller_0.ip"]
+
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_NAME "YWx0ZXJhX2ZyZWV6ZV9jb250cm9s"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_DISPLAY_NAME "RnJlZXplIENvbnRyb2wgSW50ZWwgRlBHQSBJUA=="
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_VERSION "MTkuMS4x"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_COMPONENT_PARAMETER "TlVNX0lOVEZfQlJJREdF::Mg==::U3BlY2lmeSB0aGUgbnVtYmVyIG9mIHJlZ2lvbiBpbnRlcmZhY2UgdG8gZnJlZXpl"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_NAME "YnNwX3RvcF9wcl9yZWdpb25fY29udHJvbGxlcl8wX2FsdGVyYV9jb25kdWl0X21lcmdlcl8xOTExXzUzam4zeWE="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_DISPLAY_NAME "Q29uZHVpdCBNZXJnZXIgSW50ZWwgRlBHQSBJUA=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_VERSION "MTkuMS4x"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_DESCRIPTION "SW50ZWwgRlBHQSBjb25kdWl0IG1lcmdlcg=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_PARAMETER "TlVNX0lOVEZfQlJJREdF::Mg==::U3BlY2lmeSB0aGUgbnVtYmVyIG9mIHJlZ2lvbiBpbnRlcmZhY2UgdG8gZnJlZXpl"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_PARAMETER "RU5BQkxFX1BSX1JFR0lPTl9GUkVFWkU=::ZmFsc2U=::RW5hYmxlIGZyZWV6ZSBpbnRlcmZhY2UgdG8gUFIgcmVnaW9u"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_COMPONENT_PARAMETER "TlVNX1BSX1JFR0lPTl9SQU0=::MQ==::U3BlY2lmeSB0aGUgbnVtYmVyIG9mIGZyZWV6ZSBpbnRlcmZhY2UgZm9yIFBSIFJlZ2lvbiBSQU0gY29tcG9uZW50"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_NAME "YWx0ZXJhX2ZyZWV6ZV9jc3I="
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_DISPLAY_NAME "RnJlZXplIENTUiBJbnRlbCBGUEdBIElQ"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_VERSION "MTkuMS4x"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_PARAMETER "TlVNX0lOVEZfQlJJREdF::Mg==::U3BlY2lmeSB0aGUgbnVtYmVyIG9mIHJlZ2lvbiBpbnRlcmZhY2UgdG8gZnJlZXpl"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0lSUQ==::ZmFsc2U=::VHVybiBvbiBJbnRlcnJ1cHQgcG9ydCBmb3IgSWxsZWdhbCBSZXF1ZXN0"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_NAME "YnNwX3RvcF9wcl9yZWdpb25fY29udHJvbGxlcl8wX2FsdGVyYV9wcl9yZWdpb25fY29udHJvbGxlcl8xOTExX2YydHhoZGk="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_DISPLAY_NAME "UGFydGlhbCBSZWNvbmZpZ3VyYXRpb24gUmVnaW9uIENvbnRyb2xsZXIgSW50ZWwgRlBHQSBJUA=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_VERSION "MTkuMS4x"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_DESCRIPTION "SVAgdGhhdCBjb250cm9scyBoYW5kc2hha2luZyB3aXRoIGEgc2luZ2xlIFBSIHJlZ2lvbiB0byBlbnN1cmUgdGhlIGN1cnJlbnQgUFIgcmVnaW9uIHRyYW5zYWN0aW9uIHByb3Blcmx5IGV4ZWN1dGVzIGJlZm9yZSBmcmVlemluZyB0aGUgUFIgcmVnaW9uIGludGVyZmFjZXMu"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0NTUg==::dHJ1ZQ==::RW5hYmxlIEF2YWxvbi1NTSBDU1IgcmVnaXN0ZXI="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0lSUQ==::ZmFsc2U=::RW5hYmxlIGludGVycnVwdCBwb3J0IGZvciBpbGxlZ2FsIHJlcXVlc3Q="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "TlVNX0lOVEZfQlJJREdF::Mg==::TnVtYmVyIG9mIGZyZWV6ZSBpbnRlcmZhY2Vz"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "RU5BQkxFX1BSX1JFR0lPTl9GUkVFWkU=::ZmFsc2U=::RW5hYmxlIGZyZWV6ZSBpbnRlcmZhY2Ugd2l0aG91dCBpbGxlZ2FsIHJlcXVlc3QgcG9ydA=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "TlVNX1BSX1JFR0lPTl9SQU0=::MQ==::U3BlY2lmeSB0aGUgbnVtYmVyIG9mIGZyZWV6ZSBpbnRlcmZhY2Ugd2l0aG91dCBpbGxlZ2FsIHJlcXVlc3QgcG9ydA=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::QXJyaWEgMTA=::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBBWDExNVMyRjQ1STFTRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::MQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_GROUP "QmFzaWMgRnVuY3Rpb25zL0NvbmZpZ3VyYXRpb24gYW5kIFByb2dyYW1taW5n"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuYWx0ZXJhLmNvbS9jb250ZW50L2RhbS9hbHRlcmEtd3d3L2dsb2JhbC9lbl9VUy9wZGZzL2xpdGVyYXR1cmUvdWcvdWctMjAwNjYucGRm"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_NAME "YnNwX3RvcF9wcl9yZWdpb25fY29udHJvbGxlcl8w"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::QXJyaWEgMTA=::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBBWDExNVMyRjQ1STFTRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::MQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19ET01BSU4=::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "bsp_top_pr_region_controller_0" -library "bsp_top_pr_region_controller_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19SRVNFVF9ET01BSU4=::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+
+set_global_assignment -library "altera_freeze_control_1911" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "altera_freeze_control_1911/synth/altera_freeze_control.sv"]
+set_global_assignment -library "altera_freeze_control_1911" -name SDC_FILE [file join $::quartus(qip_path) "altera_freeze_control_1911/synth/altera_freeze_control.sdc"]
+set_global_assignment -library "altera_conduit_merger_1911" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "altera_conduit_merger_1911/synth/bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya.sv"]
+set_global_assignment -library "altera_freeze_csr_1911" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "altera_freeze_csr_1911/synth/altera_freeze_csr.sv"]
+set_global_assignment -library "altera_pr_region_controller_1911" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_pr_region_controller_1911/synth/bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi.v"]
+set_global_assignment -library "bsp_top_pr_region_controller_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/bsp_top_pr_region_controller_0.v"]
+
+
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_TOOL_NAME "altera_pr_region_controller"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_TOOL_VERSION "19.1.1"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_pr_region_controller_1911_f2txhdi" -library "altera_pr_region_controller_1911" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_TOOL_NAME "altera_freeze_csr"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_TOOL_VERSION "19.1.1"
+set_global_assignment -entity "altera_freeze_csr" -library "altera_freeze_csr_1911" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_TOOL_NAME "altera_conduit_merger"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_TOOL_VERSION "19.1.1"
+set_global_assignment -entity "bsp_top_pr_region_controller_0_altera_conduit_merger_1911_53jn3ya" -library "altera_conduit_merger_1911" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_TOOL_NAME "altera_freeze_control"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_TOOL_VERSION "19.1.1"
+set_global_assignment -entity "altera_freeze_control" -library "altera_freeze_control_1911" -name IP_TOOL_ENV "QsysPrimePro"
+

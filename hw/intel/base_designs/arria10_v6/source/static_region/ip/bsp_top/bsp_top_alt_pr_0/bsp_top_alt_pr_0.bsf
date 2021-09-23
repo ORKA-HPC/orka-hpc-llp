@@ -1,0 +1,111 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 384 264)
+	(text "bsp_top_alt_pr_0" (rect 141 -1 211 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 248 20 260)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk" (rect 0 0 10 12)(font "Arial" (font_size 8)))
+		(text "clk" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 160 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "nreset" (rect 0 0 24 12)(font "Arial" (font_size 8)))
+		(text "nreset" (rect 4 101 40 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 160 112)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(input)
+		(text "avmm_slave_address[3..0]" (rect 0 0 112 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_address[3..0]" (rect 4 141 148 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 160 152)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(input)
+		(text "avmm_slave_read" (rect 0 0 77 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_read" (rect 4 157 94 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 160 168)(line_width 1))
+	)
+	(port
+		(pt 0 184)
+		(input)
+		(text "avmm_slave_writedata[31..0]" (rect 0 0 118 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_writedata[31..0]" (rect 4 173 166 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 160 184)(line_width 3))
+	)
+	(port
+		(pt 0 200)
+		(input)
+		(text "avmm_slave_write" (rect 0 0 77 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_write" (rect 4 189 100 200)(font "Arial" (font_size 8)))
+		(line (pt 0 200)(pt 160 200)(line_width 1))
+	)
+	(port
+		(pt 0 216)
+		(output)
+		(text "avmm_slave_readdata[31..0]" (rect 0 0 118 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_readdata[31..0]" (rect 4 205 160 216)(font "Arial" (font_size 8)))
+		(line (pt 0 216)(pt 160 216)(line_width 3))
+	)
+	(port
+		(pt 0 232)
+		(output)
+		(text "avmm_slave_waitrequest" (rect 0 0 103 12)(font "Arial" (font_size 8)))
+		(text "avmm_slave_waitrequest" (rect 4 221 136 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 160 232)(line_width 1))
+	)
+	(drawing
+		(text "clk" (rect 145 43 308 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 165 67 348 144)(font "Arial" (color 0 0 0)))
+		(text "nreset" (rect 124 83 284 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 165 107 372 224)(font "Arial" (color 0 0 0)))
+		(text "avmm_slave" (rect 88 123 236 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 165 147 372 304)(font "Arial" (color 0 0 0)))
+		(text "read" (rect 165 163 354 336)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 165 179 384 368)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 165 195 360 400)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 165 211 378 432)(font "Arial" (color 0 0 0)))
+		(text "waitrequest" (rect 165 227 396 464)(font "Arial" (color 0 0 0)))
+		(text " bsp_top_alt_pr_0 " (rect 305 248 718 506)(font "Arial" ))
+		(line (pt 160 32)(pt 224 32)(line_width 1))
+		(line (pt 224 32)(pt 224 248)(line_width 1))
+		(line (pt 160 248)(pt 224 248)(line_width 1))
+		(line (pt 160 32)(pt 160 248)(line_width 1))
+		(line (pt 161 52)(pt 161 76)(line_width 1))
+		(line (pt 162 52)(pt 162 76)(line_width 1))
+		(line (pt 161 92)(pt 161 116)(line_width 1))
+		(line (pt 162 92)(pt 162 116)(line_width 1))
+		(line (pt 161 132)(pt 161 236)(line_width 1))
+		(line (pt 162 132)(pt 162 236)(line_width 1))
+		(line (pt 0 0)(pt 384 0)(line_width 1))
+		(line (pt 384 0)(pt 384 264)(line_width 1))
+		(line (pt 0 264)(pt 384 264)(line_width 1))
+		(line (pt 0 0)(pt 0 264)(line_width 1))
+	)
+)

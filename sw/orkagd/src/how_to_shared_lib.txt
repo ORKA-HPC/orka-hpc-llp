@@ -1,0 +1,1 @@
+export LD_LIBRARY_PATH="/home/jschwa15/orka/git_fau/orka/Xilinx Vivado/orka/OrkaGenericDriver/src"

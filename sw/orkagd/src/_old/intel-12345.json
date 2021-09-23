@@ -1,0 +1,55 @@
+{
+    "FileType": "boardsupportpackage",
+    "Comment": "Kein Kommentar",
+    "BoardName": "arria10",
+# what do we use this for? #################################
+    "BlockDesignName": "a10_pcie_devkit_cvp",
+    "ManufacturerBoard": "Intel",
+    "Drivers":
+    [
+        {
+# driver name, instance, port ?? ###########################
+            "DriverName": "inteldma",
+            "Instance": 0,
+            "Port": 0
+        }
+    ],
+    "FPGAs":
+    [
+        {
+            "Manufacturer": "Intel",
+            "FullNameQualifier": "10AX115S2F45I1SG",
+# driver id? ###############################################
+            "Driver": 0,
+            "Components":
+            [
+                {
+                    "name": "orkaip_0",
+                    "offset": "0x00000000",
+                    "range": "0x00100000"
+                },
+                {
+                    "name": "ddr",
+                    "offset": "0x0000000000100000",
+                    "range": "0x0000000000100000"
+                }
+            ]
+        }
+    ],
+    "pciebars":
+    [
+# we have 3 bars but only use the 3rd for everything? ######
+        {
+            "type": "MMIO",
+            "size": "512B"
+        },
+        {
+            "type": "MMIO",
+            "size": "8KB"
+        },
+        {
+            "type": "DMA",
+            "size": "2MB"
+        }
+    ]
+}

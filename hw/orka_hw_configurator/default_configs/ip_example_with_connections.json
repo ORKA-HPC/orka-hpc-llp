@@ -1,0 +1,31 @@
+{
+    "ips" :
+    [
+        {
+            "name" : "ip0",
+            "path" : "~/work/ORKAPCIe/2019.1/repo/vcu118/ORKAProcessHW/",
+            "clock" : "100.00",
+            "connections" :
+            [
+                {
+                    "src_port" : "port0",
+                    "dst_ip" : "ip1",
+                    "dst_port" : "port1"
+                }
+            ]
+        },
+        {
+            "name" : "ip1",
+            "path" : "~/work/ORKAPCIe/2019.1/repo/vcu118/ORKAProcessHW/",
+            "clock" : "100.00",
+            "connections" :
+            [
+                {
+                    "src_port" : "port0",
+                    "dst_ip" : "ip0",
+                    "dst_port" : "port1"
+                }
+            ]
+        }
+    ]
+}

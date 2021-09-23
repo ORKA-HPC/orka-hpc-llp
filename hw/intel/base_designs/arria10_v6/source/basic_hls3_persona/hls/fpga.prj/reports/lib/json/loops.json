@@ -1,0 +1,513 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Speculated iterations", "Details"]
+  , "children":
+  [
+    {
+      "name":"Component: slavereg_comp"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+            , "line":15
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"Task function"
+        }
+        , {
+          "type":"text"
+          , "text":"Task function"
+        }
+        , {
+          "type":"text"
+          , "text":"Fmax bottlenck block: None"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Reference Manual : Component"
+              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/ewa1462824960255.html#ewa1462820640727"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"slavereg_comp.B1.start"
+          , "data":
+          ["Yes", ">=1", "0"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"Component invocation"
+                , "line":0
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":" "
+            }
+            , {
+              "type":"text"
+              , "text":"Stallable instruction: n/a"
+            }
+            , {
+              "type":"text"
+              , "text":"Maximum concurrent iterations: 1 is the default for component invocation loop"
+            }
+            , {
+              "type":"text"
+              , "text":"See %L for more information"
+              , "links":
+              [
+                {
+                  "guide":"Reference Manual : Loops in Components"
+                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/ewa1462824960255.html#ewa1462826976357"
+                }
+              ]
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"slavereg_comp.B3"
+              , "data":
+              ["Yes", "~466", "3"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                    , "line":32
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Memory dependency"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Compiler failed to schedule this loop with smaller II due to memory dependency:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"From: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"To: Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Most critical loop feedback path during scheduling:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"135.00 clock cycles Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"135.00 clock cycles Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"90.00 clock cycles Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"90.00 clock cycles Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"3.00 clock cycles 32-bit Floating-point Multiply Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"3.00 clock cycles 32-bit Integer Multiply Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"0.35 clock cycles 1-bit Or Operation (%L, %L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                        , {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"0.35 clock cycles 1-bit Or Operation (%L, %L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                        , {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"II is an approximation due to the following stallable instructions:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"34"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Load Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Store Operation (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                          , "line":"35"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Maximum concurrent iterations: Capacity of loop"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Use the %L viewer to estimate capacity"
+                      , "links":
+                      [
+                        {
+                          "view":"Fmax II Report"
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"See %L for more information"
+                  , "links":
+                  [
+                    {
+                      "guide":"Reference Manual : Loops in Components"
+                      , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/ewa1462824960255.html#ewa1462826976357"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

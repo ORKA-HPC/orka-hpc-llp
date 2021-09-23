@@ -1,0 +1,1 @@
+LD_LIBRARY_PATH=$PWD ./test.out -p '../../../bitstreams/' -c c7253b34-165a-47a6-b7ae-274dd963eed4.json

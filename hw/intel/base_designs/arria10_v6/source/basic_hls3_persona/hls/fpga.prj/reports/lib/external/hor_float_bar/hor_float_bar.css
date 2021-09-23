@@ -1,0 +1,24 @@
+/* Style sheet for horizontal floating bar graph */
+.bar:hover {
+    opacity: 0.6;
+}
+
+.axis {
+    font: 11px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+
+.grid path {
+    stroke-width: 0;
+}

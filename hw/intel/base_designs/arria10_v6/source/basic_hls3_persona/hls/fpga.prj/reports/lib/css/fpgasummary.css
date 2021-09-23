@@ -1,0 +1,22 @@
+.fpgasummary-card {
+  margin:8px;
+  font-size:12px;
+}
+.fpgasummary-card-header {
+  padding:8px;
+}
+.fpgasummary-card-body {
+  padding:0px;
+  overflow:auto;
+}
+.fpgasummary-table {
+  margin: 0px;
+}
+.fpgasummary-table td {
+    padding: 8px;
+}
+
+.fpgatable-hover-cells > tbody > tr > th:hover,
+.fpgatable-hover-cells > tbody > tr > td:hover {
+  background-color: #f5f5f5;
+}

@@ -1,0 +1,1437 @@
+{
+  "3041946232":
+  {
+    "nodes":
+    [
+      {
+        "name":"slavereg_comp.B0.runOnce"
+        , "id":3041985888
+        , "start":"0"
+        , "end":"2"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"?"
+            , "id":3060589584
+            , "start":"1"
+            , "end":"2"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Unknown variable"
+                , "Start Cycle":"1"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":15
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+        ]
+      }
+      , {
+        "name":"slavereg_comp.B1.start"
+        , "id":3041988288
+        , "start":"2"
+        , "end":"6"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"FFwd Src"
+            , "id":3060348784
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3059702704
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Cluster 0"
+            , "id":3044843104
+            , "start":"3"
+            , "end":"3"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Cluster Name":"i_sfc_s_c0_in_wt_entry_slavereg_comps_c0_enter1_slavereg_comp0"
+                , "Cluster Type":"Stall-Enable"
+                , "Cluster Start Cycle":"1"
+                , "Cluster Latency":"0"
+              }
+            ]
+            , "type":"cluster"
+            , "children":
+            [
+              {
+                "name":"Exit"
+                , "id":3045513728
+                , "start":"3"
+                , "end":"3"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Start Cycle":"1"
+                    , "Latency":"0"
+                  }
+                ]
+                , "type":"inst"
+              }
+            ]
+          }
+          , {
+            "name":"Ptr. Comp."
+            , "id":3049198064
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Pointer Computation"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":25
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"LD"
+            , "id":3061121456
+            , "start":"4"
+            , "end":"6"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Load"
+                , "Width":"32 bits"
+                , "LSU Style":"Burst-coalesced"
+                , "Stall-free":"No"
+                , "Global Memory":"Yes"
+                , "Start Cycle":"2"
+                , "Latency":"2"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":25
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3060519248
+            , "start":"6"
+            , "end":"6"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"4"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":25
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"?"
+            , "id":3046322160
+            , "start":"3"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Unknown variable"
+                , "Start Cycle":"1"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":15
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"RD"
+            , "id":3049476064
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Stream Read"
+                , "Width":"256 bits"
+                , "Depth":"0"
+                , "Stream Name":"call.slavereg_comp"
+                , "Stall-free":"No"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":15
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3061003776
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3060955008
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Compare"
+            , "id":3048970464
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Integer Compare"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Select"
+            , "id":3054067152
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Select"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"+"
+            , "id":3045857360
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Integer Add"
+                , "Constant Operand":"-1 (0xFFFFFFFF)"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"+"
+            , "id":3048508832
+            , "start":"5"
+            , "end":"5"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"33-bit Integer Add"
+                , "Constant Operand":"-1 (0x1FFFFFFFF)"
+                , "Start Cycle":"3"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3060314688
+            , "start":"5"
+            , "end":"5"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"3"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Src"
+            , "id":3044879936
+            , "start":"4"
+            , "end":"4"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Source"
+                , "Start Cycle":"2"
+                , "Latency":"0"
+              }
+            ]
+            , "type":"inst"
+          }
+        ]
+      }
+      , {
+        "name":"slavereg_comp.B3"
+        , "id":3042041760
+        , "start":"6"
+        , "end":"939"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"FFwd Dest"
+            , "id":3060734256
+            , "start":"610"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"604"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3060691792
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3059602832
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Compare"
+            , "id":3061109280
+            , "start":"473"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Integer Compare"
+                , "Start Cycle":"467"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3055415072
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3055221536
+            , "start":"607"
+            , "end":"608"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"601"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3050901600
+            , "start":"610"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"604"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Global variable"
+            , "id":3061139456
+            , "start":"610"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Global variable"
+                , "Start Cycle":"604"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":35
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Global variable"
+            , "id":3060944672
+            , "start":"608"
+            , "end":"609"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Global variable"
+                , "Start Cycle":"602"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Global variable"
+            , "id":3060908208
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Global variable"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":35
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Global variable"
+            , "id":3060525184
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Global variable"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Or"
+            , "id":3048438928
+            , "start":"473"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"1-bit Or"
+                , "Start Cycle":"467"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Global variable"
+            , "id":3059354080
+            , "start":"472"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Feedback Read"
+                , "Variable":"Global variable"
+                , "Start Cycle":"466"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Ptr. Comp."
+            , "id":3048005360
+            , "start":"473"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Pointer Computation"
+                , "Start Cycle":"467"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Ptr. Comp."
+            , "id":3047710304
+            , "start":"473"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Pointer Computation"
+                , "Start Cycle":"467"
+                , "Latency":"138"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"+"
+            , "id":3046470848
+            , "start":"473"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Integer Add"
+                , "Constant Operand":"1 (0x1)"
+                , "Start Cycle":"467"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Ptr. Comp."
+            , "id":3045213136
+            , "start":"473"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Pointer Computation"
+                , "Start Cycle":"467"
+                , "Latency":"138"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":35
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Or"
+            , "id":3054035792
+            , "start":"473"
+            , "end":"473"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"1-bit Or"
+                , "Start Cycle":"467"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":32
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"LD"
+            , "id":3055054224
+            , "start":"473"
+            , "end":"608"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Load"
+                , "Width":"32 bits"
+                , "LSU Style":"Burst-coalesced"
+                , "Stall-free":"No"
+                , "Global Memory":"Yes"
+                , "Start Cycle":"467"
+                , "Latency":"135"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"*"
+            , "id":3045698608
+            , "start":"608"
+            , "end":"611"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"32-bit Integer Multiply"
+                , "Start Cycle":"602"
+                , "Latency":"3"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"ST"
+            , "id":3061330768
+            , "start":"611"
+            , "end":"701"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Store"
+                , "Width":"32 bits"
+                , "LSU Style":"Burst-coalesced"
+                , "Stall-free":"No"
+                , "Global Memory":"Yes"
+                , "Start Cycle":"605"
+                , "Latency":"90"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Or"
+            , "id":3060275488
+            , "start":"701"
+            , "end":"701"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"1-bit Or"
+                , "Start Cycle":"695"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":34
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"LD"
+            , "id":3060275840
+            , "start":"701"
+            , "end":"836"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Load"
+                , "Width":"32 bits"
+                , "LSU Style":"Burst-coalesced"
+                , "Stall-free":"No"
+                , "Global Memory":"Yes"
+                , "Start Cycle":"695"
+                , "Latency":"135"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":35
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"Cluster 1"
+            , "id":3046487664
+            , "start":"836"
+            , "end":"848"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Cluster Name":"i_sfc_s_c0_in_for_body_slavereg_comps_c0_enter232_slavereg_comp54"
+                , "Cluster Type":"Stall-Free"
+                , "Cluster Start Cycle":"830"
+                , "Cluster Latency":"12"
+              }
+            ]
+            , "type":"cluster"
+            , "children":
+            [
+              {
+                "name":"Convert"
+                , "id":3046446368
+                , "start":"836"
+                , "end":"842"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Instruction":"32-bit Integer to Floating-point Conversion"
+                    , "Start Cycle":"830"
+                    , "Latency":"6"
+                  }
+                ]
+                , "debug":
+                [
+                  [
+                    {
+                      "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                      , "line":35
+                    }
+                  ]
+                ]
+                , "type":"inst"
+              }
+              , {
+                "name":"f32 *"
+                , "id":3047294752
+                , "start":"842"
+                , "end":"845"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Instruction":"32-bit Floating-point Multiply"
+                    , "Constant Operand":"3.5"
+                    , "Start Cycle":"836"
+                    , "Latency":"3"
+                  }
+                ]
+                , "debug":
+                [
+                  [
+                    {
+                      "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                      , "line":35
+                    }
+                  ]
+                ]
+                , "type":"inst"
+              }
+              , {
+                "name":"Exit"
+                , "id":3044858224
+                , "start":"845"
+                , "end":"848"
+                , "details":
+                [
+                  {
+                    "type":"table"
+                    , "Start Cycle":"839"
+                    , "Latency":"3"
+                    , "Exit FIFO Depth":"32"
+                    , "Exit FIFO Width":"64"
+                    , "Details":"Exit FIFO depth is sized to accommodate all data that may be in-flight in the stall-free cluster; this depth will be equal to or greater than the latency of the cluster.  The width of the FIFO depends on the amount of data that needs to pass from the stall-free logic cluster to the stall-able logic below it."
+                  }
+                ]
+                , "type":"inst"
+              }
+            ]
+          }
+          , {
+            "name":"ST"
+            , "id":3050890432
+            , "start":"848"
+            , "end":"938"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Store"
+                , "Width":"32 bits"
+                , "LSU Style":"Burst-coalesced"
+                , "Stall-free":"No"
+                , "Global Memory":"Yes"
+                , "Start Cycle":"842"
+                , "Latency":"90"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":35
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+        ]
+      }
+      , {
+        "name":"slavereg_comp.B2"
+        , "id":3042041680
+        , "start":"939"
+        , "end":"941"
+        , "details":
+        [
+          {
+            "type":"table"
+          }
+        ]
+        , "type":"bb"
+        , "children":
+        [
+          {
+            "name":"FFwd Dest"
+            , "id":3049772320
+            , "start":"939"
+            , "end":"940"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"0"
+                , "Latency":"1"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":25
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3046251328
+            , "start":"939"
+            , "end":"940"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"0"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"FFwd Dest"
+            , "id":3045514352
+            , "start":"939"
+            , "end":"940"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"FFwd Destination"
+                , "Start Cycle":"0"
+                , "Latency":"1"
+              }
+            ]
+            , "type":"inst"
+          }
+          , {
+            "name":"WR"
+            , "id":3061059664
+            , "start":"940"
+            , "end":"940"
+            , "details":
+            [
+              {
+                "type":"table"
+                , "Instruction":"Non-Blocking Stream Write"
+                , "Width":"128 bits"
+                , "Depth":"0"
+                , "Stream Name":"return.slavereg_comp"
+                , "Stall-free":"No"
+                , "Start Cycle":"1"
+                , "Latency":"0"
+              }
+            ]
+            , "debug":
+            [
+              [
+                {
+                  "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                  , "line":37
+                }
+              ]
+            ]
+            , "type":"inst"
+          }
+        ]
+      }
+    ]
+    , "links":
+    [
+      {
+        "from":3045514352
+        , "to":3061059664
+      }
+      , {
+        "from":3047294752
+        , "to":3044858224
+      }
+      , {
+        "from":3046446368
+        , "to":3047294752
+      }
+      , {
+        "from":3060275488
+        , "to":3060275840
+      }
+      , {
+        "from":3061330768
+        , "to":3060275488
+      }
+      , {
+        "from":3045698608
+        , "to":3061330768
+      }
+      , {
+        "from":3049772320
+        , "to":3061059664
+      }
+      , {
+        "from":3054035792
+        , "to":3050890432
+      }
+      , {
+        "from":3054035792
+        , "to":3055054224
+      }
+      , {
+        "from":3054035792
+        , "to":3060275840
+      }
+      , {
+        "from":3054035792
+        , "to":3061330768
+      }
+      , {
+        "from":3045213136
+        , "to":3050890432
+      }
+      , {
+        "from":3054067152
+        , "to":3045857360
+      }
+      , {
+        "from":3055415072
+        , "to":3048005360
+      }
+      , {
+        "from":3048970464
+        , "to":3054067152
+      }
+      , {
+        "from":3049476064
+        , "to":3048970464
+      }
+      , {
+        "from":3049476064
+        , "to":3054067152
+      }
+      , {
+        "from":3049476064
+        , "to":3060955008
+      }
+      , {
+        "from":3049476064
+        , "to":3061003776
+      }
+      , {
+        "from":3041988288
+        , "to":3042041760
+      }
+      , {
+        "from":3060734256
+        , "to":3047710304
+      }
+      , {
+        "from":3050901600
+        , "to":3045213136
+      }
+      , {
+        "from":3042041680
+        , "to":3041988288
+      }
+      , {
+        "from":3059354080
+        , "to":3045213136
+      }
+      , {
+        "from":3059354080
+        , "to":3046470848
+      }
+      , {
+        "from":3059354080
+        , "to":3047710304
+      }
+      , {
+        "from":3059354080
+        , "to":3048005360
+      }
+      , {
+        "from":3048438928
+        , "to":3055054224
+      }
+      , {
+        "from":3046487664
+        , "to":3050890432
+      }
+      , {
+        "from":3059602832
+        , "to":3061109280
+      }
+      , {
+        "from":3060275840
+        , "to":3046487664
+      }
+      , {
+        "from":3061121456
+        , "to":3060519248
+      }
+      , {
+        "from":3049198064
+        , "to":3061121456
+      }
+      , {
+        "from":3046322160
+        , "to":3049476064
+      }
+      , {
+        "from":3041985888
+        , "to":3041988288
+      }
+      , {
+        "from":3055054224
+        , "to":3045698608
+      }
+      , {
+        "from":3045857360
+        , "to":3048508832
+      }
+      , {
+        "from":3046251328
+        , "to":3061059664
+      }
+      , {
+        "from":3048508832
+        , "to":3060314688
+      }
+      , {
+        "from":3042041760
+        , "to":3042041680
+      }
+      , {
+        "from":3060944672
+        , "to":3050890432
+      }
+      , {
+        "from":3061109280
+        , "to":3054035792
+      }
+      , {
+        "from":3048005360
+        , "to":3055054224
+      }
+      , {
+        "from":3048005360
+        , "to":3060275840
+      }
+      , {
+        "from":3055221536
+        , "to":3045698608
+      }
+      , {
+        "from":3061139456
+        , "to":3061330768
+      }
+      , {
+        "from":3060908208
+        , "to":3048438928
+      }
+      , {
+        "from":3060908208
+        , "to":3060275488
+      }
+      , {
+        "from":3060908208
+        , "to":3061330768
+      }
+      , {
+        "from":3060525184
+        , "to":3048438928
+      }
+      , {
+        "from":3060525184
+        , "to":3050890432
+      }
+      , {
+        "from":3047710304
+        , "to":3061330768
+      }
+    ]
+  }
+}

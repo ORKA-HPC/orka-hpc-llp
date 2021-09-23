@@ -1,0 +1,115 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.2.0 Build 50 06/11/2020 SC Pro Edition
+# Date created = 11:45:59  December 08, 2020
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name IP_SEARCH_PATHS "source/static_region/ip/pr_handshake/**/*;source/basic_hls2_persona/**/*;source/basic_hls2_persona/hls/fpga.prj/components/slavereg_comp/**/*"
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.2.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:45:58  DECEMBER 08, 2020"
+set_global_assignment -name FAMILY "Arria 10"
+set_global_assignment -name DEVICE 10AX115S2F45I1SG
+set_global_assignment -name TOP_LEVEL_ENTITY a10_pcie_ref_design
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
+set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
+set_global_assignment -name LAST_QUARTUS_VERSION "21.1.0 Pro Edition"
+set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+#############################################################
+# PR setup
+#############################################################
+set_global_assignment -name REVISION_TYPE PR_IMPL
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_instance_assignment -name PARTITION local_qsys -to u_top|local_qsys_0 -entity a10_pcie_ref_design
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|local_qsys_0 -entity a10_pcie_ref_design
+
+#############################################################
+# QDB file partition assignment
+#############################################################
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
+
+#############################################################
+# Entity rebinding assignment
+#############################################################
+set_instance_assignment -name ENTITY_REBINDING local_qsys -to u_top|local_qsys_0 -entity local_qsys
+
+
+############# Signaltap
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
+############# SDC
+set_global_assignment -name SDC_FILE jtag.sdc
+set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
+set_global_assignment -name SDC_FILE auxiliary.sdc
+
+############# Design Files
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_pr_handshake_0.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_sld_jtag_bridge_host_0.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_clock_bridge_1.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_mm_bridge_1.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_reset_bridge_1.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_reset_in.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_sysid_qsys_0.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_clock_in.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_intel_configuration_reset_release_to_debug_logic_0.ip
+set_global_assignment -name IP_FILE source/basic_hls2_persona/ip/local_qsys/local_qsys_slavereg_comp_internal_0.ip
+set_global_assignment -name QSYS_FILE source/basic_hls2_persona/local_qsys.qsys
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/a10_pcie_ref_design.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/ddr4_status_bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/synchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/tcd2um.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/global_rst_n_controller.sv
+set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_a10_pcie.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/ddr4_emif.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_address_span_extender_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_mm_clock_crossing_bridge_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_sysid_qsys_0.ip
+set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_calibration_pio.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/avalon_system_config.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_alt_pr_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_iopll_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_mm_clock_crossing_bridge_1.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_pr_region_controller_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_avlmm_pr_freeze_bridge_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_avlmm_pr_freeze_bridge_1.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_sld_jtag_bridge_agent_0.ip

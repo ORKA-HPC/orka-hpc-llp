@@ -1,0 +1,89 @@
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TOOL_VERSION "21.1"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TOP_LEVEL_COMPONENT_NAME "alt_pr"
+set_global_assignment -library "bsp_top_alt_pr_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "bsp_top_alt_pr_0.sopcinfo"]
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name SLD_INFO "QSYS_NAME bsp_top_alt_pr_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "bsp_top_alt_pr_0" -name MISC_FILE [file join $::quartus(qip_path) "bsp_top_alt_pr_0.cmp"]
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_TARGETED_DEVICE_FAMILY "Arria 10"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_GENERATED_DEVICE_FAMILY "{Arria 10}"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "bsp_top_alt_pr_0" -name MISC_FILE [file join $::quartus(qip_path) "../bsp_top_alt_pr_0.ip"]
+
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_NAME "YWx0X3By"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_DISPLAY_NAME "UGFydGlhbCBSZWNvbmZpZ3VyYXRpb24gQ29udHJvbGxlciBJbnRlbCBBcnJpYSAxMC9DeWNsb25lIDEwIEZQR0EgSVA="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_VERSION "MTkuMS4w"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_DESCRIPTION "UGFydGlhbCBSZWNvbmZpZ3VyYXRpb24gQ29udHJvbGxlciBJbnRlbCBBcnJpYSAxMC9DeWNsb25lIDEwIEZQR0EgSVAgaXMgdXNlZCB0byBpbnRlcmZhY2UgeW91ciBkZXNpZ24gdG8gdGhlIHBhcnRpYWwgcmVjb25maWd1cmF0aW9uIGNvbnRyb2wgYmxvY2su"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "UFJfSU5URVJOQUxfSE9TVA==::dHJ1ZQ==::VXNlIGFzIHBhcnRpYWwgcmVjb25maWd1cmF0aW9uIGludGVybmFsIGhvc3Q="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0pUQUc=::ZmFsc2U=::RW5hYmxlIEpUQUcgZGVidWcgbW9kZQ=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0FWTU1fU0xBVkU=::dHJ1ZQ==::RW5hYmxlIEF2YWxvbi1NTSBzbGF2ZSBpbnRlcmZhY2U="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0lOVEVSUlVQVA==::ZmFsc2U=::RW5hYmxlIGludGVycnVwdCBpbnRlcmZhY2U="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0ZSRUVaRQ==::ZmFsc2U=::RW5hYmxlIGZyZWV6ZSBpbnRlcmZhY2U="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0hQUl9VSQ==::ZmFsc2U=::RW5hYmxlIGhpZXJhcmNoaWNhbCBQUiBzdXBwb3J0"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0hQUg==::ZmFsc2U=::RU5BQkxFX0hQUg=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX1BSUE9GX0lEX0NIRUNL::dHJ1ZQ==::RU5BQkxFX1BSUE9GX0lEX0NIRUNL"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "REFUQV9XSURUSF9JTkRFWA==::MzI=::SW5wdXQgZGF0YSB3aWR0aA=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "Q0JfREFUQV9XSURUSA==::MzI=::Q0JfREFUQV9XSURUSA=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0RBVEFfUEFDS0lORw==::dHJ1ZQ==::RU5BQkxFX0RBVEFfUEFDS0lORw=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "Q0RSQVRJTw==::MQ==::Q2xvY2stdG8tZGF0YSByYXRpbw=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RURDUkNfT1NDX0RJVklERVI=::MQ==::RGl2aWRlIGVycm9yIGRldGVjdGlvbiBmcmVxdWVuY3kgYnk="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0VOSEFOQ0VEX0RFQ09NUFJFU1NJT04=::ZmFsc2U=::RW5hYmxlIGVuaGFuY2VkIGRlY29tcHJlc3Npb24="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "SU5TVEFOVElBVEVfUFJfQkxPQ0s=::dHJ1ZQ==::QXV0by1pbnN0YW50aWF0ZSBwYXJ0aWFsIHJlY29uZmlndXJhdGlvbiBjb250cm9sIGJsb2Nr"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "SU5TVEFOVElBVEVfQ1JDX0JMT0NL::dHJ1ZQ==::QXV0by1pbnN0YW50aWF0ZSBDUkMgYmxvY2s="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "REVWSUNFX0ZBTUlMWQ==::QXJyaWEgMTA=::REVWSUNFX0ZBTUlMWQ=="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_PARAMETER "R0VORVJBVEVfU0RD::dHJ1ZQ==::R2VuZXJhdGUgdGltaW5nIGNvbnN0cmFpbnRzIGZpbGU="
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_GROUP "QmFzaWMgRnVuY3Rpb25zL0NvbmZpZ3VyYXRpb24gYW5kIFByb2dyYW1taW5n"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL3Byb2dyYW1tYWJsZS9kb2N1bWVudGF0aW9uL3RuYzE1MTM5ODc4MTk5OTAuaHRtbCN0Z2kxNDg2MDc0NjI1MjAy"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_NAME "YnNwX3RvcF9hbHRfcHJfMA=="
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::QXJyaWEgMTA=::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBBWDExNVMyRjQ1STFTRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::MQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "bsp_top_alt_pr_0" -library "bsp_top_alt_pr_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+set_instance_assignment -entity "alt_pr" -library "alt_pr_1910" -name PRPOF_ID_CHECK ON
+
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/alt_pr.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_host.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_controller_v1.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_controller_v2.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_cb_host.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_cb_controller_v1.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_cb_controller_v2.v"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_mux.sv"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_jtag_interface.v"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_width_adapter.sv"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_compatibility_checker_int_host.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_compatibility_checker_ext_host.v"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_compatibility_checker_v2.v"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_compatibility_checker_v3.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_down_converter.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_fifo.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_up_converter.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_bitstream_decoder.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_enhanced_compression_magic_words_decoder_and_suppressor.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_enhanced_decompressor.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_magic_fifo.sv"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_data.sv"]
+set_global_assignment -library "alt_pr_1910" -name VERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_clk_mux.v"]
+set_global_assignment -library "alt_pr_1910" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr_cb_interface.sv"]
+set_global_assignment -library "alt_pr_1910" -name SDC_FILE [file join $::quartus(qip_path) "alt_pr_1910/synth/rtl/alt_pr.sdc"]
+set_global_assignment -library "bsp_top_alt_pr_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/bsp_top_alt_pr_0.v"]
+
+
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_TOOL_NAME "alt_pr"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_TOOL_VERSION "19.1.0"
+set_global_assignment -entity "alt_pr" -library "alt_pr_1910" -name IP_TOOL_ENV "QsysPrimePro"
+

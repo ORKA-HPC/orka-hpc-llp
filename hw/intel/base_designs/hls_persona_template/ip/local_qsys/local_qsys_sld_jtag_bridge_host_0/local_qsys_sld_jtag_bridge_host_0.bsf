@@ -1,0 +1,89 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 368 184)
+	(text "local_qsys_sld_jtag_bridge_host_0" (rect 80 -1 220 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 168 20 180)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "tck" (rect 0 0 11 12)(font "Arial" (font_size 8)))
+		(text "tck" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 160 72)(line_width 1))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "tms" (rect 0 0 15 12)(font "Arial" (font_size 8)))
+		(text "tms" (rect 4 77 22 88)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 160 88)(line_width 1))
+	)
+	(port
+		(pt 0 104)
+		(input)
+		(text "tdi" (rect 0 0 8 12)(font "Arial" (font_size 8)))
+		(text "tdi" (rect 4 93 22 104)(font "Arial" (font_size 8)))
+		(line (pt 0 104)(pt 160 104)(line_width 1))
+	)
+	(port
+		(pt 0 120)
+		(input)
+		(text "vir_tdi" (rect 0 0 24 12)(font "Arial" (font_size 8)))
+		(text "vir_tdi" (rect 4 109 46 120)(font "Arial" (font_size 8)))
+		(line (pt 0 120)(pt 160 120)(line_width 1))
+	)
+	(port
+		(pt 0 136)
+		(input)
+		(text "ena" (rect 0 0 14 12)(font "Arial" (font_size 8)))
+		(text "ena" (rect 4 125 22 136)(font "Arial" (font_size 8)))
+		(line (pt 0 136)(pt 160 136)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(output)
+		(text "tdo" (rect 0 0 11 12)(font "Arial" (font_size 8)))
+		(text "tdo" (rect 4 141 22 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 160 152)(line_width 1))
+	)
+	(drawing
+		(text "connect_to_bridge_host" (rect 21 43 174 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "tck" (rect 165 67 348 144)(font "Arial" (color 0 0 0)))
+		(text "tms" (rect 165 83 348 176)(font "Arial" (color 0 0 0)))
+		(text "tdi" (rect 165 99 348 208)(font "Arial" (color 0 0 0)))
+		(text "vir_tdi" (rect 165 115 372 240)(font "Arial" (color 0 0 0)))
+		(text "ena" (rect 165 131 348 272)(font "Arial" (color 0 0 0)))
+		(text "tdo" (rect 165 147 348 304)(font "Arial" (color 0 0 0)))
+		(text " local_qsys_sld_jtag_bridge_host_0 " (rect 213 168 636 346)(font "Arial" ))
+		(line (pt 160 32)(pt 208 32)(line_width 1))
+		(line (pt 208 32)(pt 208 168)(line_width 1))
+		(line (pt 160 168)(pt 208 168)(line_width 1))
+		(line (pt 160 32)(pt 160 168)(line_width 1))
+		(line (pt 161 52)(pt 161 156)(line_width 1))
+		(line (pt 162 52)(pt 162 156)(line_width 1))
+		(line (pt 0 0)(pt 368 0)(line_width 1))
+		(line (pt 368 0)(pt 368 184)(line_width 1))
+		(line (pt 0 184)(pt 368 184)(line_width 1))
+		(line (pt 0 0)(pt 0 184)(line_width 1))
+	)
+)

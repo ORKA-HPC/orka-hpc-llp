@@ -1,0 +1,116 @@
+{
+  "nodes":
+  [
+    {
+      "name":"slavereg_comp"
+      , "id":3041946232
+      , "type":"component"
+      , "children":
+      [
+        {
+          "name":"Stream Read"
+          , "id":3042301328
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Basic Block":"slavereg_comp.B1.start"
+              , "Width":"256 bits"
+              , "Depth":"0"
+              , "Stall-free":"No"
+              , "Latency":"0"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":15
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+        , {
+          "name":"Non-Blocking Stream Write"
+          , "id":3042311360
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Basic Block":"slavereg_comp.B2"
+              , "Width":"128 bits"
+              , "Depth":"0"
+              , "Stall-free":"No"
+              , "Latency":"0"
+            }
+          ]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.cpp"
+                , "line":37
+              }
+            ]
+          ]
+          , "type":"inst"
+        }
+      ]
+    }
+    , {
+      "name":"return.slavereg_comp"
+      , "id":3041489952
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Width":"128 bits"
+          , "Depth":"0"
+          , "Ready Latency":"0"
+          , "Bits per Symbol":"128 bits"
+          , "Uses Packets":"No"
+          , "Uses Ready":"No"
+          , "Uses Empty":"No"
+          , "First symbol in high order bits":"No"
+        }
+      ]
+      , "type":"stream"
+    }
+    , {
+      "name":"call.slavereg_comp"
+      , "id":3041493168
+      , "details":
+      [
+        {
+          "type":"table"
+          , "Width":"256 bits"
+          , "Depth":"0"
+          , "Ready Latency":"0"
+          , "Bits per Symbol":"256 bits"
+          , "Uses Packets":"No"
+          , "Uses Valid":"Yes"
+          , "Uses Empty":"No"
+          , "First symbol in high order bits":"No"
+        }
+      ]
+      , "type":"stream"
+    }
+  ]
+  , "links":
+  [
+    {
+      "from":3042311360
+      , "to":3041489952
+    }
+    , {
+      "from":3041493168
+      , "to":3042301328
+    }
+    , {
+      "from":3042301328
+      , "to":3042311360
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[foss]
+name = D3
+version = 5.16.0
+description = Data Driven Documents
+case = 14011610103
+source = true
+binary = false
+modified = false
+usage = redistributed
+license_type = BSD
+license_url = https://github.com/d3/d3/blob/master/LICENSE
+download_url = https://github.com/d3/d3/releases/tag/v5.16.0 

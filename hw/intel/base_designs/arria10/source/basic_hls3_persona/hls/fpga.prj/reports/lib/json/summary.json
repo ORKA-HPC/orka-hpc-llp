@@ -1,0 +1,71 @@
+{
+  "functionNameMapping":
+  {
+    "name":"Synthesized Function Name Mapping"
+    , "columns":
+    ["User-defined Function Name", "Mapped Function Name"]
+    , "children":
+    [
+      {
+        "name":"slavereg_comp(ihc::mm_master<unsigned int, ihc::aspace<1>, ihc::awidth<32>, ihc::dwidth<512>, ihc::maxburst<16>, ihc::latency<0>, ihc::waitrequest<1>, ihc::align<64> >&, ihc::mm_master<unsigned int, ihc::aspace<1>, ihc::awidth<32>, ihc::dwidth<512>, ihc::maxburst<16>, ihc::latency<0>, ihc::waitrequest<1>, ihc::align<64> >&, ihc::mm_master<float, ihc::aspace<1>, ihc::awidth<32>, ihc::dwidth<512>, ihc::maxburst<16>, ihc::latency<0>, ihc::waitrequest<1>, ihc::align<64> >&, unsigned int, unsigned int)"
+        , "data":
+        ["slavereg_comp"]
+        , "debug":
+        [
+          [
+            {
+              "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.h"
+              , "line":29
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  , "estimatedResources":
+  {
+    "name":"Estimated Resource Usage"
+    , "columns":
+    ["Function Name", "ALUTs ", "FFs  ", "RAMs ", "DSPs ", "MLABs"]
+    , "children":
+    [
+      {
+        "name":"slavereg_comp"
+        , "data":
+        [3518, 12443, 68, 2.5, 64]
+        , "debug":
+        [
+          [
+            {
+              "filename":"/home/user/projects/A10_PR/fpga-partial-reconfig-master/ref_designs/Q21.1_a10_pcie_devkit_pr/source/basic_hls3_persona/hls/src/hls1.h"
+              , "line":29
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Total"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [3518, 12443, 68, 2, 64]
+        , "data_percent":
+        [0.411751, 0.728172, 2.50645, 0.197628]
+      }
+      , {
+        "name":"Available"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [854400, 1708800, 2713, 1518, 0]
+      }
+    ]
+  }
+  , "compileWarnings":
+  {
+    "name":"Compile Warnings"
+    , "children":
+    [
+    ]
+  }
+}

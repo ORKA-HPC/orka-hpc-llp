@@ -1,0 +1,12 @@
+[foss]
+name = JSGantt Improved
+version = 2.3
+description = Javascript Gantt: fully featured gantt chart component built entirely with JS and CSS. No images or external libs required. Project based on https://code.google.com/p/jsgantt/.
+case = 14010116028
+source = true
+binary = false
+modified = true
+usage = redistributed
+license_type = BSD
+license_url = https://github.com/jsGanttImproved/jsgantt-improved/blob/master/LICENSE
+download_url = https://github.com/jsGanttImproved/jsgantt-improved

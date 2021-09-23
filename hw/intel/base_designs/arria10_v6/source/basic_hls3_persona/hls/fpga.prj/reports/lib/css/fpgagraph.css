@@ -1,0 +1,37 @@
+.node rect, .node circle, .node polygon, .node ellipse, .cluster rect
+{
+  cursor: pointer;
+  fill: #ffffff;
+  stroke: #333333;
+}
+
+.edgePath path.path {
+  stroke: #333333;
+  opacity: 0.3;
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+.node .label text {
+  stroke-width: 0px;
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+.edgeLabel .label text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+/* Styling for feedback and critical edges */
+.feedbackPath {
+  stroke: #005a9d;
+  fill: #00519d;
+  opacity: 1;
+}
+
+.criticalPath {
+  stroke: #ed1c24;
+  fill: #ed1c24;
+  opacity: 1;
+}

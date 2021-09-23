@@ -1,0 +1,1 @@
+/opt/Xilinx/SDK/2018.3/bin/xsct boot.tcl blackpearl xcvu9p ../../../bitstreams/8bc5c953-8c2e-4ee1-8936-d3f3827ba856.bit

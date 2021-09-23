@@ -1,0 +1,11 @@
+	component bsp_top_sld_jtag_bridge_agent_0 is
+		port (
+			tck     : out std_logic;        -- tck
+			tms     : out std_logic;        -- tms
+			tdi     : out std_logic;        -- tdi
+			vir_tdi : out std_logic;        -- vir_tdi
+			ena     : out std_logic;        -- ena
+			tdo     : in  std_logic := 'X'  -- tdo
+		);
+	end component bsp_top_sld_jtag_bridge_agent_0;
+

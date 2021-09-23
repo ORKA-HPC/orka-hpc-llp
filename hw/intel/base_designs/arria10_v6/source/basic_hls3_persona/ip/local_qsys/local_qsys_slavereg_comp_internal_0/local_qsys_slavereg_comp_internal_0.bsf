@@ -1,0 +1,197 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 432 272)
+	(text "local_qsys_slavereg_comp_internal_0" (rect 104 -1 258 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 256 20 268)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clock" (rect 0 0 20 12)(font "Arial" (font_size 8)))
+		(text "clock" (rect 4 61 34 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 144 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "resetn" (rect 0 0 24 12)(font "Arial" (font_size 8)))
+		(text "resetn" (rect 4 101 40 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 144 112)(line_width 1))
+	)
+	(port
+		(pt 432 144)
+		(input)
+		(text "avmm_1_rw_readdatavalid" (rect 0 0 109 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_readdatavalid" (rect 298 133 436 144)(font "Arial" (font_size 8)))
+		(line (pt 432 144)(pt 272 144)(line_width 1))
+	)
+	(port
+		(pt 432 176)
+		(input)
+		(text "avmm_1_rw_readdata[511..0]" (rect 0 0 119 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_readdata[511..0]" (rect 288 165 444 176)(font "Arial" (font_size 8)))
+		(line (pt 432 176)(pt 272 176)(line_width 3))
+	)
+	(port
+		(pt 432 224)
+		(input)
+		(text "avmm_1_rw_waitrequest" (rect 0 0 101 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_waitrequest" (rect 305 213 431 224)(font "Arial" (font_size 8)))
+		(line (pt 432 224)(pt 272 224)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(input)
+		(text "avs_cra_read" (rect 0 0 57 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_read" (rect 4 141 76 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 144 152)(line_width 1))
+	)
+	(port
+		(pt 0 184)
+		(input)
+		(text "avs_cra_write" (rect 0 0 57 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_write" (rect 4 173 82 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 144 184)(line_width 1))
+	)
+	(port
+		(pt 0 200)
+		(input)
+		(text "avs_cra_writedata[63..0]" (rect 0 0 99 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_writedata[63..0]" (rect 4 189 148 200)(font "Arial" (font_size 8)))
+		(line (pt 0 200)(pt 144 200)(line_width 3))
+	)
+	(port
+		(pt 0 216)
+		(input)
+		(text "avs_cra_address[3..0]" (rect 0 0 92 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_address[3..0]" (rect 4 205 130 216)(font "Arial" (font_size 8)))
+		(line (pt 0 216)(pt 144 216)(line_width 3))
+	)
+	(port
+		(pt 0 232)
+		(input)
+		(text "avs_cra_byteenable[7..0]" (rect 0 0 102 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_byteenable[7..0]" (rect 4 221 148 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 144 232)(line_width 3))
+	)
+	(port
+		(pt 432 72)
+		(output)
+		(text "done_irq" (rect 0 0 34 12)(font "Arial" (font_size 8)))
+		(text "done_irq" (rect 387 61 435 72)(font "Arial" (font_size 8)))
+		(line (pt 432 72)(pt 272 72)(line_width 1))
+	)
+	(port
+		(pt 432 112)
+		(output)
+		(text "avmm_1_rw_address[31..0]" (rect 0 0 113 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_address[31..0]" (rect 295 101 439 112)(font "Arial" (font_size 8)))
+		(line (pt 432 112)(pt 272 112)(line_width 3))
+	)
+	(port
+		(pt 432 128)
+		(output)
+		(text "avmm_1_rw_byteenable[63..0]" (rect 0 0 125 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_byteenable[63..0]" (rect 280 117 442 128)(font "Arial" (font_size 8)))
+		(line (pt 432 128)(pt 272 128)(line_width 3))
+	)
+	(port
+		(pt 432 160)
+		(output)
+		(text "avmm_1_rw_read" (rect 0 0 75 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_read" (rect 341 149 425 160)(font "Arial" (font_size 8)))
+		(line (pt 432 160)(pt 272 160)(line_width 1))
+	)
+	(port
+		(pt 432 192)
+		(output)
+		(text "avmm_1_rw_write" (rect 0 0 75 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_write" (rect 338 181 428 192)(font "Arial" (font_size 8)))
+		(line (pt 432 192)(pt 272 192)(line_width 1))
+	)
+	(port
+		(pt 432 208)
+		(output)
+		(text "avmm_1_rw_writedata[511..0]" (rect 0 0 119 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_writedata[511..0]" (rect 285 197 447 208)(font "Arial" (font_size 8)))
+		(line (pt 432 208)(pt 272 208)(line_width 3))
+	)
+	(port
+		(pt 432 240)
+		(output)
+		(text "avmm_1_rw_burstcount[4..0]" (rect 0 0 120 12)(font "Arial" (font_size 8)))
+		(text "avmm_1_rw_burstcount[4..0]" (rect 287 229 443 240)(font "Arial" (font_size 8)))
+		(line (pt 432 240)(pt 272 240)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(output)
+		(text "avs_cra_readdata[63..0]" (rect 0 0 99 12)(font "Arial" (font_size 8)))
+		(text "avs_cra_readdata[63..0]" (rect 4 157 142 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 144 168)(line_width 3))
+	)
+	(drawing
+		(text "clock" (rect 116 43 262 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 149 67 316 144)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 115 83 260 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 149 107 340 224)(font "Arial" (color 0 0 0)))
+		(text "irq" (rect 273 43 564 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "irq" (rect 258 67 534 144)(font "Arial" (color 0 0 0)))
+		(text "avmm_1_rw" (rect 273 83 600 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 235 107 512 224)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 223 123 506 256)(font "Arial" (color 0 0 0)))
+		(text "readdatavalid" (rect 212 139 502 288)(font "Arial" (color 0 0 0)))
+		(text "read" (rect 250 155 524 320)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 232 171 512 352)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 249 187 528 384)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 231 203 516 416)(font "Arial" (color 0 0 0)))
+		(text "waitrequest" (rect 221 219 508 448)(font "Arial" (color 0 0 0)))
+		(text "burstcount" (rect 224 235 508 480)(font "Arial" (color 0 0 0)))
+		(text "avs_cra" (rect 99 123 240 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "read" (rect 149 147 322 304)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 149 163 346 336)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 149 179 328 368)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 149 195 352 400)(font "Arial" (color 0 0 0)))
+		(text "address" (rect 149 211 340 432)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 149 227 358 464)(font "Arial" (color 0 0 0)))
+		(text " local_qsys_slavereg_comp_internal_0 " (rect 263 256 748 522)(font "Arial" ))
+		(line (pt 144 32)(pt 272 32)(line_width 1))
+		(line (pt 272 32)(pt 272 256)(line_width 1))
+		(line (pt 144 256)(pt 272 256)(line_width 1))
+		(line (pt 144 32)(pt 144 256)(line_width 1))
+		(line (pt 145 52)(pt 145 76)(line_width 1))
+		(line (pt 146 52)(pt 146 76)(line_width 1))
+		(line (pt 145 92)(pt 145 116)(line_width 1))
+		(line (pt 146 92)(pt 146 116)(line_width 1))
+		(line (pt 271 52)(pt 271 76)(line_width 1))
+		(line (pt 270 52)(pt 270 76)(line_width 1))
+		(line (pt 271 92)(pt 271 244)(line_width 1))
+		(line (pt 270 92)(pt 270 244)(line_width 1))
+		(line (pt 145 132)(pt 145 236)(line_width 1))
+		(line (pt 146 132)(pt 146 236)(line_width 1))
+		(line (pt 0 0)(pt 432 0)(line_width 1))
+		(line (pt 432 0)(pt 432 272)(line_width 1))
+		(line (pt 0 272)(pt 432 272)(line_width 1))
+		(line (pt 0 0)(pt 0 272)(line_width 1))
+	)
+)

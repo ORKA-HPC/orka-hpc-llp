@@ -1,0 +1,5 @@
+./hls contains example scripts to generate a Vivado HLS IP from c++ source code
+as well as a basic c++ example with AXI master and AXI lite ctrl interface.
+
+./run_[BOARD] is a simple script to demonstrate the workflow. Check/edit paths before
+usage.

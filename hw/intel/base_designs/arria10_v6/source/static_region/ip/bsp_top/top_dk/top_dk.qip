@@ -1,0 +1,49 @@
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TOOL_VERSION "21.1"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TOP_LEVEL_COMPONENT_NAME "altpcie_devkit"
+set_global_assignment -library "top_dk" -name SOPCINFO_FILE [file join $::quartus(qip_path) "top_dk.sopcinfo"]
+set_global_assignment -entity "top_dk" -library "top_dk" -name SLD_INFO "QSYS_NAME top_dk HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "top_dk" -name MISC_FILE [file join $::quartus(qip_path) "top_dk.cmp"]
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_TARGETED_DEVICE_FAMILY "Arria 10"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_GENERATED_DEVICE_FAMILY "{Arria 10}"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "top_dk" -name MISC_FILE [file join $::quartus(qip_path) "../top_dk.ip"]
+
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_NAME "YWx0cGNpZV9kZXZraXQ="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_DISPLAY_NAME "RGV2ZWxvcG1lbnQgS2l0IDogUGlub3V0IGRyaXZlcnM="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_VERSION "MTkuMQ=="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_DESCRIPTION "SW50ZXJmYWNlIFByb3RvY29scy9QQ0kgRXhwcmVzcy9RU1lTIEV4YW1wbGUgRGVzaWducw=="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_PARAMETER "SU5URU5ERURfREVWSUNFX0ZBTUlMWQ==::QXJyaWEgMTA=::SU5URU5ERURfREVWSUNFX0ZBTUlMWQ=="
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_COMPONENT_GROUP "SW50ZXJmYWNlIFByb3RvY29scy9QQ0kgRXhwcmVzcy9RU1lTIEV4YW1wbGUgRGVzaWducw=="
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_NAME "dG9wX2Rr"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::QXJyaWEgMTA=::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBBWDExNVMyRjQ1STFTRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::MQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19ET01BSU4=::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "top_dk" -library "top_dk" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19SRVNFVF9ET01BSU4=::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+
+set_global_assignment -library "altpcie_devkit_191" -name VERILOG_FILE [file join $::quartus(qip_path) "altpcie_devkit_191/synth/altpcie_devkit.v"]
+set_global_assignment -library "altpcie_devkit_191" -name SDC_FILE [file join $::quartus(qip_path) "altpcie_devkit_191/synth/altpcie_devkit.sdc"]
+set_global_assignment -library "altpcie_devkit_191" -name VERILOG_FILE [file join $::quartus(qip_path) "altpcie_devkit_191/synth/altpcie_reset_delay_sync.v"]
+set_global_assignment -library "altpcie_devkit_191" -name VERILOG_FILE [file join $::quartus(qip_path) "altpcie_devkit_191/synth/altpcie_sc_bitsync.v"]
+set_global_assignment -library "top_dk" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/top_dk.v"]
+
+
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_TOOL_NAME "altpcie_devkit"
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_TOOL_VERSION "19.1"
+set_global_assignment -entity "altpcie_devkit" -library "altpcie_devkit_191" -name IP_TOOL_ENV "QsysPrimePro"
+

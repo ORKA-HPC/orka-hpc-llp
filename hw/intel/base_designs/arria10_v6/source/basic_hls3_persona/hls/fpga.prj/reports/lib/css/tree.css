@@ -1,0 +1,31 @@
+
+.fancytree-container,
+span.fancytree-focused span.fancytree-title
+{
+    outline: 0 !important;
+}
+
+ul.fancytree-container {
+  border: 0px;
+}
+
+.col-explorer {
+  padding-right: 0px;
+  padding-left: 10px;
+}
+
+#tree-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 300px;
+}
+
+#outline-list {
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+
+.tree-body {
+  padding: 0px;
+  height: calc(100% - 56px);
+}

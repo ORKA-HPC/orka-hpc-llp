@@ -1,0 +1,40 @@
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TOOL_VERSION "21.1"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TOOL_VENDOR_NAME "RR"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TOP_LEVEL_COMPONENT_NAME "pr_handshake"
+set_global_assignment -library "local_qsys_pr_handshake_0" -name SOPCINFO_FILE [file join $::quartus(qip_path) "local_qsys_pr_handshake_0.sopcinfo"]
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name SLD_INFO "QSYS_NAME local_qsys_pr_handshake_0 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "local_qsys_pr_handshake_0" -name MISC_FILE [file join $::quartus(qip_path) "local_qsys_pr_handshake_0.cmp"]
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_TARGETED_DEVICE_FAMILY "Arria 10"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_GENERATED_DEVICE_FAMILY "{Arria 10}"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "local_qsys_pr_handshake_0" -name MISC_FILE [file join $::quartus(qip_path) "../local_qsys_pr_handshake_0.ip"]
+
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_NAME "cHJfaGFuZHNoYWtl"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_DISPLAY_NAME "cHJfaGFuZHNoYWtl"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_AUTHOR "UlI="
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_DESCRIPTION "cGFydGlhbCBSZWNvbmZpZ3VyYXRpb24gSGFuZHNoYWtlIEFja25vd2xlZGdl"
+set_global_assignment -entity "pr_handshake" -library "pr_handshake_10" -name IP_COMPONENT_GROUP "UFI="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_NAME "bG9jYWxfcXN5c19wcl9oYW5kc2hha2VfMA=="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_AUTHOR "UlI="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::QXJyaWEgMTA=::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBBWDExNVMyRjQ1STFTRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::MQ==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19ET01BSU4=::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "local_qsys_pr_handshake_0" -library "local_qsys_pr_handshake_0" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19SRVNFVF9ET01BSU4=::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+
+set_global_assignment -library "pr_handshake_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "pr_handshake_10/synth/pr_handshake.sv"]
+set_global_assignment -library "local_qsys_pr_handshake_0" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/local_qsys_pr_handshake_0.v"]
+

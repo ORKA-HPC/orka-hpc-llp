@@ -1,0 +1,127 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 272 296)
+	(text "avalon_system_config" (rect 71 -1 163 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 280 20 292)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk" (rect 0 0 10 12)(font "Arial" (font_size 8)))
+		(text "clk" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 96 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "address[9..0]" (rect 0 0 51 12)(font "Arial" (font_size 8)))
+		(text "address[9..0]" (rect 4 101 82 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 96 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "debugaccess" (rect 0 0 51 12)(font "Arial" (font_size 8)))
+		(text "debugaccess" (rect 4 117 70 128)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 96 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "clken" (rect 0 0 20 12)(font "Arial" (font_size 8)))
+		(text "clken" (rect 4 133 34 144)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 96 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "chipselect" (rect 0 0 37 12)(font "Arial" (font_size 8)))
+		(text "chipselect" (rect 4 149 64 160)(font "Arial" (font_size 8)))
+		(line (pt 0 160)(pt 96 160)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "write" (rect 0 0 17 12)(font "Arial" (font_size 8)))
+		(text "write" (rect 4 165 34 176)(font "Arial" (font_size 8)))
+		(line (pt 0 176)(pt 96 176)(line_width 1))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "writedata[31..0]" (rect 0 0 57 12)(font "Arial" (font_size 8)))
+		(text "writedata[31..0]" (rect 4 197 100 208)(font "Arial" (font_size 8)))
+		(line (pt 0 208)(pt 96 208)(line_width 3))
+	)
+	(port
+		(pt 0 224)
+		(input)
+		(text "byteenable[3..0]" (rect 0 0 62 12)(font "Arial" (font_size 8)))
+		(text "byteenable[3..0]" (rect 4 213 100 224)(font "Arial" (font_size 8)))
+		(line (pt 0 224)(pt 96 224)(line_width 3))
+	)
+	(port
+		(pt 0 264)
+		(input)
+		(text "reset" (rect 0 0 20 12)(font "Arial" (font_size 8)))
+		(text "reset" (rect 4 253 34 264)(font "Arial" (font_size 8)))
+		(line (pt 0 264)(pt 96 264)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(output)
+		(text "readdata[31..0]" (rect 0 0 57 12)(font "Arial" (font_size 8)))
+		(text "readdata[31..0]" (rect 4 181 94 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 96 192)(line_width 3))
+	)
+	(drawing
+		(text "clk1" (rect 76 43 176 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 101 67 220 144)(font "Arial" (color 0 0 0)))
+		(text "s1" (rect 85 83 182 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 101 107 244 224)(font "Arial" (color 0 0 0)))
+		(text "debugaccess" (rect 101 123 268 256)(font "Arial" (color 0 0 0)))
+		(text "clken" (rect 101 139 232 288)(font "Arial" (color 0 0 0)))
+		(text "chipselect" (rect 101 155 262 320)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 101 171 232 352)(font "Arial" (color 0 0 0)))
+		(text "readdata" (rect 101 187 250 384)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 101 203 256 416)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 101 219 262 448)(font "Arial" (color 0 0 0)))
+		(text "reset1" (rect 62 235 160 483)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset" (rect 101 259 232 528)(font "Arial" (color 0 0 0)))
+		(text " avalon_system_config " (rect 171 280 474 570)(font "Arial" ))
+		(line (pt 96 32)(pt 176 32)(line_width 1))
+		(line (pt 176 32)(pt 176 280)(line_width 1))
+		(line (pt 96 280)(pt 176 280)(line_width 1))
+		(line (pt 96 32)(pt 96 280)(line_width 1))
+		(line (pt 97 52)(pt 97 76)(line_width 1))
+		(line (pt 98 52)(pt 98 76)(line_width 1))
+		(line (pt 97 92)(pt 97 228)(line_width 1))
+		(line (pt 98 92)(pt 98 228)(line_width 1))
+		(line (pt 97 244)(pt 97 268)(line_width 1))
+		(line (pt 98 244)(pt 98 268)(line_width 1))
+		(line (pt 0 0)(pt 272 0)(line_width 1))
+		(line (pt 272 0)(pt 272 296)(line_width 1))
+		(line (pt 0 296)(pt 272 296)(line_width 1))
+		(line (pt 0 0)(pt 0 296)(line_width 1))
+	)
+)

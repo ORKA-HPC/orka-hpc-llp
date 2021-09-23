@@ -1,0 +1,6 @@
+--style=allman
+--add-braces
+--indent=spaces=4
+--attach-closing-while
+--indent-switches
+--indent-continuation=1

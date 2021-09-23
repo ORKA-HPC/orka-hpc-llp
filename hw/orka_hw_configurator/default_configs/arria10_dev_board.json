@@ -1,0 +1,9 @@
+{
+    "vendor" :                  "Intel",
+    "platform_name" :           "ARRIA10",
+    "design_dir" :              "/home/hellmann/work/ORKAPCIe/$vivado_version",
+    "template_project" :        "arria10",
+    "template_persona" :        "hls_persona_template",
+    "template_persona_qsf" :    "hls_persona_template.qsf",
+    "template_project_name" :   "a10_pcie_devkit_cvp"
+}
