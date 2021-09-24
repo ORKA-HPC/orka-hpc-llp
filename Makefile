@@ -33,11 +33,19 @@ sw-dep:
 
 .PHONY: xdma
 xdma:
-	$(MAKE) -C 3rdparty/xilinx_dma_drivers/XDMA/linux-kernel/xdma
+	$(MAKE) all -C 3rdparty/xilinx_dma_drivers/XDMA/linux-kernel/xdma
+
+.PHONY: install-xdma
+install-xdma:
+	$(MAKE) install -C 3rdparty/xilinx_dma_drivers/XDMA/linux-kernel/xdma
 
 .PHONY: intel
 intel:
 	$(MAKE) build -C 3rdparty/intel_drivers/fpga_pcie
+
+.PHONY: install-intel
+install-intel:
+	$(MAKE) install -C 3rdparty/intel_drivers/fpga_pcie
 
 .PHONY: clean
 clean: clean-hw-dep clean-sw-dep
