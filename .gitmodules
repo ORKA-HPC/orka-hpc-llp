@@ -28,3 +28,4 @@
 [submodule "3rdparty/xilinx_dma_drivers"]
 	path = 3rdparty/xilinx_dma_drivers
 	url = https://github.com/HellmannM/dma_ip_drivers.git
+    branch = centos8fix
