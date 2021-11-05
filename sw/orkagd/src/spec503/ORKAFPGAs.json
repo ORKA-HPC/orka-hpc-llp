@@ -1,0 +1,68 @@
+{
+  "FileType": "BoardSupportPackageFPGAConfig",
+  "ManufacturerFPGA":
+  [
+    {
+      "--------------------------": "-------------------------------------------",
+      "ManufacturerName": "Xilinx",
+      "ManufacturerID": 1,
+      "FPGAType":
+      [
+        {
+          "FullNameQualifier": "xcvu9p-flga2104-2L-e",
+          "Category": "GeneralPurpose",
+          "Family": "Virtex7UltraScalePlus",
+          "Package": "FLGA2104",
+          "Speedgrade": "2L",
+          "Temperature": "E"
+        },
+        {
+          "FullNameQualifier": "xc7vx690t-2ffg1761c",
+          "Category": "GeneralPurpose",
+          "Family": "Virtex7",
+          "Package": "FFG1761",
+          "Speedgrade": "2",
+          "Temperature": "C"
+        },
+        {
+          "FullNameQualifier": "xc7a35ticsg324-1L",
+          "Category": "GeneralPurpose",
+          "Family": "Artix7",
+          "Package": "CSG324",
+          "Speedgrade": "1l",
+          "Temperature": "C"
+        },
+        {
+          "FullNameQualifier": "xc7a100tcsg324-1",
+          "Category": "GeneralPurpose",
+          "Family": "Artix7",
+          "Package": "CSG324",
+          "Speedgrade": "1",
+          "Temperature": "C"
+        }
+      ]
+    },
+    {
+      "--------------------------": "-------------------------------------------",
+      "ManufacturerName": "Intel",
+      "ManufacturerID": 2,
+      "FPGAType":
+      [
+        {
+          "FullNameQualifier": "10AX115S2F45I1SG",
+          "Category": "GeneralPurpose",
+          "Family": "Arria 10 GX 1150",
+          "Speedgrade": "I1",
+          "Power": "S"
+        },
+        {
+          "FullNameQualifier": "1SX280HN2F43E2VG",
+          "Category": "GeneralPurpose",
+          "Family": "Stratix 10 SX",
+          "Speedgrade": "E2",
+          "Power": "V"
+        }
+      ]
+    }
+  ]
+}
