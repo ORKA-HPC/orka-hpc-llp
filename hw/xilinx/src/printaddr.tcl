@@ -200,6 +200,21 @@ if {!$create_new_json} {
             #TODO
             writeobji $addr_file $t Driver 0 ,
             writeobjs $addr_file $t Bitstream ${bitstream_filename} ,
+
+            # Single memory region with no additional offset
+            indent $addr_file $t; exec printf "\"MemoryRegions\":\n" >> $addr_file
+            indent $addr_file $t; exec printf "\[\n" >> $addr_file
+                incr t
+                indent $addr_file $t; exec printf "\{\n" >> $addr_file
+                    incr t
+                    writeobjs $addr_file $t Comment "simple version" ,
+                    writeobjs $addr_file $t memcpyOffset "0x0" ""
+                set t [expr {$t - 1}]
+                indent $addr_file $t; exec printf "\}\n" >> $addr_file
+            set t [expr {$t - 1}]
+            indent $addr_file $t; exec printf "\],\n" >> $addr_file
+
+            # Components
             indent $addr_file $t; exec printf "\"Components\":\n" >> $addr_file
             indent $addr_file $t; exec printf "\[\n" >> $addr_file
                 incr t
