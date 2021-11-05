@@ -736,10 +736,10 @@ ORKAGD_InterpreterFileInterprete( void *interpreterFileBuffer, size_t interprete
                         }
                     }
                     ORKAVEC_PushBack( ORKAGD_g_TranslatorManufacturers, ( void * ) &transLator );
-                }
+                } // for ( board = json_getChild( boards ); board != 0; board = json_getSibling( board ) )
             }
-        }
-        rv = TRUE;
+        } // for ( manufacturer = json_getChild( manufacturers ); manufacturer != 0; manufacturer = json_getSibling( manufacturer ) )
+        rv = true;
     } while ( 0 );
     return rv;
 }
@@ -1466,7 +1466,7 @@ ORKAGD_Init( const char *configFileSearchPath, const char *bitstreamSearchPath, 
         ORKAGD_DBG_PRINTF( "\n" );
         ORKAGD_DBG_PRINTF( "\n" );
         ORKAGD_DBG_PRINTF( "ORKAGD_Init: InterpreterConfigFile: %s\n", fullName );
-        rv &= ORKAGD_InterpreterFileRead( fullName );
+        rc &= ORKAGD_InterpreterFileRead( fullName );
         StringDestroy( fullName );
         ORKAGD_DBG_PRINTF( "ORKAGD_Init: InterpreterConfigFile: %s\n", rc ? "(ok)" : "(Nok)" );
 
@@ -2055,7 +2055,7 @@ ORKAGD_RegisterGetHandleByName( const ORKAGD_FPGAComponent_t *component, const c
         // extract table elements and fill into structure
         if ( 0 == strcmp( registerName, regArray[ idx ].name ) )
         {
-            rc = ( uint64_t )( ( void * ) ( &regArray[ idx ] ) );
+            rc = ( uint64_t ) ( ( void * ) ( &regArray[ idx ] ) );
             ORKAGD_DBG_PRINTF( "ORKAGD_RegisterGetHandleByName(): rc = 0x%16.16" PRIx64 "\n", rc );
             break;
         }
@@ -2078,7 +2078,7 @@ ORKAGD_RegisterGetHandleByIndex( const ORKAGD_FPGAComponent_t *component, const 
             // loop over all table entries and copy them element for element into the new array
             if ( idx < numRecords )
             {
-                rc = ( uint64_t )( ( void * ) ( &regArray[ idx ] ) );
+                rc = ( uint64_t ) ( ( void * ) ( &regArray[ idx ] ) );
             }
         }
     }
@@ -2161,7 +2161,7 @@ ORKAGD_RegisterWriteByNameU64( const ORKAGD_FPGAComponent_t *component, const ch
         if ( ORKA_ILLEGAL_VALUE != offset )
         {
             rv = ORKAGD_RegisterU32Write( component, offset, ( uint32_t ) value );
-            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t )( value >> 32 ) );
+            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t ) ( value >> 32 ) );
         }
     }
     return rv;
@@ -2185,7 +2185,7 @@ ORKAGD_RegisterWriteByIndex( const ORKAGD_FPGAComponent_t *component, const uint
                 case 64:
                     rv = ORKAGD_RegisterU32Write( component, offset + 4, ( *( ( uint64_t * ) value ) ) >> 32 );
                 case 32:
-                    rv &= ORKAGD_RegisterU32Write( component, offset, ( uint32_t )( *( ( uint64_t * ) value ) ) );
+                    rv &= ORKAGD_RegisterU32Write( component, offset, ( uint32_t ) ( *( ( uint64_t * ) value ) ) );
                     break;
             }
         }
@@ -2218,7 +2218,7 @@ ORKAGD_RegisterWriteByIndexU64( const ORKAGD_FPGAComponent_t *component, const u
         if ( ORKA_ILLEGAL_VALUE != offset )
         {
             rv = ORKAGD_RegisterU32Write( component, offset, ( uint32_t ) value );
-            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t )( value >> 32 ) );
+            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t ) ( value >> 32 ) );
         }
     }
     return rv;
@@ -2246,7 +2246,7 @@ ORKAGD_RegisterWriteByHandle( const uint64_t handle, const void *value )
                 case 64:
                     rv = ORKAGD_RegisterU32Write( component, offset + 4, ( *( ( uint64_t * ) value ) ) >> 32 );
                 case 32:
-                    rv &= ORKAGD_RegisterU32Write( component, offset, ( uint32_t )( *( ( uint64_t * ) value ) ) );
+                    rv &= ORKAGD_RegisterU32Write( component, offset, ( uint32_t ) ( *( ( uint64_t * ) value ) ) );
                     break;
             }
         }
@@ -2300,8 +2300,8 @@ ORKAGD_RegisterWriteByHandleU64( const uint64_t handle, const uint64_t *value )
         {
             uint64_t offset = regEntry->offset;
 
-            rv = ORKAGD_RegisterU32Write( component, offset, ( uint32_t )( *value ) );
-            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t )( ( *value ) >> 32 ) );
+            rv = ORKAGD_RegisterU32Write( component, offset, ( uint32_t ) ( *value ) );
+            rv &= ORKAGD_RegisterU32Write( component, offset + 4, ( uint32_t ) ( ( *value ) >> 32 ) );
         }
         else
         {
@@ -2357,7 +2357,7 @@ ORKAGD_RegisterReadByNameU64( const ORKAGD_FPGAComponent_t *component, const cha
         uint64_t offset = ORKAGD_RegisterGetOffsetByName( component, registerName );
         if ( ORKA_ILLEGAL_VALUE != offset )
         {
-            rv = ( ( uint64_t )( ORKAGD_RegisterU32Read( component, offset + 4 ) ) ) << 32;
+            rv = ( ( uint64_t ) ( ORKAGD_RegisterU32Read( component, offset + 4 ) ) ) << 32;
             rv |= ORKAGD_RegisterU32Read( component, offset );
         }
     }
@@ -2524,8 +2524,8 @@ ORKAGD_RegisterReadByHandleEx( const uint64_t handle, void *pValue )
                     break;
                 case 64:
                     prv64 = ( uint64_t * ) pValue;
-                    rv64  = ( ( uint64_t )( ORKAGD_RegisterU32Read( component, offset + 4 ) ) ) << 32;
-                    rv64 |= ( ( uint64_t )( ORKAGD_RegisterU32Read( component, offset ) ) );
+                    rv64  = ( ( uint64_t ) ( ORKAGD_RegisterU32Read( component, offset + 4 ) ) ) << 32;
+                    rv64 |= ( ( uint64_t ) ( ORKAGD_RegisterU32Read( component, offset ) ) );
                     *prv64 = rv64;
                     break;
                 case 32:
@@ -2611,6 +2611,423 @@ ORKAGD_RegisterReadByHandleU64Ex( const uint64_t handle, uint64_t *pValue )
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#if 0
+// new version
+void *
+ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
+{
+    bool                    found                   = false;
+    ORKAGD_TargetBoardList *tbl                     = ( ORKAGD_TargetBoardList * ) board;
+    ORKADB_RecordHandle_t * recordBoard             = tbl->recordCurrent;
+    ORKADB_FieldHandle_t *  fieldFPGA               = tbl->fieldManufacturerFPGAs;
+    ORKADB_FieldHandle_t *  fieldInfrastructureName = tbl->fieldInfrastructureName;
+    char *                  infrastructureName      = *( ( char ** ) ( ORKADB_RecordGetFieldAddrByHandle( recordBoard, fieldInfrastructureName ) ) );   // get back a pointer to the string
+    ORKADB_TableHandle_t *  tableFPGAs              = *( ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( recordBoard, fieldFPGA ) ) ); // get back a pointer to the tablehandle
+    ORKADB_TableHandle_t *  tableDrivers            = tbl->tableDrivers;
+    ORKADB_TableHandle_t *  tablePCIeBars           = tbl->tablePCIeBars;
+
+    // reserve space of a "collector struct"
+    ORKAGD_FPGAHandle_t *rv = ( ORKAGD_FPGAHandle_t * ) calloc( 1, sizeof( ORKAGD_FPGAHandle_t ) );
+    ORKAGD_DBG_PRINTF( "Handle = " PRIp "\n", rv );
+    do // start pseudo loop (easier exit on error)
+    {
+        if ( !rv )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! Handle = " PRIp "\n", rv );
+            break;
+        }
+
+        rv->board = tbl;
+        ORKADB_TableHandleDump( tableFPGAs );
+
+        // with the index of the FPGA we access the table holding all FPGAs. Here we get the complete record.
+        ORKADB_RecordHandle_t **recPtr = ( ORKADB_RecordHandle_t ** ) ORKAVEC_GetAt( tableFPGAs->records, indexFPGA );
+        if ( !recPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! No FPGA record ...\n" );
+            break;
+        }
+        rv->recordFPGA = *recPtr;
+
+        // dump it out
+        ORKADB_RecordDump( rv->recordFPGA );
+
+        // to access the record, we have to know the filed information.
+        rv->tableFPGAs             = tableFPGAs;
+        rv->fieldFullNameQualifier = ORKADB_FieldHandleGet( tableFPGAs, "FullNameQualifier" );
+        rv->fieldDriver            = ORKADB_FieldHandleGet( tableFPGAs, "Driver" );
+        rv->fieldComponents        = ORKADB_FieldHandleGet( tableFPGAs, "Components" );
+        rv->fieldMemoryRegions     = ORKADB_FieldHandleGet( tableFPGAs, "MemoryRegions" );
+
+        // components table belonging to this specific FPGA
+        // ================================================
+
+        // here we get the content(!) of the fieldComponents field. This field represents a new table.
+        ORKADB_TableHandle_t **handlePtr = ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldComponents ) ); // get back a pointer to the tablehandle
+        if ( !handlePtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! No componentstable found ...\n" );
+            break;
+        }
+        rv->tableComponents = *handlePtr;
+
+        // to access the records of this component table, we need information about its fields
+        rv->fieldComponentsName      = ORKADB_FieldHandleGet( rv->tableComponents, "name" );
+        rv->fieldComponentsOffset    = ORKADB_FieldHandleGet( rv->tableComponents, "offset" );
+        rv->fieldComponentsRange     = ORKADB_FieldHandleGet( rv->tableComponents, "range" );
+        rv->fieldComponentsType      = ORKADB_FieldHandleGet( rv->tableComponents, "type" );
+        rv->fieldComponentsIpAddress = ORKADB_FieldHandleGet( rv->tableComponents, "ipAddress" );
+        rv->fieldComponentsSubType   = ORKADB_FieldHandleGet( rv->tableComponents, "subtype" );
+        rv->fieldComponentsIpAccess  = ORKADB_FieldHandleGet( rv->tableComponents, "ipAccess" );
+        rv->fieldComponentsRegisters = ORKADB_FieldHandleGet( rv->tableComponents, "Registers" );
+
+        // here we get the content(!) of the fieldMemoryRegions field. This field represents a new table.
+        ORKADB_TableHandle_t **memRegionsPtr = ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldMemoryRegions ) ); // get back a pointer to the tablehandle
+        if ( !memRegionsPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! No memory regions table found ... [at least one entry should exist]\n" );
+            break;
+        }
+        rv->tableMemoryRegions = *memRegionsPtr;
+
+        // to access the records of this fieldMemoryRegions table, we need information about its fields
+        rv->fieldMemoryRegionsOffset = ORKADB_FieldHandleGet( rv->tableMemoryRegions, "memcpyOffset" );
+        void *    record             = ( ( void * ) ORKADB_RecordGetAt( rv->tableMemoryRegions, 0 ) );
+        uint64_t *memcpyOffsetPtr    = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( record, rv->fieldMemoryRegionsOffset );
+
+        // from board, get the driver parameters
+        rv->fieldDriverParamsDriverName = ORKADB_FieldHandleGet( tableDrivers, "DriverName" );
+        rv->fieldDriverParamsInstance   = ORKADB_FieldHandleGet( tableDrivers, "Instance" );
+        rv->fieldDriverParamsPort       = ORKADB_FieldHandleGet( tableDrivers, "Port" );
+        rv->fieldDriverParamsSpeed      = ORKADB_FieldHandleGet( tableDrivers, "Speed" );
+        rv->fieldDriverParamsAddress    = ORKADB_FieldHandleGet( tableDrivers, "Address" );
+
+        // from the board, get the PCIeBar parameters
+        rv->board->fieldPCIeBarType = ORKADB_FieldHandleGet( tablePCIeBars, "type" );
+        rv->board->fieldPCIeBarSize = ORKADB_FieldHandleGet( tablePCIeBars, "size" );
+
+        // extract the full qualified FPGA name
+        char **fnqPtr = ( char ** ) ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldFullNameQualifier ); // get back a pointer to the string-pointer
+        if ( !fnqPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! No FPGA full name qualifier found\n" );
+            break;
+        }
+        char *fullNameQualifierNeeded = *fnqPtr;
+
+        // get the driverIndex
+        uint64_t *diPtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldDriver );
+        if ( !fnqPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR! No driver index found\n" );
+            break;
+        }
+        rv->driverIndex = *diPtr;
+
+        uint64_t numDriversAvailable = ORKAVEC_Size( tbl->tableDrivers->records );
+        ORKAGD_DBG_PRINTF( "numDrivers = %" PRId64 "\n", numDriversAvailable );
+        if ( ( rv->driverIndex < numDriversAvailable ) && memcpyOffsetPtr )
+        {
+            rv->memcpyOffset = *memcpyOffsetPtr;
+
+            // with the index we access now the specified driver parameter block
+            ORKADB_RecordHandle_t *entryDriverParamsRecord = ( ( ORKADB_RecordHandle_t * ) ORKADB_RecordGetAt( tableDrivers, rv->driverIndex ) );
+            if ( !entryDriverParamsRecord )
+            {
+                ORKAGD_DBG_PRINTF( "ERROR! No driver parameter record found\n" );
+                break;
+            }
+            // ORKADB_RecordDump( entryDriverParamsRecord );
+
+            // now look in the list of all FPGAs whether we support this FPGA
+            ORKAVEC_Iter_t *iter = ORKAVEC_IterCreate( ORKAGD_g_FPGADescriptions );
+            ORKAGD_DBG_PRINTF( "Requested FPGA is '%s' - Looking for appropriate FPGA from internal database ...\n", fullNameQualifierNeeded );
+            for ( void *i = ORKAVEC_IterBegin( iter ); ORKAVEC_IterEnd( iter ); i = ORKAVEC_IterNext( iter ) )
+            {
+                ORKAGD_FPGADescription_t *fpgaDescription           = ( ORKAGD_FPGADescription_t * ) i; // get back a pointer to the string-pointer
+                char *                    fullNameQualifierExamined = fpgaDescription->fullNameQualifier;
+
+                if ( 0 == StringCompareIgnoreCase( fullNameQualifierExamined, fullNameQualifierNeeded ) )
+                {
+                    // The FPGA is supported ...
+                    // now we have the FPGA manufacturer and can look into the drivers list
+                    // for drivers of this manufacturer.
+                    // We have to check then the specified driver name of the FPGA-Board config
+                    // whether this name is available in the list of drivers
+                    ORKAGD_DBG_PRINTF( "Check DB with FPGAName '%s' ... Match!\n", fullNameQualifierExamined );
+
+                    ORKAVEC_Iter_t *iter2 = ORKAVEC_IterCreate( ORKAGD_g_TranslatorManufacturers );
+                    for ( void *j = ORKAVEC_IterBegin( iter2 ); ( !found ) && ORKAVEC_IterEnd( iter2 ); j = ORKAVEC_IterNext( iter2 ) )
+                    {
+                        ORKAGD_TranslatorManufacturerBoard_t *translatorManufacturerBoard = ( ORKAGD_TranslatorManufacturerBoard_t * ) j; // get back a pointer to the string-pointer
+                        // ORKAGD_DBG_PRINTF( "ManufacturerDrivers: %s\n", translatorManufacturerBoard->manufacturer );
+                        if ( 0 == StringCompareIgnoreCase( translatorManufacturerBoard->manufacturer, fpgaDescription->manufacturerName ) )
+                        {
+                            // Now we look for drivers:
+                            // ========================
+                            //
+                            // look in each entry of the vector whether there is one named as needed
+                            ORKAVEC_Iter_t *iter3 = ORKAVEC_IterCreate( translatorManufacturerBoard->drivers );
+                            for ( void *k = ORKAVEC_IterBegin( iter3 ); ORKAVEC_IterEnd( iter3 ); k = ORKAVEC_IterNext( iter3 ) )
+                            {
+                                ORKAGD_TranslatorDriver_t *translatorDriver = ( ORKAGD_TranslatorDriver_t * ) k; // get back a pointer to the driver struct
+                                // we extract the desired name, instance and port
+                                char *driverName = *( ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsDriverName ) );
+                                ORKAGD_DBG_PRINTF( "Check name '%s' with available names from interpreter: %s\n", driverName, translatorDriver->name );
+
+                                // =================================================
+                                // special case: TunnelClientServer
+                                // in this case we know the access type to the HOST
+                                // =================================================
+                                if ( 0 == StringCompareIgnoreCase( driverName, ORKAGD_TS_DRIVER_NAME ) )
+                                {
+                                    ORKAGD_DBG_PRINTF( "TunnelClientServer recognized: %s\n", driverName );
+                                    if ( ORKAGD_g_Config.m_TunnelClientEnabled )
+                                    {
+                                        ORKAGD_DBG_PRINTF( "TunnelClientServer enabled\n" );
+                                        uint64_t instance                   = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance ) );
+                                        uint64_t port                       = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
+                                        uint64_t connectionIndex            = ORKAGD_TS_ACCESS_ID_INDEX_ACCESS_GET( instance );
+                                        uint64_t fileIndex                  = ORKAGD_TS_ACCESS_ID_INDEX_FILE_GET( instance );
+                                        rv->interfaceTunnel.m_AccessID      = instance;
+                                        rv->interfaceTunnel.connectionIndex = connectionIndex;
+                                        rv->interfaceTunnel.fileIndex       = fileIndex;
+                                        ORKAGD_TunnelConnectionData_t *tcd  = ( ORKAGD_TunnelConnectionData_t * ) ORKAVEC_GetAt( ORKAGD_g_Config.m_TunnelServerConnectionData, connectionIndex );
+                                        if ( tcd )
+                                        {
+                                            // TODO: release this memory at the end of access !!!
+                                            void *p = ORKAGD_calloc( 1, sizeof( ORKAGD_TunnelConnectionData_t ) );
+                                            if ( p )
+                                            {
+                                                rv->interfaceTunnel.m_TunnelConnectionData = p;
+                                                memcpy( p, ( void * ) tcd, sizeof( ORKAGD_TunnelConnectionData_t ) );
+                                                rv->interfaceAccessType = ORKAGD_ACCESSTYPE_IPV4_TUNNEL;
+                                                found                   = true;
+                                            }
+                                            else
+                                            {
+                                                ORKAGD_DBG_PRINTF( "ERROR!!! Out of memory\n" );
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ORKAGD_DBG_PRINTF( "ERROR!!! No connection data found ... (memory problem?)\n" );
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // server to client connection not implemented so far ...
+
+                                        ORKAGD_DBG_PRINTF( "TunnelClientServer NOT enabled ... (is this desired?)\n" );
+                                    }
+                                }
+
+                                // if previously not found, try translator driver names ...
+                                if ( ( !found ) && 0 == StringCompareIgnoreCase( driverName, translatorDriver->name ) )
+                                {
+
+                                    rv->interfaceAccessType = translatorDriver->accessType;
+
+                                    switch ( translatorDriver->accessType )
+                                    {
+                                        default:
+                                        case ORKAGD_ACCESSTYPE_UNDEFINED:
+                                        {
+                                            ORKAGD_DBG_PRINTF( "* ERROR: accessundefined\n" );
+                                            break;
+                                        }
+                                        case ORKAGD_ACCESSTYPE_XDMA:
+                                        {
+                                            // Xilinx DMA
+                                            ORKAGD_DBG_PRINTF( "* Xilinx DMA access\n" );
+
+                                            // get the access string of the driver interface and
+                                            // replace macro keywords by the numbers
+                                            uint64_t *instancePtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance );
+                                            uint64_t *portPtr     = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort );
+                                            if ( instancePtr && portPtr )
+                                            {
+                                                uint64_t instance = *instancePtr;
+                                                uint64_t port     = *portPtr;
+#    ifdef ORKAGD_WINDOWS
+                                                rv->interfacePCIe.m_DevicePCIConfigName      = "..\\winsim.org";
+                                                rv->interfacePCIe.m_DeviceDMAReadName        = "..\\winsim.org";
+                                                rv->interfacePCIe.m_DeviceDMAWriteName       = "..\\winsim.org";
+                                                rv->interfacePCIe.m_DeviceMemoryMappedIOName = "..\\winsim.org";
+#    else
+                                                char *tmp;
+                                                rv->interfacePCIe.m_DevicePCIConfigName = StringFindAndReplaceU64( translatorDriver->controlAccess, "%interface%", instance );
+                                                tmp                                     = StringFindAndReplaceU64( translatorDriver->memcpyd2h, "%interface%", instance );
+                                                rv->interfacePCIe.m_DeviceDMAReadName   = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
+                                                free( tmp ); // free temporary string
+                                                tmp                                    = StringFindAndReplaceU64( translatorDriver->memcpyh2d, "%interface%", instance );
+                                                rv->interfacePCIe.m_DeviceDMAWriteName = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
+                                                free( tmp ); // free temporary string
+                                                rv->interfacePCIe.m_DeviceMemoryMappedIOName = StringFindAndReplaceU64( translatorDriver->registerAccess, "%interface%", instance );
+#    endif
+                                                found = true;
+                                            }
+                                            else
+                                            {
+                                                ORKAGD_DBG_PRINTF( "ERROR: instance or port not set !\n" );
+                                            }
+                                            break;
+                                        }
+                                        case ORKAGD_ACCESSTYPE_INTEL_IOCTL:
+                                        {
+                                            ORKAGD_DBG_PRINTF( "* IntelIOCtl access\n" );
+                                            // get the access string of the driver interface and
+                                            // replace macro keywords by the numbers
+                                            // TODO
+                                            // uint64_t instance                            = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance ) );
+                                            // uint64_t port                                = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
+
+                                            rv->interfacePCIe.m_DevicePCIConfigName      = translatorDriver->controlAccess;
+                                            rv->interfacePCIe.m_DeviceDMAReadName        = translatorDriver->memcpyd2h;
+                                            rv->interfacePCIe.m_DeviceDMAWriteName       = translatorDriver->memcpyh2d;
+                                            rv->interfacePCIe.m_DeviceMemoryMappedIOName = translatorDriver->registerAccess;
+
+                                            found = true;
+                                            break;
+                                        }
+                                        case ORKAGD_ACCESSTYPE_IPV4:
+                                        {
+                                            // accesss with TCP/IP custom protocol
+                                            ORKAGD_DBG_PRINTF( "* IPV4 access\n" );
+                                            char **   addrPtr  = ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsAddress );
+                                            uint64_t *portPtr  = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort );
+                                            uint64_t *speedPtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsSpeed );
+                                            if ( addrPtr && ( *addrPtr ) && portPtr && speedPtr )
+                                            {
+                                                rv->interfaceIPv4.m_ipv4Address = *addrPtr;
+                                                rv->interfaceIPv4.m_ipv4Port    = *portPtr;
+                                                rv->interfaceIPv4.m_ipv4Speed   = *speedPtr;
+                                                ORKAGD_DBG_PRINTF( "* TCP/IP Address: %s\n", rv->interfaceIPv4.m_ipv4Address );
+                                                ORKAGD_DBG_PRINTF( "* TCP/IP Port: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Port );
+                                                ORKAGD_DBG_PRINTF( "* TCP/IP Speed: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Speed );
+
+                                                found = true;
+                                            }
+                                            else
+                                            {
+                                                ORKAGD_DBG_PRINTF( "ERROR: address, port or speed not set !\n" );
+                                            }
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                if ( found )
+                                {
+                                    rv->infrastructureName = StringCreate( infrastructureName );
+
+                                    ORKAGD_FPGAComponentsCreateList( rv );
+
+                                    break;
+                                }
+                            }
+                            ORKAVEC_IterDestroy( iter3 );
+                        }
+                    }
+                    if ( !found )
+                    {
+                        ORKAGD_DBG_PRINTF( "Error: no FPGA match\n" );
+                    }
+                    ORKAVEC_IterDestroy( iter2 );
+
+                    // we have found what we were looking for
+                    rv->fpgaDescriprion = fpgaDescription;
+
+                    // leave
+                    break;
+                }
+                else
+                {
+                    ORKAGD_DBG_PRINTF( "Check DB with FPGAName '%s' ... no match ==> next if any ...\n", fullNameQualifierExamined );
+                }
+            }
+            ORKAVEC_IterDestroy( iter );
+        }
+        else // if (( rv->driverIndex < numDriversAvailable ) && memcpyOffsetPtr )
+        {
+            if ( rv->driverIndex >= numDriversAvailable )
+            {
+                ORKAGD_DBG_PRINTF( "ERROR! Driver index too high [%" PRId64 ",%" PRId64 "]\n", rv->driverIndex, numDriversAvailable );
+            }
+            if ( !memcpyOffsetPtr )
+            {
+                ORKAGD_DBG_PRINTF( "ERROR! memcpyOffsetPtr not valid [0x%p == NULL ?] !\n", memcpyOffsetPtr );
+            }
+        }
+
+        if ( found )
+        {
+            // ==> unsecure access
+            ORKAVEC_Vector_t *recordListPCIeBars = ORKADB_RecordListCreateMatchValue( tablePCIeBars, rv->board->fieldPCIeBarType, "MMIO" );
+
+            if ( 1 == ORKAVEC_Size( recordListPCIeBars ) )
+            {
+                ORKADB_FieldHandle_t *fieldHandleSize = ORKADB_FieldHandleGet( tablePCIeBars, "size" );
+
+                ORKADB_RecordHandle_t *recordPCIeBAR = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 0ULL );
+                uint64_t *             sizeMMIOPtr   = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( recordPCIeBAR, fieldHandleSize );
+                if ( sizeMMIOPtr )
+                {
+                    uint64_t sizeMMIO = *sizeMMIOPtr;
+                    rv->mmioSize      = sizeMMIO;
+                    ORKAGD_DBG_PRINTF( "sizeMMIO[A]=%" PRId64 "\n", sizeMMIO );
+                }
+                else
+                {
+                    ORKAGD_DBG_PRINTF( "sizeMMIO=<unknown> (error?)\n" );
+                }
+            }
+            else
+            {
+                if ( 1 < ORKAVEC_Size( recordListPCIeBars ) )
+                {
+                    // TODO
+                    ORKAGD_DBG_PRINTF( "WARNING: Found more than one MMIO BAR (found %" PRIx64 ")! Which one should I use?... TODO!!!\n", ORKAVEC_Size( recordListPCIeBars ) );
+                    ORKAGD_DBG_PRINTF( "Assuming we are working with Intel -> Using the second BAR\n" );
+                    ORKADB_FieldHandle_t * fieldHandleSize = ORKADB_FieldHandleGet( tablePCIeBars, "size" );
+                    ORKADB_RecordHandle_t *recordPCIeBAR   = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 1ULL );
+                    uint64_t *             sizeMMIOPtr     = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( recordPCIeBAR, fieldHandleSize );
+                    if ( sizeMMIOPtr )
+                    {
+                        uint64_t sizeMMIO = *sizeMMIOPtr;
+                        rv->mmioSize      = sizeMMIO;
+                        ORKAGD_DBG_PRINTF( "sizeMMIO[*]=%" PRId64 "\n", sizeMMIO );
+                    }
+                    else
+                    {
+                        ORKAGD_DBG_PRINTF( "sizeMMIO=<unknown> (error?)\n" );
+                    }
+                }
+            }
+        }
+        else
+        {
+            ORKAGD_DBG_PRINTF( "Error: No board with suffcient components/FPGAs found ...\n" );
+            rv = NULL;
+        }
+
+        if ( rv )
+        {
+            if ( NULL == rv->fpgaDescriprion )
+            {
+                // we havent support for this specific FPGA
+                // todo: free strings
+                free( rv );
+                // say it loud
+                rv = NULL;
+            }
+        }
+    } while ( 0 );
+
+    return ( void * ) rv;
+}
+#endif
 
 void *
 ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
@@ -3495,7 +3912,7 @@ ORKAGD_RegisterU32Write( const ORKAGD_FPGAComponent_t *component, const uint64_t
             case ORKAGD_ACCESSTYPE_INTEL_IOCTL:
             {
                 ORKAGD_IntelIOCtl_t rw_args;
-                rw_args.offset = ( uint32_t )( targetIPAddress + offset );
+                rw_args.offset = ( uint32_t ) ( targetIPAddress + offset );
                 rw_args.data   = value;
                 printf( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
                 int ret = ioctl( pTargetFPGA->interfacePCIe.m_DeviceMemoryMappedIOHandle, ORKAGD_FPGA_PR_REGION_WRITE, &rw_args );
@@ -3558,7 +3975,7 @@ ORKAGD_RegisterU32Read( const ORKAGD_FPGAComponent_t *component, const uint64_t 
             case ORKAGD_ACCESSTYPE_INTEL_IOCTL:
             {
                 ORKAGD_IntelIOCtl_t rw_args;
-                rw_args.offset = ( uint32_t )( targetIPAddress + offset );
+                rw_args.offset = ( uint32_t ) ( targetIPAddress + offset );
 
                 printf( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
                 if ( ioctl( pTargetFPGA->interfacePCIe.m_DeviceMemoryMappedIOHandle, ORKAGD_FPGA_PR_REGION_READ, &rw_args ) == -1 )
@@ -3639,7 +4056,7 @@ ORKAGD_MemcpyH2D( void *handleFPGA, const uint64_t dstDevice, const void *srcHos
                     for ( idx = 0; idx < byteSize; idx += sizeof( uint32_t ) )
                     {
                         ORKAGD_IntelIOCtl_t rw_args;
-                        uint32_t            devPtr = ( uint32_t )( dstDeviceInterface + idx );
+                        uint32_t            devPtr = ( uint32_t ) ( dstDeviceInterface + idx );
                         rw_args.offset             = devPtr;
                         rw_args.data               = *hostPtr;
                         // ORKAGD_DBG_PRINTF( "[%2" PRId64 "] Host=" PRIp ", Dev=%8.8x\n", idx, hostPtr, devPtr );
@@ -3691,7 +4108,7 @@ ORKAGD_MemcpyH2D( void *handleFPGA, const uint64_t dstDevice, const void *srcHos
                     }
 
                     uint64_t numBytes = ORKAGD_TcpIPMemcpyH2D( &ORKAGD_g_TcpIPControlBlock, pD, pSrc, byteSizePacket );
-                    rv                = ( bool_t )( numBytes == byteSizePacket );
+                    rv                = ( bool_t ) ( numBytes == byteSizePacket );
                     if ( rv )
                     {
                         bytesTransferred += ( uint32_t ) numBytes;
@@ -3709,7 +4126,7 @@ ORKAGD_MemcpyH2D( void *handleFPGA, const uint64_t dstDevice, const void *srcHos
 
 #else
                 uint64_t numBytes = ORKAGD_TcpIPMemcpyH2D( &ORKAGD_g_TcpIPControlBlock, dstDeviceInterface, srcHost, byteSize );
-                rv                = ( bool_t )( numBytes == byteSize );
+                rv                = ( bool_t ) ( numBytes == byteSize );
                 break;
 #endif
             }
@@ -3773,7 +4190,7 @@ ORKAGD_MemcpyD2H( void *handleFPGA, void *dstHost, const uint64_t srcDevice, con
                     for ( idx = 0; idx < byteSize; idx += sizeof( uint32_t ) )
                     {
                         ORKAGD_IntelIOCtl_t rw_args;
-                        uint32_t            devPtr = ( uint32_t )( srcDeviceInterface + idx );
+                        uint32_t            devPtr = ( uint32_t ) ( srcDeviceInterface + idx );
                         rw_args.offset             = devPtr;
                         // ORKAGD_DBG_PRINTF( "[%2" PRId64 "] Host=" PRIp ", Dev=%8.8x", idx, hostPtr, devPtr );
                         int ret = ioctl( pTargetFPGA->interfacePCIe.m_DeviceMemoryMappedIOHandle, ORKAGD_FPGA_PR_REGION_READ, &rw_args );
@@ -3810,7 +4227,7 @@ ORKAGD_MemcpyD2H( void *handleFPGA, void *dstHost, const uint64_t srcDevice, con
                     uint64_t byteSizePacket = numBytesCompleteTransfer < maxBytesToTransfer ? numBytesCompleteTransfer : maxBytesToTransfer;
                     // ORKAGD_DBG_PRINTF( "Calling TCP Copy[%d]: Host=0x%p Dev=0x%" PRIx64 " (%" PRId64 ")\n", loopCnt, pDest, pS, byteSizePacket );
                     uint64_t numBytes = ORKAGD_TcpIPMemcpyD2H( &ORKAGD_g_TcpIPControlBlock, pD, pS, byteSizePacket );
-                    rv                = ( bool_t )( numBytes == byteSizePacket );
+                    rv                = ( bool_t ) ( numBytes == byteSizePacket );
                     if ( rv )
                     {
                         bytesTransferred += ( uint32_t ) numBytes;

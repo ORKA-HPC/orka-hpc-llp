@@ -1,0 +1,396 @@
+{
+  "FileType": "BoardSupportPackageConfig",
+  "ManufacturersBoard":
+  [
+    {
+      "--------------------------": "-------------------------------------------",
+      "ManufacturerName": "Xilinx",
+
+      "Boards":
+      [
+        {
+          "---------": "------------",
+          "BoardName": "vcu118",
+          "Drivers":
+          [
+            {
+              "jtag":
+              {
+              }
+            },
+            {
+              "xdma":
+              {
+                "control": "/dev/xdma%interface%_control",
+                "memcpyd2h": "/dev/xdma%interface%_c2h_%dmachannel%",
+                "memcpyh2d": "/dev/xdma%interface%_h2c_%dmachannel%",
+                "register": "/dev/xdma%interface%_user"
+              }
+            },
+            {
+              "qdma":
+              {
+              }
+            },
+            {
+              "usb":
+              {
+              }
+            },
+            {
+              "ipv4":
+              {
+              }
+            },
+            {
+              "uart_usb":
+              {
+              }
+            }
+          ],
+
+          "Components": [
+            {
+              "type": "gpio",
+              "address": "/xdma_?/M_AXI_LITE/SEG_axi_gpio_0_Reg",
+              "subtype": "pushbutton",
+              "access": "register"
+            },
+            {
+              "type": "gpio",
+              "address": "/xdma_?/M_AXI_LITE/SEG_axi_gpio_1_Reg",
+              "subtype": "leds",
+              "access": "register"
+            },
+            {
+              "type": "memory",
+              "address": "/xdma_?/M_AXI/SEG_mig_?_C?_DDR4_ADDRESS_BLOCK",
+              "subtype": "ddr4",
+              "access": "memcpy"
+            },
+            {
+              "type": "gpio",
+              "address": "/microblaze_?/Data/SEG_axi_gpio_?_Reg",
+              "subtype": "LEDsAndSwitches",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/microblaze_?/Data/SEG_HlsKernel?_?_Reg",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/microblaze_?/Data/SEG_HlsKernel?_Reg",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?_?/Data_m_axi_gmem/SEG_mig_?_memaddr",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?/Data_m_axi_gmem/SEG_mig_?_memaddr",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?_?/Data_m_axi_OrkaParam?/SEG_mig_?_memaddr",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?/Data_m_axi_OrkaParam?/SEG_mig_?_memaddr",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/xdma_0/M_AXI_LITE/SEG_HlsKernel?_?_Reg",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/xdma_0/M_AXI_LITE/SEG_HlsKernel?_Reg",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?_?/Data_m_axi_gmem/SEG_mig_?_C?_DDR4_ADDRESS_BLOCK",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?/Data_m_axi_gmem/SEG_mig_?_C?_DDR4_ADDRESS_BLOCK",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?_?/Data_m_axi_OrkaParam?/SEG_mig_?_C?_DDR4_ADDRESS_BLOCK",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/HlsKernel?/Data_m_axi_OrkaParam?/SEG_mig_?_C?_DDR4_ADDRESS_BLOCK",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "/microblaze_?/Data/SEG_Ecki_0_Reg",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "/Ecki_?/Data_m_axi_gmem/SEG_mig_0_memaddr",
+              "subtype": "aximaster",
+              "access": "memcpy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ManufacturerName": "Intel",
+      "Boards":
+      [
+        {
+          "---------": "------------",
+          "BoardName": "ARRIA10",
+          "Drivers":
+          [
+            {
+              "intel_pcie":
+              {
+                "control": "/dev/fpga_pcie",
+                "memcpyd2h": "/dev/fpga_pcie",
+                "memcpyh2d": "/dev/fpga_pcie",
+                "register": "/dev/fpga_pcie"
+              }
+            }
+          ],
+          "Components":
+          [
+            {
+              "type": "orkaip",
+              "address": "HlsKernel?",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "HlsKernel?_?",
+              "subtype": "aximaster",
+              "access": "register"
+            },
+            {
+              "type": "orkaip",
+              "address": "DDR4",
+              "subtype": "ddr4",
+              "access": "memcpy"
+            },
+            {
+              "type": "orkaip",
+              "address": "PR",
+              "subtype": "aximaster",
+              "access": "register"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ManufacturersFPGAs":
+  [
+    {
+      "--------------------------": "-------------------------------------------",
+      "Name": "Xilinx",
+
+      "Category":
+      [
+        {
+          "GeneralPurpose": 1
+        },
+        {
+          "Automotive": 2
+        },
+        {
+          "Military": 4
+        },
+        {
+          "All": 65535
+        }
+      ],
+
+      "Family":
+      [
+        {
+          "All": 0
+        },
+        {
+          "Artix7": 1
+        },
+        {
+          "Artix7LowVoltage": 2
+        },
+        {
+          "Kintex7": 3
+        },
+        {
+          "Kintex7LowVoltage": 4
+        },
+        {
+          "Kintex7UltraScale": 5
+        },
+        {
+          "Kintex7UltraScalePlus": 6
+        },
+        {
+          "Virtex7": 7
+        },
+        {
+          "Virtex7LowVoltage": 8
+        },
+        {
+          "Virtex7UltraScale": 9
+        },
+        {
+          "Virtex7UltraScalePlus": 10
+        },
+        {
+          "Zync7000": 11
+        },
+        {
+          "ZyncUltraScalePlusMPSOCS": 12
+        }
+      ],
+
+      "Package":
+      [
+        {
+          "CSG324": 1
+        },
+        {
+          "FLGA2104": 2
+        },
+        {
+          "FSGD2104": 3
+        },
+        {
+          "TFFG1761": 4
+        }
+      ],
+
+      "Speed":
+      [
+        {
+          "1": 1
+        },
+        {
+          "1H": 2
+        },
+        {
+          "1HV": 3
+        },
+        {
+          "1I": 4
+        },
+        {
+          "1IL": 5
+        },
+        {
+          "1L": 6
+        },
+        {
+          "1LV": 7
+        },
+        {
+          "1M": 8
+        },
+        {
+          "1ML": 9
+        },
+        {
+          "1Q": 10
+        },
+        {
+          "1QL": 11
+        },
+        {
+          "2": 12
+        },
+        {
+          "2G": 13
+        },
+        {
+          "2I": 14
+        },
+        {
+          "2IL": 15
+        },
+        {
+          "2L": 16
+        },
+        {
+          "2LV": 17
+        },
+        {
+          "3": 18
+        }
+      ],
+
+      "Temperature":
+      [
+        {
+          "C": 1
+        },
+        {
+          "E": 2
+        },
+        {
+          "I": 3
+        },
+        {
+          "IL": 4
+        },
+        {
+          "M": 5
+        },
+        {
+          "ML": 6
+        },
+        {
+          "Q": 7
+        },
+        {
+          "QL": 8
+        }
+      ]
+    },
+
+    {
+      "Name": "Altera",
+      "FamilyAll": 0,
+      "FamilyStratix10": 1
+    },
+    {
+      "Name": "Intel",
+      "FamilyStratix10": 1
+    },
+    {
+      "Name": "Diligent"
+    }
+  ]
+}

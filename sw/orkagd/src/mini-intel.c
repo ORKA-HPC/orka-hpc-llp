@@ -38,14 +38,14 @@ main()
 // just LASYNESS factor
 #if _MSC_VER
     ORKAGD_EC_t rc = ORKAGD_Init(
-        "src\\2021-06-08-intel",   // Location of JSON-Files
-        "src\\2021-06-08-intel",   // Location of bitstreams
-        "src\\2021-06-08-intel" ); // Scratch area (writable)
+        ".\\src\\vcu118",   // Location of JSON-Files
+        ".\\src\\vcu118",   // Location of bitstreams
+        ".\\src\\vcu118" ); // Scratch area (writable)
 #else
     ORKAGD_EC_t rc = ORKAGD_Init(
-        "./2021-06-08-intel",   // Location of JSON-Files
-        "./2021-06-08-intel",   // Location of bitstreams
-        "./2021-06-08-intel" ); // Scratch area (writable)
+        "./vcu118",   // Location of JSON-Files
+        "./vcu118",   // Location of bitstreams
+        "./vcu118" ); // Scratch area (writable)
 #endif
     if ( rc )
     {

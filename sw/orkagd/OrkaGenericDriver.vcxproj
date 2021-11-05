@@ -137,10 +137,12 @@
     <None Include="src\2021-01-10\49559fba-1e9f-4ae3-bbb3-52cff7441d73-jesko.json" />
     <None Include="src\2021-01-10\ORKAFPGAs.json" />
     <None Include="src\2021-01-10\ORKAInterpreter.json" />
-    <None Include="src\2021-03-03_arty-a7-100-debugging\bitstream.json" />
     <None Include="src\2021-06-08-intel\bitstream.json" />
     <None Include="src\2021-06-08-intel\ORKAFPGAs.json" />
     <None Include="src\2021-06-08-intel\ORKAInterpreter.json" />
+    <None Include="src\vcu118\bitstream.json" />
+    <None Include="src\vcu118\ORKAFPGAs.json" />
+    <None Include="src\vcu118\ORKAInterpreter.json" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\database.c" />

@@ -16,6 +16,9 @@
     <Filter Include="Intel">
       <UniqueIdentifier>{aae785a2-4e59-4f51-92eb-636383ffda55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VCU118">
+      <UniqueIdentifier>{09eff542-bfb6-4218-96c8-a100283635df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\winsim.org">
@@ -33,9 +36,6 @@
     <None Include="..\..\.clang-format">
       <Filter>Ressourcendateien</Filter>
     </None>
-    <None Include="src\2021-03-03_arty-a7-100-debugging\bitstream.json">
-      <Filter>Ressourcendateien</Filter>
-    </None>
     <None Include="src\2021-06-08-intel\bitstream.json">
       <Filter>Intel</Filter>
     </None>
@@ -44,6 +44,15 @@
     </None>
     <None Include="src\2021-06-08-intel\ORKAInterpreter.json">
       <Filter>Intel</Filter>
+    </None>
+    <None Include="src\vcu118\bitstream.json">
+      <Filter>VCU118</Filter>
+    </None>
+    <None Include="src\vcu118\ORKAFPGAs.json">
+      <Filter>VCU118</Filter>
+    </None>
+    <None Include="src\vcu118\ORKAInterpreter.json">
+      <Filter>VCU118</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
