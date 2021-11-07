@@ -1186,37 +1186,41 @@ ORKAGD_ConfigFileInterprete( char *configFilename, void *configFileBuffer, size_
                 ORKADB_EntryFieldValueSetCopy( recordFPGA, fpgaField3, ( void * ) TableComponents );
 
                 ORKAGD_DBG_PRINTF( "ORKAGD_ConfigFileInterprete: 'Components' processed (OK)\n" );
-#if 1
+
                 // MemoryRegions ==============================================
+
+                // Create Table with MemoryRegions
+                // ===============================
+                ORKADB_TableHandle_t *TableMemoryRegions = ORKADB_TableCreate( ORKAGD_g_DataBase, "MemoryRegions" );
+
+                // Create fields of the table
+                ORKADB_FieldHandle_t *memoryRegionField1 = ORKADB_FieldCreate( TableMemoryRegions, "memcpyOffset", ORKADB_FieldType_ValueU64, ORKADB_FieldOption_Nothing );
 
                 json_t const *memoryRegions = json_getProperty( fpga, "MemoryRegions" );
                 if ( !memoryRegions || JSON_ARRAY != json_getType( memoryRegions ) )
                 {
                     ORKAGD_DBG_PRINTF( "ORKAGD_ConfigFileInterprete: Info: contains no 'MemoryRegions' array\n" );
-                    continue;
+
+                    ORKADB_RecordHandle_t *recordMemoryRegion = ORKADB_RecordCreate( TableMemoryRegions );
+                    uint64_t               dummyMemoryOffset  = 0ull;
+                    ORKADB_EntryFieldValueSetCopy( recordMemoryRegion, memoryRegionField1, ( void * ) &dummyMemoryOffset );
                 }
-
-                // Create Table with MemoryRegions
-                // ===============================
-                ORKADB_TableHandle_t *TableMemoryRegions = ORKADB_TableCreate( ORKAGD_g_DataBase, "MemoryRegoins" );
-
-                // Create fields of the table
-                ORKADB_FieldHandle_t *memoryRegionField1 = ORKADB_FieldCreate( TableMemoryRegions, "memcpyOffset", ORKADB_FieldType_ValueU64, ORKADB_FieldOption_Nothing );
-
-                json_t const *memoryRegion;
-                for ( memoryRegion = json_getChild( memoryRegions ); memoryRegion != 0; memoryRegion = json_getSibling( memoryRegion ) )
+                else
                 {
-                    //                    ORKAGD_DBG_JsonDump( memoryRegion );
-                    if ( JSON_OBJ == json_getType( memoryRegion ) )
+                    json_t const *memoryRegion;
+                    for ( memoryRegion = json_getChild( memoryRegions ); memoryRegion != 0; memoryRegion = json_getSibling( memoryRegion ) )
                     {
-                        ORKADB_RecordHandle_t *recordMemoryRegion = ORKADB_RecordCreate( TableMemoryRegions );
+                        //                    ORKAGD_DBG_JsonDump( memoryRegion );
+                        if ( JSON_OBJ == json_getType( memoryRegion ) )
+                        {
+                            ORKADB_RecordHandle_t *recordMemoryRegion = ORKADB_RecordCreate( TableMemoryRegions );
 
-                        ORKAGD_GetFromJsonU64HexOrDec( memoryRegion, "memcpyOffset", recordMemoryRegion, memoryRegionField1 );
+                            ORKAGD_GetFromJsonU64HexOrDec( memoryRegion, "memcpyOffset", recordMemoryRegion, memoryRegionField1 );
+                        }
                     }
                 }
                 ORKADB_EntryFieldValueSetCopy( recordFPGA, fpgaField4, ( void * ) TableMemoryRegions );
                 ORKAGD_DBG_PRINTF( "ORKAGD_ConfigFileInterprete: 'MemoryRegions' processed (OK)\n" );
-#endif
             }
         }
         ORKADB_EntryFieldValueSetCopy( record, ORKAGD_g_BoardField7, ( void * ) tableFPGAs );
@@ -3045,13 +3049,24 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
     // reserve space of a "collector struct"
     ORKAGD_FPGAHandle_t *rv = ( ORKAGD_FPGAHandle_t * ) calloc( 1, sizeof( ORKAGD_FPGAHandle_t ) );
     ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Handle = " PRIp "\n", rv );
-    if ( rv )
+    do
     {
+        if ( !rv )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR: ORKAGD_FPGAHandleCreate: Creation failed\n" );
+            break;
+        }
         rv->board = tbl;
         ORKADB_TableHandleDump( tableFPGAs );
 
         // with the index of the FPGA we access the table holding all FPGAs. Here we get the complete record.
-        rv->recordFPGA = *( ( ORKADB_RecordHandle_t ** ) ORKAVEC_GetAt( tableFPGAs->records, indexFPGA ) );
+        ORKADB_RecordHandle_t **recordFPGAPtr = ( ORKADB_RecordHandle_t ** ) ORKAVEC_GetAt( tableFPGAs->records, indexFPGA );
+        if ( !recordFPGAPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR: ORKAGD_FPGAHandleCreate: Creation failed\n" );
+            break;
+        }
+        rv->recordFPGA = *recordFPGAPtr;
 
         // dump it out
         ORKADB_RecordDump( rv->recordFPGA );
@@ -3067,7 +3082,13 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
         // ================================================
 
         // here we get the content(!) of the fieldComponents field. This field represents a new table.
-        rv->tableComponents = *( ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldComponents ) ) ); // get back a pointer to the tablehandle
+        ORKADB_TableHandle_t **tableCompPtr = ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldComponents ) ); // get back a pointer to the tablehandle
+        if ( !tableCompPtr )
+        {
+            ORKAGD_DBG_PRINTF( "ERROR: Table of components: GetField failed\n" );
+            break;
+        }
+        rv->tableComponents = *tableCompPtr;
 
         // to access the records of this component table, we need information about its fields
         rv->fieldComponentsName      = ORKADB_FieldOpen( rv->tableComponents, "name" );
@@ -3078,16 +3099,32 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
         rv->fieldComponentsSubType   = ORKADB_FieldOpen( rv->tableComponents, "subtype" );
         rv->fieldComponentsIpAccess  = ORKADB_FieldOpen( rv->tableComponents, "ipAccess" );
         rv->fieldComponentsRegisters = ORKADB_FieldOpen( rv->tableComponents, "Registers" );
-#if 1
+
         // here we get the content(!) of the fieldMemoryRegions field. This field represents a new table.
         rv->tableMemoryRegions = *( ( ORKADB_TableHandle_t ** ) ( ORKADB_RecordGetFieldAddrByHandle( rv->recordFPGA, rv->fieldMemoryRegions ) ) ); // get back a pointer to the tablehandle
 
         // to access the records of this fieldMemoryRegions table, we need information about its fields
         rv->fieldMemoryRegionsOffset = ORKADB_FieldOpen( rv->tableMemoryRegions, "memcpyOffset" );
         void *record                 = ( ( void * ) ORKADB_RecordGetAt( rv->tableMemoryRegions, 0 ) );
-        rv->memcpyOffset             = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( record, rv->fieldMemoryRegionsOffset ) );
-
-#endif
+        if ( record )
+        {
+            uint64_t *offsetPtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( record, rv->fieldMemoryRegionsOffset );
+            if ( offsetPtr )
+            {
+                rv->memcpyOffset = *offsetPtr;
+            }
+            else
+            {
+                ORKAGD_DBG_PRINTF( "ERROR: Database is malformed (memcpyOffset)\n" );
+                break;
+            }
+        }
+        else
+        {
+            ORKAGD_DBG_PRINTF( "INFO: memcpyOffset is set to default.\n" );
+            rv->memcpyOffset = 0ull;
+        }
+        ORKAGD_DBG_PRINTF( "INFO: memcpyOffset is 0x%" PRIx64 "\n", rv->memcpyOffset );
 
         // from board, get the driver parameters
         rv->fieldDriverParamsDriverName = ORKADB_FieldOpen( tableDrivers, "DriverName" );
@@ -3118,122 +3155,155 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
             ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Requested FPGA is '%s' - Looking for appropriate FPGA from internal database ...\n", fullNameQualifierNeeded );
             for ( void *i = ORKAVEC_IterBegin( iter ); ORKAVEC_IterEnd( iter ); i = ORKAVEC_IterNext( iter ) )
             {
-                ORKAGD_FPGADescription_t *fpgaDescription           = ( ORKAGD_FPGADescription_t * ) i; // get back a pointer to the string-pointer
-                char *                    fullNameQualifierExamined = fpgaDescription->fullNameQualifier;
-
-                if ( 0 == StringCompareIgnoreCase( fullNameQualifierExamined, fullNameQualifierNeeded ) )
+                ORKAGD_FPGADescription_t *fpgaDescription = ( ORKAGD_FPGADescription_t * ) i; // get back a pointer to the string-pointer
+                if ( fpgaDescription )
                 {
-                    // The FPGA is supported ...
-                    // now we have the FPGA manufacturer and can look into the drivers list
-                    // for drivers of this manufacturer.
-                    // We have to check then the specified driver name of the FPGA-Board config
-                    // whether this name is available in the list of drivers
-                    ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Check DB with FPGAName '%s' ... Match!\n", fullNameQualifierExamined );
+                    char *fullNameQualifierExamined = fpgaDescription->fullNameQualifier;
 
-                    ORKAVEC_Iter_t *iter2 = ORKAVEC_IterCreate( ORKAGD_g_TranslatorManufacturers );
-                    for ( void *j = ORKAVEC_IterBegin( iter2 ); ( !found ) && ORKAVEC_IterEnd( iter2 ); j = ORKAVEC_IterNext( iter2 ) )
+                    if ( 0 == StringCompareIgnoreCase( fullNameQualifierExamined, fullNameQualifierNeeded ) )
                     {
-                        ORKAGD_TranslatorManufacturerBoard_t *translatorManufacturerBoard = ( ORKAGD_TranslatorManufacturerBoard_t * ) j; // get back a pointer to the string-pointer
-                        // ORKAGD_DBG_PRINTF( "ManufacturerDrivers: %s\n", translatorManufacturerBoard->manufacturer );
-                        if ( 0 == StringCompareIgnoreCase( translatorManufacturerBoard->manufacturer, fpgaDescription->manufacturerName ) )
+                        // The FPGA is supported ...
+                        // now we have the FPGA manufacturer and can look into the drivers list
+                        // for drivers of this manufacturer.
+                        // We have to check then the specified driver name of the FPGA-Board config
+                        // whether this name is available in the list of drivers
+                        ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Check DB with FPGAName '%s' ... Match!\n", fullNameQualifierExamined );
+
+                        ORKAVEC_Iter_t *iter2 = ORKAVEC_IterCreate( ORKAGD_g_TranslatorManufacturers );
+                        for ( void *j = ORKAVEC_IterBegin( iter2 ); ( !found ) && ORKAVEC_IterEnd( iter2 ); j = ORKAVEC_IterNext( iter2 ) )
                         {
-                            // look in each entry of the vector whether there is one named as needed
-                            ORKAVEC_Iter_t *iter3 = ORKAVEC_IterCreate( translatorManufacturerBoard->drivers );
-                            for ( void *k = ORKAVEC_IterBegin( iter3 ); ORKAVEC_IterEnd( iter3 ); k = ORKAVEC_IterNext( iter3 ) )
+                            ORKAGD_TranslatorManufacturerBoard_t *translatorManufacturerBoard = ( ORKAGD_TranslatorManufacturerBoard_t * ) j; // get back a pointer to the string-pointer
+                            // ORKAGD_DBG_PRINTF( "ManufacturerDrivers: %s\n", translatorManufacturerBoard->manufacturer );
+                            if ( 0 == StringCompareIgnoreCase( translatorManufacturerBoard->manufacturer, fpgaDescription->manufacturerName ) )
                             {
-                                ORKAGD_TranslatorDriver_t *translatorDriver = ( ORKAGD_TranslatorDriver_t * ) k; // get back a pointer to the driver struct
-                                // we extract the desired name, instance and port
-                                char *driverName = *( ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsDriverName ) );
-                                if ( 0 == StringCompareIgnoreCase( driverName, translatorDriver->name ) )
+                                // look in each entry of the vector whether there is one named as needed
+                                ORKAVEC_Iter_t *iter3 = ORKAVEC_IterCreate( translatorManufacturerBoard->drivers );
+                                for ( void *k = ORKAVEC_IterBegin( iter3 ); ORKAVEC_IterEnd( iter3 ); k = ORKAVEC_IterNext( iter3 ) )
                                 {
-                                    found                   = TRUE;
-                                    rv->interfaceAccessType = translatorDriver->accessType;
-
-                                    switch ( translatorDriver->accessType )
+                                    ORKAGD_TranslatorDriver_t *translatorDriver = ( ORKAGD_TranslatorDriver_t * ) k; // get back a pointer to the driver struct
+                                    // we extract the desired name, instance and port
+                                    char **driverNamePtr = ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsDriverName );
+                                    if ( driverNamePtr && ( *driverNamePtr ) )
                                     {
-                                        default:
-                                        case ORKAGD_ACCESSTYPE_UNDEFINED:
+                                        char *driverName = *driverNamePtr;
+                                        if ( 0 == StringCompareIgnoreCase( driverName, translatorDriver->name ) )
                                         {
-                                            break;
-                                        }
-                                        case ORKAGD_ACCESSTYPE_XDMA:
-                                        {
-                                            // Xilinx DMA
+                                            found                   = TRUE;
+                                            rv->interfaceAccessType = translatorDriver->accessType;
 
-                                            // get the access string of the driver interface and
-                                            // replace macro keywords by the numbers
-                                            uint64_t instance = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance ) );
-                                            uint64_t port     = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
+                                            switch ( translatorDriver->accessType )
+                                            {
+                                                default:
+                                                case ORKAGD_ACCESSTYPE_UNDEFINED:
+                                                {
+                                                    ORKAGD_DBG_PRINTF( "ERROR: accessType undefined\n" );
+                                                    break;
+                                                }
+                                                case ORKAGD_ACCESSTYPE_XDMA:
+                                                {
+                                                    // Xilinx DMA
+
+                                                    // get the access string of the driver interface and
+                                                    // replace macro keywords by the numbers
+                                                    uint64_t *instancePtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance );
+                                                    uint64_t *portPtr     = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort );
+                                                    if ( ( !instancePtr ) || ( !portPtr ) )
+                                                    {
+                                                        ORKAGD_DBG_PRINTF( "ERROR: accessType XDMA: instance or port problem\n" );
+                                                        break;
+                                                    }
+                                                    uint64_t instance = *instancePtr;
+                                                    uint64_t port     = *portPtr;
+
 #ifdef _MSC_VER
-                                            rv->interfacePCIe.m_DevicePCIConfigName      = "..\\winsim.org";
-                                            rv->interfacePCIe.m_DeviceDMAReadName        = "..\\winsim.org";
-                                            rv->interfacePCIe.m_DeviceDMAWriteName       = "..\\winsim.org";
-                                            rv->interfacePCIe.m_DeviceMemoryMappedIOName = "..\\winsim.org";
+                                                    rv->interfacePCIe.m_DevicePCIConfigName      = "..\\winsim.org";
+                                                    rv->interfacePCIe.m_DeviceDMAReadName        = "..\\winsim.org";
+                                                    rv->interfacePCIe.m_DeviceDMAWriteName       = "..\\winsim.org";
+                                                    rv->interfacePCIe.m_DeviceMemoryMappedIOName = "..\\winsim.org";
 #else
-                                            char *tmp;
-                                            rv->interfacePCIe.m_DevicePCIConfigName = StringFindAndReplaceU64( translatorDriver->controlAccess, "%interface%", instance );
-                                            tmp                                     = StringFindAndReplaceU64( translatorDriver->memcpyd2h, "%interface%", instance );
-                                            rv->interfacePCIe.m_DeviceDMAReadName   = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
-                                            free( tmp ); // free temporary string
-                                            tmp                                    = StringFindAndReplaceU64( translatorDriver->memcpyh2d, "%interface%", instance );
-                                            rv->interfacePCIe.m_DeviceDMAWriteName = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
-                                            free( tmp ); // free temporary string
-                                            rv->interfacePCIe.m_DeviceMemoryMappedIOName = StringFindAndReplaceU64( translatorDriver->registerAccess, "%interface%", instance );
+                                                    char *tmp;
+                                                    rv->interfacePCIe.m_DevicePCIConfigName = StringFindAndReplaceU64( translatorDriver->controlAccess, "%interface%", instance );
+                                                    tmp                                     = StringFindAndReplaceU64( translatorDriver->memcpyd2h, "%interface%", instance );
+                                                    rv->interfacePCIe.m_DeviceDMAReadName   = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
+                                                    free( tmp ); // free temporary string
+                                                    tmp                                    = StringFindAndReplaceU64( translatorDriver->memcpyh2d, "%interface%", instance );
+                                                    rv->interfacePCIe.m_DeviceDMAWriteName = StringFindAndReplaceU64( tmp, "%dmachannel%", port );
+                                                    free( tmp ); // free temporary string
+                                                    rv->interfacePCIe.m_DeviceMemoryMappedIOName = StringFindAndReplaceU64( translatorDriver->registerAccess, "%interface%", instance );
 #endif
-                                            break;
-                                        }
-                                        case ORKAGD_ACCESSTYPE_INTEL_IOCTL:
-                                        {
-                                            // get the access string of the driver interface and
-                                            // replace macro keywords by the numbers
-                                            // TODO
-                                            // uint64_t instance                            = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance ) );
-                                            // uint64_t port                                = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
-                                            rv->interfacePCIe.m_DevicePCIConfigName      = translatorDriver->controlAccess;
-                                            rv->interfacePCIe.m_DeviceDMAReadName        = translatorDriver->memcpyd2h;
-                                            rv->interfacePCIe.m_DeviceDMAWriteName       = translatorDriver->memcpyh2d;
-                                            rv->interfacePCIe.m_DeviceMemoryMappedIOName = translatorDriver->registerAccess;
-                                            break;
-                                        }
-                                        case ORKAGD_ACCESSTYPE_IPV4:
-                                        {
-                                            // accesss with TCP/IP custom protocol
-                                            ORKAGD_DBG_PRINTF( "* TCP/IP access\n" );
-                                            rv->interfaceIPv4.m_ipv4Address = *( ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsAddress ) );
-                                            rv->interfaceIPv4.m_ipv4Port    = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
-                                            rv->interfaceIPv4.m_ipv4Speed   = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsSpeed ) );
-                                            ORKAGD_DBG_PRINTF( "* TCP/IP Address: %s\n", rv->interfaceIPv4.m_ipv4Address );
-                                            ORKAGD_DBG_PRINTF( "* TCP/IP Port: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Port );
-                                            ORKAGD_DBG_PRINTF( "* TCP/IP Speed: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Speed );
+                                                    break;
+                                                }
+                                                case ORKAGD_ACCESSTYPE_INTEL_IOCTL:
+                                                {
+                                                    // get the access string of the driver interface and
+                                                    // replace macro keywords by the numbers
+                                                    // TODO
+                                                    // uint64_t instance                            = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsInstance ) );
+                                                    // uint64_t port                                = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort ) );
+                                                    rv->interfacePCIe.m_DevicePCIConfigName      = translatorDriver->controlAccess;
+                                                    rv->interfacePCIe.m_DeviceDMAReadName        = translatorDriver->memcpyd2h;
+                                                    rv->interfacePCIe.m_DeviceDMAWriteName       = translatorDriver->memcpyh2d;
+                                                    rv->interfacePCIe.m_DeviceMemoryMappedIOName = translatorDriver->registerAccess;
+                                                    break;
+                                                }
+                                                case ORKAGD_ACCESSTYPE_IPV4:
+                                                {
+                                                    // accesss with TCP/IP custom protocol
+                                                    ORKAGD_DBG_PRINTF( "* TCP/IP access\n" );
+                                                    char **   ipv4AddressPtr = ( char ** ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsAddress );
+                                                    uint64_t *ipv4PortPtr    = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsPort );
+                                                    uint64_t *ipv4SpeedPtr   = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( entryDriverParamsRecord, rv->fieldDriverParamsSpeed );
+                                                    if ( ( !ipv4AddressPtr ) || ( !( *ipv4AddressPtr ) ) || ( !ipv4PortPtr ) || ( !ipv4SpeedPtr ) )
+                                                    {
+                                                        ORKAGD_DBG_PRINTF( "ERROR: accessType IPV4: ipv4AddressPtr, ipv4PortPtr or ipv4SpeedPtr problem\n" );
+                                                        break;
+                                                    }
+                                                    rv->interfaceIPv4.m_ipv4Address = *ipv4AddressPtr;
+                                                    rv->interfaceIPv4.m_ipv4Port    = *ipv4PortPtr;
+                                                    rv->interfaceIPv4.m_ipv4Speed   = *ipv4SpeedPtr;
+                                                    ORKAGD_DBG_PRINTF( "* TCP/IP Address: %s\n", rv->interfaceIPv4.m_ipv4Address );
+                                                    ORKAGD_DBG_PRINTF( "* TCP/IP Port: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Port );
+                                                    ORKAGD_DBG_PRINTF( "* TCP/IP Speed: %" PRId64 "\n", rv->interfaceIPv4.m_ipv4Speed );
+
+                                                    break;
+                                                }
+                                            }
+                                            rv->infrastructureName = StringCreate( infrastructureName );
+
+                                            ORKAGD_FPGAComponentsCreateList( rv );
 
                                             break;
                                         }
                                     }
-                                    rv->infrastructureName = StringCreate( infrastructureName );
-
-                                    ORKAGD_FPGAComponentsCreateList( rv );
-
-                                    break;
+                                    else
+                                    {
+                                        ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: ERROR! Driver name field defect ...\n" );
+                                    }
                                 }
+
+                                ORKAVEC_IterDestroy( iter3 );
                             }
-                            ORKAVEC_IterDestroy( iter3 );
                         }
+                        if ( !found )
+                        {
+                            ORKAGD_DBG_PRINTF( "Error: no FPGA match\n" );
+                        }
+                        ORKAVEC_IterDestroy( iter2 );
+
+                        // we have found what we were looking for
+                        rv->fpgaDescriprion = fpgaDescription;
+
+                        // leave
+                        break;
                     }
-                    if ( !found )
+                    else
                     {
-                        ORKAGD_DBG_PRINTF( "Error: no FPGA match\n" );
+                        ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Check DB with FPGAName '%s' ... no match ==> next if any ...\n", fullNameQualifierExamined );
                     }
-                    ORKAVEC_IterDestroy( iter2 );
-
-                    // we have found what we were looking for
-                    rv->fpgaDescriprion = fpgaDescription;
-
-                    // leave
-                    break;
                 }
                 else
                 {
-                    ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: Check DB with FPGAName '%s' ... no match ==> next if any ...\n", fullNameQualifierExamined );
+                    ORKAGD_DBG_PRINTF( "ORKAGD_FPGAHandleCreate: ERROR! Check DB (fullNameQualifier) ...\n" );
                 }
             }
             ORKAVEC_IterDestroy( iter );
@@ -3248,10 +3318,18 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
             {
                 ORKADB_FieldHandle_t *fieldHandleSize = ORKADB_FieldOpen( tablePCIeBars, "size" );
 
-                ORKADB_RecordHandle_t *record   = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 0ULL );
-                uint64_t               sizeMMIO = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( record, fieldHandleSize ) );
-                rv->mmioSize                    = sizeMMIO;
-                ORKAGD_DBG_PRINTF( "sizeMMIO=%" PRId64 "\n", sizeMMIO );
+                ORKADB_RecordHandle_t *recordPtr   = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 0ULL );
+                uint64_t *             sizeMMIOPtr = ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( recordPtr, fieldHandleSize );
+                if ( sizeMMIOPtr )
+                {
+                    uint64_t sizeMMIO = *sizeMMIOPtr;
+                    rv->mmioSize      = sizeMMIO;
+                    ORKAGD_DBG_PRINTF( "sizeMMIO=%" PRId64 "\n", sizeMMIO );
+                }
+                else
+                {
+                    ORKAGD_DBG_PRINTF( "WARNING: sizeMMIOPtr wrong\n" );
+                }
             }
             else
             {
@@ -3261,8 +3339,8 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
                     ORKAGD_DBG_PRINTF( "WARNING: Found more than one MMIO BAR (found %" PRIx64 ")! Which one should I use?... TODO!!!\n", ORKAVEC_Size( recordListPCIeBars ) );
                     ORKAGD_DBG_PRINTF( "Assuming we are working with Intel -> Using the second BAR\n" );
                     ORKADB_FieldHandle_t * fieldHandleSize = ORKADB_FieldOpen( tablePCIeBars, "size" );
-                    ORKADB_RecordHandle_t *record          = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 1ULL );
-                    uint64_t               sizeMMIO        = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( record, fieldHandleSize ) );
+                    ORKADB_RecordHandle_t *recordPtr       = ( ORKADB_RecordHandle_t * ) ORKAVEC_GetAt( recordListPCIeBars, 1ULL );
+                    uint64_t               sizeMMIO        = *( ( uint64_t * ) ORKADB_RecordGetFieldAddrByHandle( recordPtr, fieldHandleSize ) );
                     rv->mmioSize                           = sizeMMIO;
                     ORKAGD_DBG_PRINTF( "sizeMMIO=%" PRId64 "\n", sizeMMIO );
                 }
@@ -3285,7 +3363,7 @@ ORKAGD_FPGAHandleCreate( void *board, uint64_t indexFPGA )
                 rv = NULL;
             }
         }
-    }
+    } while ( 0 ); // end dummy loop
 
     return ( void * ) rv;
 }
