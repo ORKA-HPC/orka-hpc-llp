@@ -174,6 +174,7 @@ struct ip
                 bool is_bits = false;
                 if (vendor == "Xilinx")
                 {
+                    // Vivado 2018.2
                     // check if it is an address or bitsize
                     is_addr = regname.find("_AXILITES_ADDR_") != std::string::npos;
                     is_bits = regname.find("_AXILITES_BITS_") != std::string::npos;
@@ -181,6 +182,22 @@ struct ip
                     if (is_addr || is_bits)
                     {
                         regname = regname.substr(regname.find("_AXILITES_") + 15);
+                        // trim _OFFSET_DATA from end
+                        if (regname.length() > 12 && 0 == regname.compare(regname.length() - 12, 12, "_OFFSET_DATA"))
+                            regname = regname.substr(0, regname.length() - 12);
+                        // trim _DATA from end
+                        if (regname.length() > 5 && 0 == regname.compare(regname.length() - 5, 5, "_DATA"))
+                            regname = regname.substr(0, regname.length() - 5);
+                    }
+
+                    // Vivado 2021.2
+                    // check if it is an address or bitsize
+                    is_addr = regname.find("_CONTROL_ADDR_") != std::string::npos;
+                    is_bits = regname.find("_CONTROL_BITS_") != std::string::npos;
+                    // cut name
+                    if (is_addr || is_bits)
+                    {
+                        regname = regname.substr(regname.find("_CONTROL_") + 14);
                         // trim _OFFSET_DATA from end
                         if (regname.length() > 12 && 0 == regname.compare(regname.length() - 12, 12, "_OFFSET_DATA"))
                             regname = regname.substr(0, regname.length() - 12);
