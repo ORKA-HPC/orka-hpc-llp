@@ -19,32 +19,95 @@
     "FPGAs": [
         {
             "Bitstream": "bitstream.bit",
-            "MemoryRegions": [
-                {
-                    "comment": "simple version",
-                    "offset": "0x0"
-                }
-            ],
             "Components": [
                 {
-                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_intc_0_Reg",
-                    "offset": "0x00040000",
-                    "range": "0x00010000"
+                    "name": "/HlsKernel1000/Data_m_axi_OrkaParam2/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
+                    "offset": "0x0000000100000000",
+                    "range": "0x0000000100000000"
                 },
                 {
-                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_timer_0_Reg",
-                    "offset": "0x00050000",
-                    "range": "0x00010000"
+                    "name": "/HlsKernel1000/Data_m_axi_OrkaParam3/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
+                    "offset": "0x0000000100000000",
+                    "range": "0x0000000100000000"
                 },
                 {
-                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_uart_Reg",
-                    "offset": "0x00060000",
-                    "range": "0x00010000"
+                    "name": "/xdma_0/M_AXI/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
+                    "offset": "0x0000000100000000",
+                    "range": "0x0000000100000000"
                 },
                 {
-                    "name": "/xdma_0/M_AXI_LITE/SEG_system_management_wiz_0_Reg",
-                    "offset": "0x00070000",
-                    "range": "0x00010000"
+                    "name": "/xdma_0/M_AXI_LITE/SEG_HlsKernel1000_Reg",
+                    "name_from_component_xml": "HlsKernel1000",
+                    "offset": "0x01000000",
+                    "range": "0x00010000",
+                    "registers": [
+                        {
+                            "addr": "0x00",
+                            "name": "AP_CTRL"
+                        },
+                        {
+                            "addr": "0x04",
+                            "name": "GIE"
+                        },
+                        {
+                            "addr": "0x08",
+                            "name": "IER"
+                        },
+                        {
+                            "addr": "0x0c",
+                            "name": "ISR"
+                        },
+                        {
+                            "addr": "0x10",
+                            "bits": "32",
+                            "name": "ORKAPARAM0"
+                        },
+                        {
+                            "addr": "0x18",
+                            "bits": "32",
+                            "name": "ORKAPARAM1"
+                        },
+                        {
+                            "addr": "0x20",
+                            "bits": "64",
+                            "name": "ORKAPARAM2"
+                        },
+                        {
+                            "addr": "0x2c",
+                            "bits": "64",
+                            "name": "ORKAPARAM3"
+                        },
+                        {
+                            "addr": "0x38",
+                            "bits": "32",
+                            "name": "ORKAPARAM4"
+                        },
+                        {
+                            "addr": "0x40",
+                            "bits": "32",
+                            "name": "ORKAPARAM5"
+                        },
+                        {
+                            "addr": "0x48",
+                            "bits": "32",
+                            "name": "ORKAPARAM6"
+                        },
+                        {
+                            "addr": "0x50",
+                            "bits": "32",
+                            "name": "ORKAPARAM7"
+                        },
+                        {
+                            "addr": "0x58",
+                            "bits": "32",
+                            "name": "ORKAPARAM8"
+                        },
+                        {
+                            "addr": "0x60",
+                            "bits": "32",
+                            "name": "ORKAPARAM9"
+                        }
+                    ]
                 },
                 {
                     "name": "/xdma_0/M_AXI_LITE/SEG_axi_gpio_0_Reg",
@@ -123,98 +186,35 @@
                     ]
                 },
                 {
-                    "name": "/xdma_0/M_AXI_LITE/SEG_HlsKernel1000_Reg",
-                    "name_from_component_xml": "HlsKernel1000",
-                    "offset": "0x01000000",
-                    "range": "0x00010000",
-                    "registers": [
-                        {
-                            "addr": "0x00",
-                            "name": "AP_CTRL"
-                        },
-                        {
-                            "addr": "0x04",
-                            "name": "GIE"
-                        },
-                        {
-                            "addr": "0x08",
-                            "name": "IER"
-                        },
-                        {
-                            "addr": "0x0c",
-                            "name": "ISR"
-                        },
-                        {
-                            "addr": "0x10",
-                            "bits": "32",
-                            "name": "ORKAPARAM0"
-                        },
-                        {
-                            "addr": "0x18",
-                            "bits": "32",
-                            "name": "ORKAPARAM1"
-                        },
-                        {
-                            "addr": "0x20",
-                            "bits": "64",
-                            "name": "ORKAPARAM2"
-                        },
-                        {
-                            "addr": "0x2c",
-                            "bits": "64",
-                            "name": "ORKAPARAM3"
-                        },
-                        {
-                            "addr": "0x38",
-                            "bits": "32",
-                            "name": "ORKAPARAM4"
-                        },
-                        {
-                            "addr": "0x40",
-                            "bits": "32",
-                            "name": "ORKAPARAM5"
-                        },
-                        {
-                            "addr": "0x48",
-                            "bits": "32",
-                            "name": "ORKAPARAM6"
-                        },
-                        {
-                            "addr": "0x50",
-                            "bits": "32",
-                            "name": "ORKAPARAM7"
-                        },
-                        {
-                            "addr": "0x58",
-                            "bits": "32",
-                            "name": "ORKAPARAM8"
-                        },
-                        {
-                            "addr": "0x60",
-                            "bits": "32",
-                            "name": "ORKAPARAM9"
-                        }
-                    ]
+                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_intc_0_Reg",
+                    "offset": "0x00040000",
+                    "range": "0x00010000"
                 },
                 {
-                    "name": "/xdma_0/M_AXI/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
-                    "offset": "0x0000000100000000",
-                    "range": "0x0000000100000000"
+                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_timer_0_Reg",
+                    "offset": "0x00050000",
+                    "range": "0x00010000"
                 },
                 {
-                    "name": "/HlsKernel1000/Data_m_axi_OrkaParam2/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
-                    "offset": "0x0000000100000000",
-                    "range": "0x0000000100000000"
+                    "name": "/xdma_0/M_AXI_LITE/SEG_axi_uart_Reg",
+                    "offset": "0x00060000",
+                    "range": "0x00010000"
                 },
                 {
-                    "name": "/HlsKernel1000/Data_m_axi_OrkaParam3/SEG_mig_0_C0_DDR4_ADDRESS_BLOCK",
-                    "offset": "0x0000000100000000",
-                    "range": "0x0000000100000000"
+                    "name": "/xdma_0/M_AXI_LITE/SEG_system_management_wiz_0_Reg",
+                    "offset": "0x00070000",
+                    "range": "0x00010000"
                 }
             ],
             "Driver": 0,
             "FullNameQualifier": "xcvu9p-flga2104-2L-e",
-            "Manufacturer": "Xilinx"
+            "Manufacturer": "Xilinx",
+            "MemoryRegions": [
+                {
+                    "Comment": "simple version",
+                    "memcpyOffset": "0x0"
+                }
+            ]
         }
     ],
     "FileType": "boardsupportpackage",
