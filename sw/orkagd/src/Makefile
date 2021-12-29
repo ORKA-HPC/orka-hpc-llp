@@ -53,7 +53,7 @@ tiny-json.o: tiny-json.c tiny-json.h
 	echo "make 'tiny-json.o'"
 	gcc -g -O0 -c -std=gnu99 -Wall -Werror -fPIC liborkagd.c tiny-json.c
 
-liborkagd.o: liborkagd.c liborkagd.h tcpipclient.c tcpipclient.h tiny-json.h stringhelper.h stringhelper.c vector.h vector.c database.c database.h mmgmt.c
+liborkagd.o: liborkagd.c liborkagd.h printf.h tcpipclient.c tcpipclient.h tiny-json.h stringhelper.h stringhelper.c vector.h vector.c database.c database.h mmgmt.c
 	echo "make 'liborkagd.o'"
 	gcc -g -O0 -c -std=gnu99 -Wall -fPIC liborkagd.c tcpipclient.c tiny-json.c database.c stringhelper.c vector.c mmgmt.c
 

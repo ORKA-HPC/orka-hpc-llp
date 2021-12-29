@@ -24,6 +24,7 @@
 #include "database.h"
 #include "liborkagd.h"
 #include "liborkagdint.h"
+#include "printf.h"
 #include "tiny-json.h"
 #include "stringhelper.h"
 
@@ -69,13 +70,6 @@
 
 #endif
 
-
-#if 1
-#    define ORKATCP_DBG_PRINTF( fmt, ... ) printf( "ORKATCP: [%d]%s(): " fmt, __LINE__, __func__, ##__VA_ARGS__ )
-#define ORKATCP_DBG_PRINTF_AVAILABLE
-#else
-#define ORKATCP_DBG_PRINTF( ... )
-#endif
 
 #define ORKAGD_TCPIP_MEMCPY_BUFBYTECAPACYTY ( 4096 )
 #define ORKAGD_TCPIP_MEMCPY_BUFSIZE         ( ORKAGD_TCPIP_MEMCPY_BUFBYTECAPACYTY * 2 )

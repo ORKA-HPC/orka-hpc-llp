@@ -20,6 +20,7 @@
 #ifndef DATABASE_H__
 #define DATABASE_H__
 
+#include "printf.h"
 #include "vector.h"
 
 #include <stdint.h>
@@ -28,15 +29,6 @@
 #include <ctype.h>
 #include <memory.h>
 #include <stdint.h>
-
-#if 1
-#    define ORKADB_DBG_PRINTF_INT( ... ) printf( __VA_ARGS__ )
-#    define ORKADB_DBG_PRINTF( ... )     printf( " ORKADB: " __VA_ARGS__ )
-#    define ORKADB_DBG_PRINTF_AVAILABLE
-#else
-#    define ORKADB_DBG_PRINTF_INT( ... )
-#    define ORKADB_DBG_PRINTF( ... )
-#endif
 
 typedef struct ORKADB_DBHandle_tag    ORKADB_DBHandle_t;
 typedef struct ORKADB_TableHandle_tag ORKADB_TableHandle_t;

@@ -67,6 +67,7 @@
 #include "database.h"
 #include "vector.h"
 #include "liborkagdint.h"
+#include "printf.h"
 #include "tiny-json.h"
 #include "stringhelper.h"
 #include "tcpipclient.h"
@@ -211,7 +212,7 @@ popen( const char *command, const char *mode )
 
     while ( fgets( buf, sizeof( buf ), fp ) )
     {
-        ORKAGD_DBG_PRINTF( "%s", buf );
+        ORKAGD_DBG_PRINTF_INT( "%s", buf );
     }
 #    endif
     char *newCommand = StringCreate( "echo ============================================ " );
@@ -219,12 +220,12 @@ popen( const char *command, const char *mode )
     outputFile       = StringAddExt( outputFile, ORKAGD_g_PathnameTempWrite );
     outputFile       = StringAddFilenameToPath( outputFile, ORKAGD_g_DebugOutputFile );
     newCommand       = StringAddExt( newCommand, outputFile );
-    ORKAGD_DBG_PRINTF( "system( '%s' )\n", newCommand );
+    ORKAGD_DBG_PRINTF_INT( "system( '%s' )\n", newCommand );
     system( newCommand );
     char *commandWithOutput = StringAdd( command, " " );
     commandWithOutput       = StringAdd( commandWithOutput, outputFile );
     system( commandWithOutput );
-    ORKAGD_DBG_PRINTF( "system( '%s' )\n", commandWithOutput );
+    ORKAGD_DBG_PRINTF_INT( "system( '%s' )\n", commandWithOutput );
     StringDestroy( commandWithOutput );
     StringDestroy( outputFile );
     StringDestroy( newCommand );
@@ -415,7 +416,7 @@ ORKAGD_DBG_JsonDump( json_t const *json )
         return;
     }
 
-    ORKAGD_DBG_PRINTF( "%s\n", type == JSON_OBJ ? " {" : " [" );
+    ORKAGD_DBG_PRINTF_INT( "%s\n", type == JSON_OBJ ? " {" : " [" );
 
     json_t const *child;
     for ( child = json_getChild( json ); child != 0; child = json_getSibling( child ) )
@@ -424,7 +425,7 @@ ORKAGD_DBG_JsonDump( json_t const *json )
         jsonType_t  propertyType = json_getType( child );
         char const *name         = json_getName( child );
         if ( name )
-            ORKAGD_DBG_PRINTF( " \"%s\": ", name );
+            ORKAGD_DBG_PRINTF_INT( " \"%s\": ", name );
 
         if ( propertyType == JSON_OBJ || propertyType == JSON_ARRAY )
             ORKAGD_DBG_JsonDump( child );
@@ -436,18 +437,18 @@ ORKAGD_DBG_JsonDump( json_t const *json )
             {
                 bool const  text = JSON_TEXT == json_getType( child );
                 char const *fmt  = text ? " \"%s\"" : " %s";
-                ORKAGD_DBG_PRINTF( fmt, value );
+                ORKAGD_DBG_PRINTF_INT( fmt, value );
                 bool const last = !json_getSibling( child );
                 if ( !last )
                 {
                     putchar( ',' );
-                    ORKAGD_DBG_PRINTF( "\n" );
+                    ORKAGD_DBG_PRINTF_INT( "\n" );
                 }
             }
         }
     }
 
-    ORKAGD_DBG_PRINTF( "%s\n", type == JSON_OBJ ? " }" : " ]" );
+    ORKAGD_DBG_PRINTF_INT( "%s\n", type == JSON_OBJ ? " }" : " ]" );
 }
 #endif
 
@@ -1710,9 +1711,7 @@ ORKADB_RecordDumpInternalxxx( ORKADB_RecordHandle_t *record )
                 if ( *fieldHandle )
                 {
                     // ORKADB_DBG_PRINTF( "%s, ", fieldHandle->fieldName );
-#ifdef ORKADB_DBG_PRINTF_AVAILABLE
                     void *fieldAddr = &( ( char * ) ( record->recordData ) )[ ( *fieldHandle )->fieldOffsetInRecord ];
-#endif
                     switch ( ( *fieldHandle )->fieldType )
                     {
                         default:
@@ -3992,7 +3991,7 @@ ORKAGD_RegisterU32Write( const ORKAGD_FPGAComponent_t *component, const uint64_t
                 ORKAGD_IntelIOCtl_t rw_args;
                 rw_args.offset = ( uint32_t ) ( targetIPAddress + offset );
                 rw_args.data   = value;
-                ORKAGD_DBG_PRINTF( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
+                ORKAGD_DBG_PRINTF_INT( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
                 int ret = ioctl( pTargetFPGA->interfacePCIe.m_DeviceMemoryMappedIOHandle, ORKAGD_FPGA_PR_REGION_WRITE, &rw_args );
                 if ( 0 > ret )
                 {
@@ -4055,7 +4054,7 @@ ORKAGD_RegisterU32Read( const ORKAGD_FPGAComponent_t *component, const uint64_t 
                 ORKAGD_IntelIOCtl_t rw_args;
                 rw_args.offset = ( uint32_t ) ( targetIPAddress + offset );
 
-                ORKAGD_DBG_PRINTF( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
+                ORKAGD_DBG_PRINTF_INT( "JSCDBG: offset=0x%8.8x\n", rw_args.offset );
                 if ( ioctl( pTargetFPGA->interfacePCIe.m_DeviceMemoryMappedIOHandle, ORKAGD_FPGA_PR_REGION_READ, &rw_args ) == -1 )
                 {
                     ORKAGD_DBG_PRINTF( "ioctl read error\n" );
@@ -4172,16 +4171,16 @@ ORKAGD_MemcpyH2D( void *handleFPGA, const uint64_t dstDevice, const void *srcHos
                         uint32_t i, j;
                         uint32_t size = ( uint32_t ) byteSizePacket;
 
-                        ORKAGD_DBG_PRINTF( "Dump2: size=%lu\n\r", size );
+                        ORKAGD_DBG_PRINTF_INT( "Dump2: size=%lu\n\r", size );
                         uint8_t *p8 = ( uint8_t * ) pSrc;
                         for ( i = 0; i < 1; i += 16 * 16 )
                         {
-                            ORKAGD_DBG_PRINTF( ">>> 0x%16.16" PRIx64 ": ", ( uint64_t ) p8 );
+                            ORKAGD_DBG_PRINTF_INT( ">>> 0x%16.16" PRIx64 ": ", ( uint64_t ) p8 );
                             for ( j = 0; j < 16; j++ )
                             {
-                                ORKAGD_DBG_PRINTF( "%2.2x ", *p8++ );
+                                ORKAGD_DBG_PRINTF_INT( "%2.2x ", *p8++ );
                             }
-                            ORKAGD_DBG_PRINTF( "\n\r" );
+                            ORKAGD_DBG_PRINTF_INT( "\n\r" );
                         }
                     }
 

@@ -639,9 +639,7 @@ ORKADB_RecordDumpInternal( ORKADB_RecordHandle_t *record )
                 if ( *fieldHandle )
                 {
                     //ORKADB_DBG_PRINTF( "%s, ", fieldHandle->fieldName );
-#ifdef ORKADB_DBG_PRINTF_AVAILABLE
                     void *fieldAddr = &( ( char * ) ( record->recordData ) )[ ( *fieldHandle )->fieldOffsetInRecord ];
-#endif
                     switch ( ( *fieldHandle )->fieldType )
                     {
                         default:
@@ -715,7 +713,7 @@ void
 ORKADB_TableHandleDump(
     ORKADB_TableHandle_t *tableHandle )
 {
-#ifdef ORKADB_DBG_PRINTF_AVAILABLE
+#ifdef ORKADB_PRINTF_AVAILABLE
     if ( tableHandle )
     {
         ORKAVEC_Vector_t *recordVector = tableHandle->records;
