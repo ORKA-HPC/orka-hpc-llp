@@ -62,7 +62,19 @@
 #define ORKAGD_COMPONENT_REGISTER_HANDLE_MAGIC ( 0x6f73e4dd )
 
 //#define FATAL do { fprintf(stderr, "Error at line %d, file %s (%d) [%s]\n", __LINE__, __FILE__, errno, strerror(errno)); exit(1); } while(0)
-#define ORKAGD_DBG_PRINTF( ... ) printf( " ORKAGD: " __VA_ARGS__ )
+
+/*
+ * ORKAGD_VERBOSITY
+ * Valid values are:
+ *  0 (mute)
+ *  1 (errors only)
+ *  2 (verbose)
+*/
+#define ORKAGD_VERBOSITY 2
+#define ORKAGD_DBG_PRINTF( ... ) \
+    do { if (ORKAGD_VERBOSITY == 2) fprintf( stdout, __VA_ARGS__ ); } while (0)
+#define ORKAGD_ERR_PRINTF( ... ) \
+    do { if (ORKAGD_VERBOSITY >= 1) fprintf( stderr, __VA_ARGS__ ); } while (0)
 
 // Intel IOCTL
 #define ORKAGD_FPGA_DEBUG_PRINT_ROM                     _IO( 'q', 1 )

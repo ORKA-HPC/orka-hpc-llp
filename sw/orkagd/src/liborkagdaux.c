@@ -255,7 +255,7 @@ ORKA_TestDevMemFillRandomBlock()
     // allocate
     for ( i = 0; i < ORKAMM_TEST_TEST_LOOPS; ++i )
     {
-        if ( 0 == ( i & 0xfff )) printf( "Alloc: %ld%c", i, 13 );
+        if ( 0 == ( i & 0xfff )) ORKAGD_DBG_PRINTF( "Alloc: %ld%c", i, 13 );
 
         // prepare sorted list of indices for later scrambling
         Testindices[ i ] = i;
@@ -271,7 +271,7 @@ ORKA_TestDevMemFillRandomBlock()
         uint64_t a = ORKAMM_DevMalloc( z );
         if ( 0 == a )
         {
-            printf( "%6d: ORKAMM_DevMalloc (no memory): 0x%16.16" PRIx64 " (%" PRId64 ") - Free: %" PRId64 " Max: %" PRId64 "\n", i, z, z, ORKAMM_DevFreeBytes(), ORKAMM_DevFreeBiggestBlock());
+            ORKAGD_DBG_PRINTF( "%6d: ORKAMM_DevMalloc (no memory): 0x%16.16" PRIx64 " (%" PRId64 ") - Free: %" PRId64 " Max: %" PRId64 "\n", i, z, z, ORKAMM_DevFreeBytes(), ORKAMM_DevFreeBiggestBlock());
             ORKAMM_DBG_DumpListAllocated();
         }
         TestVals[ i ] = a;
@@ -296,7 +296,7 @@ ORKA_TestDevMemFillRandomBlock()
     // free
     for ( i = 0; i < ORKAMM_TEST_TEST_LOOPS; ++i )
     {
-        if ( 0 == ( i & 0xfff ) ) printf( "Free : %ld%c", i, 13 );
+        if ( 0 == ( i & 0xfff ) ) ORKAGD_DBG_PRINTF( "Free : %ld%c", i, 13 );
 
         uint64_t idx = Testindices[ i ];
         ORKAMM_DBG_PRINTF( "%3" PRId64 ": ORKAMM_DevFree = 0x%16.16" PRIx64 "\n", idx, TestVals[ idx ] );
@@ -307,12 +307,12 @@ ORKA_TestDevMemFillRandomBlock()
     uint64_t s = ORKAMM_DBG_DumpListFreeSize();
     if ( 1 == s )
     {
-        printf( "Test SUCCESS !!\n" );
+        ORKAGD_DBG_PRINTF( "Test SUCCESS !!\n" );
     }
     else
     {
-        printf( "Test ERRROR: Num entries in FREE-List is %" PRId64 " (should be 1) !!\n", s );
-        printf( "Need <Ctrl>+<c>\n" );
+        ORKAGD_ERR_PRINTF( "Test ERRROR: Num entries in FREE-List is %" PRId64 " (should be 1) !!\n", s );
+        ORKAGD_ERR_PRINTF( "Need <Ctrl>+<c>\n" );
         for ( ;;);
     }
 
